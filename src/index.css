@@ -2,43 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:wght@600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600&display=swap');
 
 @layer base {
   :root {
-    --background: 210 40% 98%;
-    --foreground: 220 52% 8%;
+    --background: 40 20% 98%;        /* warm off-white #fafaf9 */
+    --foreground: 220 47% 19%;       /* deep navy #1a2b4a */
 
     --card: 0 0% 100%;
-    --card-foreground: 220 52% 8%;
+    --card-foreground: 220 47% 19%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 52% 8%;
+    --popover-foreground: 220 47% 19%;
 
-    --primary: 203 96% 36%;
+    --primary: 220 47% 19%;          /* deep navy #1a2b4a */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 100%;
-    --secondary-foreground: 203 96% 36%;
+    --secondary: 215 16% 55%;        /* slate grey #64748b */
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 19% 35%;
+    --muted: 210 20% 95%;
+    --muted-foreground: 215 16% 45%;
 
-    --accent: 185 55% 58%;
+    --accent: 174 76% 31%;           /* teal #0d9488 */
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 203 96% 36%;
+    --border: 214 25% 89%;           /* #e2e8f0 */
+    --input: 214 25% 89%;
+    --ring: 174 76% 31%;
 
-    --radius: 0.5rem;
+    --radius: 0.25rem;
 
-    --surface: 210 40% 98%;
-    --ink: 220 52% 8%;
-    --slate: 215 19% 35%;
+    --surface: 40 20% 98%;
+    --ink: 220 47% 19%;
+    --slate: 215 16% 45%;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -51,25 +51,25 @@
   }
 
   .dark {
-    --background: 220 52% 8%;
-    --foreground: 210 40% 98%;
-    --card: 220 40% 12%;
-    --card-foreground: 210 40% 98%;
-    --popover: 220 40% 12%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 203 96% 36%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
+    --background: 220 47% 10%;
+    --foreground: 210 40% 96%;
+    --card: 220 40% 14%;
+    --card-foreground: 210 40% 96%;
+    --popover: 220 40% 14%;
+    --popover-foreground: 210 40% 96%;
+    --primary: 210 40% 96%;
+    --primary-foreground: 220 47% 19%;
+    --secondary: 217.2 32.6% 20%;
+    --secondary-foreground: 210 40% 96%;
+    --muted: 217.2 32.6% 20%;
     --muted-foreground: 215 20.2% 65.1%;
-    --accent: 185 55% 58%;
+    --accent: 174 76% 31%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --border: 217.2 32.6% 22%;
+    --input: 217.2 32.6% 22%;
+    --ring: 174 76% 31%;
   }
 }
 
@@ -79,45 +79,35 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply bg-background text-foreground antialiased;
     font-family: 'Inter', system-ui, sans-serif;
   }
 
   h1, h2, h3 {
-    font-family: 'Source Serif 4', Georgia, serif;
+    font-family: 'Playfair Display', Georgia, serif;
   }
 }
 
 @layer components {
-  .gradient-primary {
-    background: linear-gradient(135deg, hsl(203 96% 36%) 0%, hsl(185 55% 58%) 100%);
-  }
-
-  .gradient-text {
-    background: linear-gradient(135deg, hsl(203 96% 36%) 0%, hsl(185 55% 58%) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
   .page-container {
-    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+    @apply max-w-6xl mx-auto px-6 sm:px-8 lg:px-12;
   }
 
   .section-spacing {
-    @apply py-16 md:py-24;
+    @apply py-20 md:py-28;
   }
 
-  .card-hover {
-    @apply transition-all duration-300 ease-out;
+  .section-divider {
+    @apply border-t border-border;
   }
 
-  .card-hover:hover {
-    transform: translateY(-4px);
-    border-color: hsl(185 55% 58%);
+  .section-label {
+    @apply text-xs font-semibold tracking-widest uppercase text-muted-foreground mb-4;
   }
 
-  .progress-bar {
-    background: linear-gradient(90deg, hsl(203 96% 36%) 0%, hsl(185 55% 58%) 100%);
+  /* Fine dot grid pattern for hero */
+  .dot-grid {
+    background-image: radial-gradient(circle, hsl(215 16% 55% / 0.18) 1px, transparent 1px);
+    background-size: 24px 24px;
   }
 }
