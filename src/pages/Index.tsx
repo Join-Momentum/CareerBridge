@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import PageTransition from "@/components/PageTransition";
 import AnimatedSection, { StaggerContainer, StaggerItem } from "@/components/AnimatedSection";
+import { ChevronDown } from "lucide-react";
 
 /* ─── DATA ─────────────────────────────────────────────────────── */
 
@@ -57,81 +59,90 @@ const pillars = [
 const Index = () => {
   return (
     <PageTransition>
-
       {/* ── HERO ──────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-primary">
-        {/* Dot grid overlay */}
-        <div className="absolute inset-0 dot-grid opacity-30 pointer-events-none" />
+      <section className="relative min-h-screen flex items-center bg-ink overflow-hidden">
+        {/* Subtle grid pattern */}
+        <div className="absolute inset-0 grid-pattern pointer-events-none" />
+        
+        {/* Decorative circles */}
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] border border-warm-white/5 rounded-full translate-x-1/3 -translate-y-1/3 pointer-events-none" />
+        <div className="absolute top-0 right-0 w-[400px] h-[400px] border border-warm-white/5 rounded-full translate-x-1/3 -translate-y-1/3 pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[300px] h-[300px] border border-warm-white/5 rounded-full -translate-x-1/2 translate-y-1/2 pointer-events-none" />
 
-        {/* Subtle corner geometry */}
-        <div className="absolute top-0 right-0 w-[480px] h-[480px] border border-primary-foreground/5 rounded-full translate-x-1/2 -translate-y-1/2 pointer-events-none" />
-        <div className="absolute top-0 right-0 w-[280px] h-[280px] border border-primary-foreground/5 rounded-full translate-x-1/2 -translate-y-1/2 pointer-events-none" />
-
-        <div className="page-container relative z-10 py-24 md:py-36">
+        <div className="page-container relative z-10 pt-32 pb-20 md:pt-40 md:pb-32">
           <AnimatedSection>
-            {/* Eyebrow */}
-            <p className="text-xs font-semibold tracking-widest uppercase text-primary-foreground/50 mb-8">
-              Career Bridge Foundation &mdash; Community Interest Company
-            </p>
+            {/* Accent line + Label */}
+            <div className="flex items-center gap-4 mb-8">
+              <div className="w-10 h-0.5 bg-accent-teal" />
+              <p className="text-label font-sans uppercase text-accent-teal">
+                Workforce Activation Infrastructure
+              </p>
+            </div>
 
             {/* Headline */}
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold text-primary-foreground leading-tight max-w-3xl mb-6">
+            <h1 className="font-serif text-hero-sm md:text-hero font-semibold text-warm-white leading-[1.1] max-w-4xl mb-8 text-balance">
               Workforce Activation &amp; Capability Evidence
             </h1>
 
-            {/* Thin rule */}
-            <div className="w-12 h-px bg-accent mb-8" />
-
             {/* Subline */}
-            <p className="text-base md:text-lg text-primary-foreground/70 leading-relaxed max-w-2xl mb-10 font-sans">
+            <p className="text-body-lg text-cool leading-relaxed max-w-2xl mb-12 font-sans">
               Career Bridge Foundation is a Community Interest Company operating structured, evidence-based pathways that support individuals to demonstrate real-world capability and progress through readiness-aligned opportunities.
             </p>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-3">
-              <Link
-                to="/contact"
-                className="inline-flex items-center justify-center px-7 py-3 rounded-sm bg-accent text-accent-foreground font-medium text-sm tracking-wide hover:bg-accent/90 transition-colors"
-              >
-                Apply to the Career Bridge Pathway
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link to="/apply" className="btn-primary-light">
+                Apply to the Pathway
               </Link>
-              <Link
-                to="/partners"
-                className="inline-flex items-center justify-center px-7 py-3 rounded-sm border border-primary-foreground/30 text-primary-foreground/80 font-medium text-sm tracking-wide hover:border-primary-foreground/60 hover:text-primary-foreground transition-colors"
-              >
-                Partner with Career Bridge
+              <Link to="/partners" className="btn-secondary-light">
+                Partner with Us
               </Link>
             </div>
           </AnimatedSection>
         </div>
+
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            className="text-cool/40"
+          >
+            <ChevronDown size={24} strokeWidth={1.5} />
+          </motion.div>
+        </div>
       </section>
 
       {/* ── WHAT WE DO ──────────────────────────────────────────────── */}
-      <section className="section-spacing section-divider bg-background">
+      <section className="section-spacing bg-warm-white border-t border-subtle">
         <div className="page-container">
           <AnimatedSection>
-            <p className="section-label">Our Work</p>
-            <h2 className="font-serif text-3xl md:text-4xl font-semibold text-foreground mb-4 max-w-2xl leading-snug">
+            <div className="section-label">Our Work</div>
+            <h2 className="font-serif text-display-sm md:text-display font-semibold text-ink mb-6 max-w-2xl leading-tight">
               Workforce Activation Infrastructure
             </h2>
-            <p className="text-muted-foreground leading-relaxed max-w-2xl mb-14 font-sans">
+            <p className="text-body text-slate leading-relaxed max-w-content mb-16 font-sans">
               Career Bridge operates structured readiness pathways designed to address barriers to workforce participation and capability development. Our focus is on contribution, evidence, and responsible progression.
             </p>
           </AnimatedSection>
 
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-px bg-border">
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-px bg-subtle">
             {whatWeDo.map((block) => (
               <StaggerItem key={block.num}>
-                <div className="bg-background p-8 h-full">
-                  <span className="block text-xs font-bold tracking-widest text-muted-foreground/60 mb-4 font-sans">
-                    {block.num}
-                  </span>
-                  <h3 className="font-serif text-lg font-semibold text-foreground mb-3 leading-snug">
-                    {block.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed font-sans">
-                    {block.text}
-                  </p>
+                <div className="bg-warm-white p-8 md:p-12 h-full group">
+                  <div className="flex items-start gap-6">
+                    <span className="mono-number text-xl font-medium">
+                      {block.num}
+                    </span>
+                    <div className="flex-1">
+                      <h3 className="font-serif text-xl font-semibold text-ink mb-4 leading-snug group-hover:text-accent-teal transition-colors duration-300">
+                        {block.title}
+                      </h3>
+                      <p className="text-body text-slate leading-relaxed font-sans">
+                        {block.text}
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </StaggerItem>
             ))}
@@ -140,43 +151,73 @@ const Index = () => {
       </section>
 
       {/* ── CAREER READINESS BLUEPRINT ──────────────────────────────── */}
-      <section className="section-spacing section-divider bg-muted">
+      <section className="section-spacing bg-warm-grey border-t border-subtle">
         <div className="page-container">
           <AnimatedSection>
-            <p className="section-label">The Framework</p>
-            <h2 className="font-serif text-3xl md:text-4xl font-semibold text-foreground mb-4 max-w-2xl leading-snug">
+            <div className="section-label">The Framework</div>
+            <h2 className="font-serif text-display-sm md:text-display font-semibold text-ink mb-6 max-w-3xl leading-tight">
               A structured pathway from potential to proven readiness.
             </h2>
-            <p className="text-muted-foreground leading-relaxed max-w-2xl mb-14 font-sans">
+            <p className="text-body text-slate leading-relaxed max-w-content mb-16 font-sans">
               The Career Readiness Blueprint defines the staged framework through which individuals may progress from entry and assessment through structured contribution, capability evidence, and progression into appropriate next-step opportunities.
             </p>
           </AnimatedSection>
 
-          {/* Vertical timeline */}
-          <StaggerContainer className="relative max-w-xl">
-            {/* Vertical rule */}
-            <div className="absolute left-[19px] top-2 bottom-2 w-px bg-border" />
-
-            {stages.map((stage, i) => (
-              <StaggerItem key={i}>
-                <div className="flex items-start gap-5 mb-6 last:mb-0 relative">
-                  {/* Step circle */}
-                  <div className="relative z-10 w-10 h-10 rounded-full border-2 border-border bg-background flex items-center justify-center shrink-0">
-                    <span className="text-xs font-bold text-foreground font-sans">{i + 1}</span>
-                  </div>
-                  {/* Label */}
-                  <div className="pt-2">
-                    <span className="text-sm font-medium text-foreground font-sans">{stage}</span>
-                  </div>
+          {/* Horizontal stepped process (desktop) / Vertical (mobile) */}
+          <div className="relative">
+            {/* Desktop: Horizontal layout */}
+            <div className="hidden lg:block">
+              <StaggerContainer className="relative">
+                {/* Connection line */}
+                <div className="absolute top-6 left-0 right-0 h-px bg-subtle" />
+                
+                <div className="grid grid-cols-7 gap-4">
+                  {stages.map((stage, i) => (
+                    <StaggerItem key={i}>
+                      <div className={`relative ${i % 2 === 0 ? 'pt-0' : 'pt-16'}`}>
+                        {/* Step number circle */}
+                        <div className="relative z-10 w-12 h-12 rounded-full border-2 border-subtle bg-warm-white flex items-center justify-center mx-auto mb-4">
+                          <span className="font-mono text-sm font-medium text-ink">{i + 1}</span>
+                        </div>
+                        {/* Label */}
+                        <p className="text-sm font-sans font-medium text-ink text-center leading-snug">
+                          {stage}
+                        </p>
+                      </div>
+                    </StaggerItem>
+                  ))}
                 </div>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
+              </StaggerContainer>
+            </div>
 
-          {/* Closing callout */}
+            {/* Mobile: Vertical timeline */}
+            <div className="lg:hidden">
+              <StaggerContainer className="relative max-w-md">
+                {/* Vertical line */}
+                <div className="absolute left-6 top-2 bottom-2 w-px bg-subtle" />
+
+                {stages.map((stage, i) => (
+                  <StaggerItem key={i}>
+                    <div className="flex items-start gap-6 mb-6 last:mb-0 relative">
+                      {/* Step circle */}
+                      <div className="relative z-10 w-12 h-12 rounded-full border-2 border-subtle bg-warm-white flex items-center justify-center shrink-0">
+                        <span className="font-mono text-sm font-medium text-ink">{i + 1}</span>
+                      </div>
+                      {/* Label */}
+                      <div className="pt-3">
+                        <span className="text-body font-sans font-medium text-ink">{stage}</span>
+                      </div>
+                    </div>
+                  </StaggerItem>
+                ))}
+              </StaggerContainer>
+            </div>
+          </div>
+
+          {/* Callout */}
           <AnimatedSection delay={0.3}>
-            <div className="mt-12 max-w-xl border-l-2 border-accent pl-5">
-              <p className="text-sm italic text-muted-foreground font-sans">
+            <div className="mt-16 max-w-2xl border-l-2 border-accent-teal pl-6">
+              <p className="text-body italic text-slate font-sans">
                 Progression is based on demonstrated readiness and assessed outputs, not time served or credentials held.
               </p>
             </div>
@@ -185,26 +226,26 @@ const Index = () => {
       </section>
 
       {/* ── ABOUT ───────────────────────────────────────────────────── */}
-      <section className="section-spacing section-divider bg-background">
+      <section className="section-spacing bg-warm-white border-t border-subtle">
         <div className="page-container">
           <AnimatedSection>
-            <p className="section-label">About Us</p>
-            <h2 className="font-serif text-3xl md:text-4xl font-semibold text-foreground mb-6 max-w-2xl leading-snug">
+            <div className="section-label">About Us</div>
+            <h2 className="font-serif text-display-sm md:text-display font-semibold text-ink mb-6 max-w-3xl leading-tight">
               A Community Interest Company operating for public benefit.
             </h2>
-            <p className="text-muted-foreground leading-relaxed max-w-3xl mb-14 font-sans">
+            <p className="text-body text-slate leading-relaxed max-w-content mb-16 font-sans">
               Career Bridge Foundation is a social enterprise organisation established to address barriers to workforce participation and readiness. We operate structured, evidence-based pathways that enable individuals to demonstrate real-world capability while supporting organisations with readiness-assessed talent aligned to public benefit outcomes.
             </p>
           </AnimatedSection>
 
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {pillars.map((item) => (
               <StaggerItem key={item.label}>
-                <div className="border-l-2 border-accent pl-6 py-2">
-                  <h3 className="font-serif text-base font-semibold text-foreground mb-2">
+                <div className="border-l-[3px] border-accent-teal pl-6 py-2">
+                  <h3 className="font-serif text-lg font-semibold text-ink mb-3">
                     {item.label}
                   </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed font-sans">
+                  <p className="text-body text-slate leading-relaxed font-sans">
                     {item.text}
                   </p>
                 </div>
@@ -214,6 +255,29 @@ const Index = () => {
         </div>
       </section>
 
+      {/* ── CTA SECTION ─────────────────────────────────────────────── */}
+      <section className="relative bg-ink overflow-hidden">
+        {/* Subtle texture */}
+        <div className="absolute inset-0 dot-pattern pointer-events-none" />
+
+        <div className="page-container relative z-10 py-20 md:py-28">
+          <AnimatedSection>
+            <div className="text-center max-w-2xl mx-auto">
+              <h2 className="font-serif text-display-sm md:text-display font-semibold text-warm-white mb-8 leading-tight">
+                Begin your pathway.
+              </h2>
+              <div className="flex flex-col sm:flex-row justify-center gap-4">
+                <Link to="/apply" className="btn-primary-light">
+                  Apply to the Pathway
+                </Link>
+                <Link to="/partners" className="btn-secondary-light">
+                  Partner with Us
+                </Link>
+              </div>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
     </PageTransition>
   );
 };

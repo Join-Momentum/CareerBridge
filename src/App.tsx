@@ -7,16 +7,17 @@ import ScrollToTop from "@/components/ScrollToTop";
 import { AnimatePresence } from "framer-motion";
 import Layout from "@/components/Layout";
 import Index from "./pages/Index";
-import HowItWorks from "./pages/HowItWorks";
-import Partners from "./pages/Partners";
-import Governance from "./pages/Governance";
-import Contact from "./pages/Contact";
-import PrivacyPolicy from "./pages/PrivacyPolicy";
-import TermsOfUse from "./pages/TermsOfUse";
-import SafeguardingPolicy from "./pages/SafeguardingPolicy";
-import DataProtection from "./pages/DataProtection";
-import ComplaintsProcedure from "./pages/ComplaintsProcedure";
-import NotFound from "./pages/NotFound";
+import HowItWorks from "@/pages/HowItWorks";
+import Partners from "@/pages/Partners";
+import Governance from "@/pages/Governance";
+import Contact from "@/pages/Contact";
+import Apply from "@/pages/Apply";
+import PrivacyPolicy from "@/pages/PrivacyPolicy";
+import TermsOfUse from "@/pages/TermsOfUse";
+import SafeguardingPolicy from "@/pages/SafeguardingPolicy";
+import DataProtection from "@/pages/DataProtection";
+import ComplaintsProcedure from "@/pages/ComplaintsProcedure";
+import NotFound from "@/pages/NotFound";
 
 const queryClient = new QueryClient();
 
@@ -32,6 +33,7 @@ const AnimatedRoutes = () => {
           <Route path="/partners" element={<Partners />} />
           <Route path="/governance" element={<Governance />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/apply" element={<Apply />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-of-use" element={<TermsOfUse />} />
           <Route path="/safeguarding-policy" element={<SafeguardingPolicy />} />

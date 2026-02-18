@@ -2,112 +2,253 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600&display=swap');
-
-@layer base {
-  :root {
-    --background: 40 20% 98%;        /* warm off-white #fafaf9 */
-    --foreground: 220 47% 19%;       /* deep navy #1a2b4a */
-
-    --card: 0 0% 100%;
-    --card-foreground: 220 47% 19%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 220 47% 19%;
-
-    --primary: 220 47% 19%;          /* deep navy #1a2b4a */
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 215 16% 55%;        /* slate grey #64748b */
-    --secondary-foreground: 0 0% 100%;
-
-    --muted: 210 20% 95%;
-    --muted-foreground: 215 16% 45%;
-
-    --accent: 174 76% 31%;           /* teal #0d9488 */
-    --accent-foreground: 0 0% 100%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214 25% 89%;           /* #e2e8f0 */
-    --input: 214 25% 89%;
-    --ring: 174 76% 31%;
-
-    --radius: 0.25rem;
-
-    --surface: 40 20% 98%;
-    --ink: 220 47% 19%;
-    --slate: 215 16% 45%;
-
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 220 47% 10%;
-    --foreground: 210 40% 96%;
-    --card: 220 40% 14%;
-    --card-foreground: 210 40% 96%;
-    --popover: 220 40% 14%;
-    --popover-foreground: 210 40% 96%;
-    --primary: 210 40% 96%;
-    --primary-foreground: 220 47% 19%;
-    --secondary: 217.2 32.6% 20%;
-    --secondary-foreground: 210 40% 96%;
-    --muted: 217.2 32.6% 20%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 174 76% 31%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 22%;
-    --input: 217.2 32.6% 22%;
-    --ring: 174 76% 31%;
-  }
-}
-
 @layer base {
   * {
     @apply border-border;
   }
 
-  body {
-    @apply bg-background text-foreground antialiased;
-    font-family: 'Inter', system-ui, sans-serif;
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
+  body {
+    @apply bg-warm-white text-ink font-sans;
+    font-size: 17px;
+    line-height: 1.7;
+  }
+
+  /* Premium serif headings */
   h1, h2, h3 {
-    font-family: 'Playfair Display', Georgia, serif;
+    @apply font-serif font-semibold tracking-tight;
+  }
+
+  h1 {
+    @apply text-hero-sm md:text-hero;
+  }
+
+  h2 {
+    @apply text-display-sm md:text-display;
+  }
+
+  h3 {
+    @apply text-xl md:text-2xl;
+  }
+
+  /* Focus states for accessibility */
+  *:focus-visible {
+    /* ring-ring is valid because you defined "ring" in theme colors */
+    @apply outline-none ring-2 ring-ring ring-offset-2;
+    @apply ring-offset-warm-white;
+  }
+
+  /* Selection styling */
+  ::selection {
+    background-color: rgba(13, 148, 136, 0.2);
   }
 }
 
 @layer components {
+  /* Container */
   .page-container {
-    @apply max-w-6xl mx-auto px-6 sm:px-8 lg:px-12;
+    @apply max-w-wide mx-auto px-6 sm:px-8 lg:px-16;
   }
 
+  /* Section spacing */
   .section-spacing {
-    @apply py-20 md:py-28;
+    @apply py-20 md:py-30 lg:py-34;
   }
 
+  .section-spacing-sm {
+    @apply py-16 md:py-20;
+  }
+
+  /* Section divider */
   .section-divider {
-    @apply border-t border-border;
+    @apply border-t border-subtle;
   }
 
+  /* Section label */
   .section-label {
-    @apply text-xs font-semibold tracking-widest uppercase text-muted-foreground mb-4;
+    @apply text-label font-sans font-semibold uppercase text-cool mb-4 flex items-center gap-3;
   }
 
-  /* Fine dot grid pattern for hero */
-  .dot-grid {
-    background-image: radial-gradient(circle, hsl(215 16% 55% / 0.18) 1px, transparent 1px);
+  .section-label::before {
+    content: "";
+    @apply w-10 h-0.5 bg-accent-teal;
+  }
+
+  .section-label-center {
+    @apply text-label font-sans font-semibold uppercase text-cool mb-4 text-center;
+  }
+
+  .section-label-center::before {
+    content: "";
+    @apply block w-10 h-0.5 bg-accent-teal mx-auto mb-4;
+  }
+
+  /* Premium buttons */
+  .btn-primary {
+    @apply inline-flex items-center justify-center 
+           px-8 py-4 
+           bg-ink text-warm-white 
+           font-sans font-medium text-xs uppercase tracking-[0.1em]
+           rounded-sm
+           transition-all duration-300
+           hover:bg-accent-teal;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center 
+           px-8 py-4 
+           bg-transparent text-ink 
+           border-[1.5px] border-ink
+           font-sans font-medium text-xs uppercase tracking-[0.1em]
+           rounded-sm
+           transition-all duration-300
+           hover:bg-ink hover:text-warm-white;
+  }
+
+  .btn-primary-light {
+    @apply inline-flex items-center justify-center 
+           px-8 py-4 
+           bg-warm-white text-ink 
+           font-sans font-medium text-xs uppercase tracking-[0.1em]
+           rounded-sm
+           transition-all duration-300
+           hover:bg-accent-teal hover:text-white;
+  }
+
+  .btn-secondary-light {
+    @apply inline-flex items-center justify-center 
+           px-8 py-4 
+           bg-transparent text-warm-white 
+           border-[1.5px] border-warm-white/40
+           font-sans font-medium text-xs uppercase tracking-[0.1em]
+           rounded-sm
+           transition-all duration-300
+           hover:border-warm-white hover:bg-warm-white/10;
+  }
+
+  /* Premium cards */
+  .card {
+    @apply bg-white border border-subtle rounded-sm p-8 md:p-12
+           shadow-card transition-all duration-300;
+  }
+
+  .card-hover:hover {
+    @apply shadow-card-hover translate-y-[-2px];
+  }
+
+  .card-bordered {
+    @apply bg-white border border-subtle rounded-sm;
+  }
+
+  /* Content blocks */
+  .prose-content {
+    @apply max-w-content text-slate leading-relaxed;
+  }
+
+  .prose-content p {
+    @apply mb-6 last:mb-0;
+  }
+
+  /* Accent line */
+  .accent-line {
+    @apply w-10 h-0.5 bg-accent-teal;
+  }
+
+  .accent-line-short {
+    @apply w-6 h-0.5 bg-accent-teal;
+  }
+
+  /* Link with underline animation */
+  .link-animated {
+    @apply relative inline-block text-ink font-medium;
+  }
+
+  .link-animated::after {
+    content: "";
+    @apply absolute bottom-0 left-0 w-0 h-px bg-accent-teal transition-all duration-300;
+  }
+
+  .link-animated:hover::after {
+    @apply w-full;
+  }
+
+  /* Hero section base */
+  .hero-section {
+    @apply relative overflow-hidden bg-ink;
+  }
+
+  .hero-section-short {
+    @apply relative overflow-hidden bg-ink py-24 md:py-32 lg:py-40;
+  }
+
+  /* Subtle grid pattern overlay */
+  .grid-pattern {
+    background-image: 
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  /* Fine dot pattern */
+  .dot-pattern {
+    background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
     background-size: 24px 24px;
+  }
+
+  /* Monospace numbers */
+  .mono-number {
+    @apply font-mono text-cool text-sm tracking-wide;
+  }
+
+  /* Notice/disclaimer box */
+  .notice-box {
+    @apply bg-warm-grey border border-subtle rounded-sm p-6 md:p-8;
+  }
+
+  /* Registration card */
+  .registration-card {
+    @apply bg-warm-grey border border-subtle rounded-sm p-8 md:p-10;
+  }
+
+  .registration-item {
+    @apply py-4 border-b border-subtle last:border-0;
+  }
+
+  .registration-label {
+    @apply text-label font-sans font-medium uppercase text-cool mb-1;
+  }
+
+  .registration-value {
+    @apply font-serif text-ink text-lg;
+  }
+}
+
+@layer utilities {
+  /* Custom scrollbar */
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    @apply bg-cool/30 rounded-full;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    @apply bg-cool/50;
+  }
+
+  /* Text balance for headlines */
+  .text-balance {
+    text-wrap: balance;
   }
 }

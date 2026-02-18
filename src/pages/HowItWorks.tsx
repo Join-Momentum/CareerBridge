@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { Shield, Scale, ClipboardCheck, FileText, Users, Eye, CheckCircle, ArrowRight } from "lucide-react";
 import PageTransition from "@/components/PageTransition";
 import AnimatedSection, { StaggerContainer, StaggerItem } from "@/components/AnimatedSection";
 
@@ -10,38 +9,57 @@ const steps = [
     num: "01",
     title: "Entry & Eligibility Control",
     text: "Access is managed through structured application and screening processes to confirm suitability and ensure safeguarding and eligibility requirements are met.",
-    Icon: FileText,
   },
   {
     num: "02",
     title: "Structured Engagement & Contribution",
     text: "Approved participants engage in defined activities aligned to real-world contexts under supervision.",
-    Icon: Users,
   },
   {
     num: "03",
     title: "Supervised Practice & Oversight",
     text: "Capability is observed in practice through structured oversight and feedback mechanisms.",
-    Icon: Eye,
   },
   {
     num: "04",
     title: "Capability Evidence & Review",
     text: "Outputs and performance indicators are documented and evaluated to inform readiness decisions.",
-    Icon: ClipboardCheck,
   },
   {
     num: "05",
     title: "Progression or Referral",
     text: "Based on assessed readiness and contextual availability, individuals may progress into further practice or external pathways. Progression is not guaranteed.",
-    Icon: ArrowRight,
   },
 ];
 
 const pillars = [
-  { Icon: Shield, label: "Safeguarding" },
-  { Icon: Scale, label: "Governance" },
-  { Icon: CheckCircle, label: "Accountability" },
+  { 
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+    ),
+    label: "Safeguarding" 
+  },
+  { 
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8">
+        <path d="M12 3v18"/>
+        <rect x="4" y="8" width="4" height="7"/>
+        <rect x="16" y="5" width="4" height="10"/>
+      </svg>
+    ),
+    label: "Governance" 
+  },
+  { 
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8">
+        <path d="M9 11l3 3L22 4"/>
+        <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
+      </svg>
+    ),
+    label: "Accountability" 
+  },
 ];
 
 /* ─── COMPONENT ─────────────────────────────────────────────────── */
@@ -49,29 +67,31 @@ const pillars = [
 const HowItWorks = () => {
   return (
     <PageTransition>
-
       {/* ── HERO ──────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-primary">
-        {/* Fine blueprint grid */}
-        <div
-          className="absolute inset-0 pointer-events-none opacity-[0.06]"
-          style={{
-            backgroundImage: `
-              linear-gradient(hsl(var(--primary-foreground) / 1) 1px, transparent 1px),
-              linear-gradient(90deg, hsl(var(--primary-foreground) / 1) 1px, transparent 1px)
-            `,
-            backgroundSize: "40px 40px",
-          }}
-        />
+      <section className="relative bg-ink overflow-hidden">
+        {/* Blueprint grid pattern */}
+        <div className="absolute inset-0 grid-pattern pointer-events-none" />
 
-        <div className="page-container relative z-10 py-24 md:py-36">
+        <div className="page-container relative z-10 pt-32 pb-24 md:pt-40 md:pb-32">
           <AnimatedSection>
-            <p className="section-label text-primary-foreground/40 mb-6">Operating Model</p>
-            <h1 className="font-serif text-4xl md:text-5xl font-semibold text-primary-foreground leading-tight max-w-3xl mb-6">
+            {/* Accent line + Label */}
+            <div className="flex items-center gap-4 mb-8">
+              <div className="w-10 h-0.5 bg-accent-teal" />
+              <p className="text-label font-sans uppercase text-accent-teal">
+                Operating Model
+              </p>
+            </div>
+
+            {/* Headline */}
+            <h1 className="font-serif text-hero-sm md:text-[3.5rem] lg:text-hero font-semibold text-warm-white leading-[1.1] max-w-4xl mb-8 text-balance">
               A governed operating model for workforce readiness and evidence-based progression.
             </h1>
-            <div className="w-10 h-px bg-accent mb-8" />
-            <p className="text-base md:text-lg text-primary-foreground/65 leading-relaxed max-w-2xl font-sans">
+
+            {/* Accent line */}
+            <div className="w-12 h-0.5 bg-accent-teal mb-8" />
+
+            {/* Subline */}
+            <p className="text-body-lg text-cool leading-relaxed max-w-2xl font-sans">
               Career Bridge operates as workforce activation infrastructure. Our approach prioritises structure, accountability, and documented evidence over informal participation or unverified outcomes.
             </p>
           </AnimatedSection>
@@ -79,52 +99,52 @@ const HowItWorks = () => {
       </section>
 
       {/* ── OPERATING WORKFLOW ──────────────────────────────────────── */}
-      <section className="section-spacing section-divider bg-background">
+      <section className="section-spacing bg-warm-white border-t border-subtle">
         <div className="page-container">
           <AnimatedSection>
-            <p className="section-label">The Process</p>
-            <h2 className="font-serif text-3xl md:text-4xl font-semibold text-foreground mb-6 max-w-2xl leading-snug">
+            <div className="section-label">The Process</div>
+            <h2 className="font-serif text-display-sm md:text-display font-semibold text-ink mb-6 max-w-2xl leading-tight">
               Our Operating Workflow
             </h2>
-            {/* Intro with left accent */}
-            <div className="border-l-2 border-border pl-5 mb-16 max-w-2xl">
-              <p className="text-muted-foreground font-sans leading-relaxed">
+            
+            {/* Intro box */}
+            <div className="border-l-2 border-subtle pl-6 mb-20 max-w-2xl">
+              <p className="text-body text-slate leading-relaxed font-sans">
                 The workflow below describes how Career Bridge governs participation, contribution, assessment, and progression.
               </p>
             </div>
           </AnimatedSection>
 
-          {/* Vertical timeline */}
-          <StaggerContainer className="relative max-w-2xl">
-            {/* Continuous vertical line */}
-            <div className="absolute left-[27px] top-10 bottom-10 w-px bg-border" />
+          {/* Vertical Timeline */}
+          <StaggerContainer className="relative max-w-3xl">
+            {/* Central vertical line */}
+            <div className="absolute left-[31px] md:left-[39px] top-0 bottom-0 w-px bg-subtle" />
 
             {steps.map((step, i) => (
               <StaggerItem key={step.num}>
-                <div className="flex gap-6 mb-10 last:mb-0 relative">
-                  {/* Step badge */}
-                  <div className="relative z-10 w-14 h-14 border border-border bg-background flex flex-col items-center justify-center shrink-0">
-                    <span className="text-[10px] font-bold tracking-widest text-muted-foreground/50 font-sans leading-none mb-0.5">
-                      {step.num}
-                    </span>
-                    <step.Icon
-                      size={16}
-                      strokeWidth={1.5}
-                      className="text-accent"
-                    />
+                <div className="relative flex gap-8 md:gap-12 mb-12 last:mb-0">
+                  {/* Step number badge */}
+                  <div className="relative z-10 flex flex-col items-center shrink-0">
+                    <div className="w-16 h-16 md:w-20 md:h-20 border border-subtle bg-warm-white flex flex-col items-center justify-center">
+                      <span className="mono-number text-sm text-cool/60 mb-1">
+                        {step.num}
+                      </span>
+                      <div className="w-6 h-0.5 bg-accent-teal" />
+                    </div>
                   </div>
 
                   {/* Content */}
-                  <div className="pt-1 pb-2 border-b border-border flex-1 last:border-b-0">
-                    <h3 className="font-serif text-lg font-semibold text-foreground mb-2 leading-snug">
+                  <div className="flex-1 pt-2 pb-8 border-b border-subtle last:border-0">
+                    <h3 className="font-serif text-xl md:text-2xl font-semibold text-ink mb-4 leading-snug">
                       {step.title}
                     </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed font-sans">
+                    <p className="text-body text-slate leading-relaxed font-sans">
                       {step.text}
                     </p>
+                    
                     {/* Final step note */}
                     {i === steps.length - 1 && (
-                      <p className="mt-3 text-xs font-medium text-accent font-sans tracking-wide">
+                      <p className="mt-4 text-sm font-medium text-accent-teal font-sans">
                         Note: Progression is not guaranteed and is subject to assessed readiness.
                       </p>
                     )}
@@ -137,63 +157,57 @@ const HowItWorks = () => {
       </section>
 
       {/* ── GOVERNANCE & SAFEGUARDS ────────────────────────────────── */}
-      <section className="section-spacing section-divider bg-muted">
+      <section className="section-spacing bg-warm-grey border-t border-subtle">
         <div className="page-container">
           <AnimatedSection>
-            <p className="section-label text-center">Accountability</p>
-            <h2 className="font-serif text-3xl md:text-4xl font-semibold text-foreground text-center mb-6 max-w-2xl mx-auto leading-snug">
-              Governance &amp; Safeguards
-            </h2>
-            <p className="text-muted-foreground font-sans leading-relaxed text-center max-w-2xl mx-auto mb-14">
-              All activities operate within defined governance, safeguarding, and accountability frameworks to ensure alignment with public benefit obligations.
-            </p>
+            <div className="text-center max-w-2xl mx-auto">
+              <div className="section-label-center">Accountability</div>
+              <h2 className="font-serif text-display-sm md:text-display font-semibold text-ink mb-6 leading-tight">
+                Governance &amp; Safeguards
+              </h2>
+              <p className="text-body text-slate leading-relaxed font-sans mb-16">
+                All activities operate within defined governance, safeguarding, and accountability frameworks to ensure alignment with public benefit obligations.
+              </p>
+            </div>
 
-            {/* Pillars row */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-0 border border-border bg-background max-w-lg mx-auto">
-              {pillars.map((pillar, i) => (
-                <div
-                  key={pillar.label}
-                  className={`flex-1 flex flex-col items-center justify-center py-8 px-6 gap-3 w-full ${
-                    i < pillars.length - 1 ? "border-b sm:border-b-0 sm:border-r border-border" : ""
-                  }`}
-                >
-                  <pillar.Icon
-                    size={22}
-                    strokeWidth={1.5}
-                    className="text-muted-foreground/50"
-                  />
-                  <span className="text-xs font-semibold tracking-widest uppercase text-muted-foreground font-sans">
-                    {pillar.label}
-                  </span>
-                </div>
-              ))}
+            {/* Pillars */}
+            <div className="max-w-2xl mx-auto">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-subtle border border-subtle">
+                {pillars.map((pillar) => (
+                  <div
+                    key={pillar.label}
+                    className="bg-warm-white flex flex-col items-center justify-center py-12 px-6"
+                  >
+                    <div className="text-cool/40 mb-4">
+                      {pillar.icon}
+                    </div>
+                    <span className="text-label font-sans uppercase text-slate">
+                      {pillar.label}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
           </AnimatedSection>
         </div>
       </section>
 
-      {/* ── CTA BAND ────────────────────────────────────────────────── */}
-      <section className="section-divider bg-background">
-        <div className="page-container py-16 md:py-20">
+      {/* ── CTA SECTION ─────────────────────────────────────────────── */}
+      <section className="bg-warm-white border-t border-subtle">
+        <div className="page-container py-16 md:py-24">
           <AnimatedSection>
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
               <div>
-                <p className="section-label mb-2">Next Steps</p>
-                <h2 className="font-serif text-2xl md:text-3xl font-semibold text-foreground leading-snug">
+                <div className="section-label mb-3">Next Steps</div>
+                <h2 className="font-serif text-2xl md:text-3xl font-semibold text-ink leading-snug">
                   Ready to begin?
                 </h2>
               </div>
-              <div className="flex flex-col sm:flex-row gap-3 shrink-0">
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center justify-center px-7 py-3 bg-accent text-accent-foreground font-medium text-sm tracking-wide hover:bg-accent/90 transition-colors font-sans"
-                >
+              <div className="flex flex-col sm:flex-row gap-4 shrink-0">
+                <Link to="/apply" className="btn-primary">
                   Apply to the Pathway
                 </Link>
-                <Link
-                  to="/partners"
-                  className="inline-flex items-center justify-center px-7 py-3 border border-primary text-primary font-medium text-sm tracking-wide hover:bg-primary hover:text-primary-foreground transition-colors font-sans"
-                >
+                <Link to="/partners" className="btn-secondary">
                   Partner with Us
                 </Link>
               </div>
@@ -201,7 +215,6 @@ const HowItWorks = () => {
           </AnimatedSection>
         </div>
       </section>
-
     </PageTransition>
   );
 };
