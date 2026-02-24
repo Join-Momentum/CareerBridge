@@ -144,8 +144,8 @@ const HowItWorks = () => {
                     
                     {/* Final step note */}
                     {i === steps.length - 1 && (
-                      <p className="mt-4 text-sm font-medium text-accent-teal font-sans">
-                        Note: Progression is not guaranteed and is subject to assessed readiness.
+                      <p className="mt-4 text-md font-medium text-warning font-bold font-sans">
+                        Note: Progression is not guaranteed and remains contingent on readiness and availability.
                       </p>
                     )}
                   </div>
@@ -205,10 +205,10 @@ const HowItWorks = () => {
               </div>
               <div className="flex flex-col sm:flex-row gap-4 shrink-0">
                 <Link to="/apply" className="btn-primary">
-                  Apply to the Pathway
+                  Apply to the Career Bridge Pathway
                 </Link>
                 <Link to="/partners" className="btn-secondary">
-                  Partner with Us
+                  Partner with Career Bridge
                 </Link>
               </div>
             </div>

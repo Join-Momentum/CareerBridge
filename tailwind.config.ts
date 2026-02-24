@@ -64,6 +64,10 @@ export default {
           DEFAULT: "#dc2626",
           foreground: "#fafaf9",
         },
+        warning: {
+          DEFAULT: "#d97706",
+          foreground: "#fafaf9",
+        },
         muted: {
           DEFAULT: "#f5f5f4",
           foreground: "#64748b",

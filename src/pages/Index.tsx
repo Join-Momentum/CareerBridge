@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import PageTransition from "@/components/PageTransition";
 import AnimatedSection, { StaggerContainer, StaggerItem } from "@/components/AnimatedSection";
 import { ChevronDown } from "lucide-react";
+import TwoPathwaysSection from "@/components/TwoPathwaysSection";
 
 /* ─── DATA ─────────────────────────────────────────────────────── */
 
@@ -92,10 +93,10 @@ const Index = () => {
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4">
               <Link to="/apply" className="btn-primary-light">
-                Apply to the Pathway
+                Apply to the Career Bridge Pathway
               </Link>
               <Link to="/partners" className="btn-secondary-light">
-                Partner with Us
+                Partner with Career Bridge
               </Link>
             </div>
           </AnimatedSection>
@@ -254,6 +255,9 @@ const Index = () => {
           </StaggerContainer>
         </div>
       </section>
+      
+      {/* ── TWO PATHWAYS ─────────────────────────────────────────────── */}
+      <TwoPathwaysSection />
 
       {/* ── CTA SECTION ─────────────────────────────────────────────── */}
       <section className="relative bg-ink overflow-hidden">
@@ -268,10 +272,10 @@ const Index = () => {
               </h2>
               <div className="flex flex-col sm:flex-row justify-center gap-4">
                 <Link to="/apply" className="btn-primary-light">
-                  Apply to the Pathway
+                  Apply to the Career Bridge Pathway
                 </Link>
                 <Link to="/partners" className="btn-secondary-light">
-                  Partner with Us
+                  Partner with Career Bridge
                 </Link>
               </div>
             </div>

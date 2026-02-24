@@ -210,6 +210,17 @@
     @apply bg-warm-grey border border-subtle rounded-sm p-6 md:p-8;
   }
 
+  /* Warning box */
+  .warning-box {
+    @apply bg-amber-50 border border-amber-200 rounded-sm p-6 md:p-8
+           text-amber-900;
+  }
+
+  .warning-box-title {
+    @apply font-sans font-semibold text-sm uppercase tracking-[0.1em] text-amber-700 mb-2
+           flex items-center gap-2;
+  }
+
   /* Registration card */
   .registration-card {
     @apply bg-warm-grey border border-subtle rounded-sm p-8 md:p-10;

@@ -84,7 +84,7 @@ const Governance = () => {
               Legal Status
             </h2>
             <p className="text-body text-slate leading-relaxed max-w-content mb-12 font-sans">
-              Career Bridge Foundation is registered in England and Wales as a Community Interest Company (CIC).
+              Career Bridge Foundation is registered in England and Wales as a <span className="font-bold">Community Interest Company (CIC)</span>.
             </p>
           </AnimatedSection>
 
@@ -93,7 +93,7 @@ const Governance = () => {
             <div className="registration-card max-w-xl">
               <div className="registration-item">
                 <div className="registration-label">Registration Number</div>
-                <div className="registration-value">[Insert Number]</div>
+                <div className="registration-value">16939467</div>
               </div>
               <div className="registration-item">
                 <div className="registration-label">Jurisdiction</div>

@@ -2,7 +2,6 @@ import { useState } from "react";
 import PageTransition from "@/components/PageTransition";
 import AnimatedSection from "@/components/AnimatedSection";
 
-/* ─── COMPONENT ─────────────────────────────────────────────────── */
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -79,10 +78,10 @@ const Contact = () => {
                     Partnership Enquiries
                   </h3>
                   <a
-                    href="mailto:partners@careerbridge.org"
+                    href="mailto:ventures@careerbridgefoundation.com"
                     className="font-serif text-2xl text-ink hover:text-accent-teal transition-colors duration-300"
                   >
-                    partners@careerbridge.org
+                    ventures@careerbridgefoundation.com
                   </a>
                 </div>
 
@@ -93,9 +92,9 @@ const Contact = () => {
                   </h3>
                   <address className="not-italic text-body text-slate leading-relaxed font-sans">
                     Career Bridge Foundation CIC<br />
-                    [Address Line 1]<br />
-                    [Address Line 2]<br />
-                    [City, Postcode]<br />
+                    Lytchett House, 13 Freeland Park,<br />
+                    Wareham Road, Poole, <br />
+                    Dorset, BH16 6FA<br />
                     United Kingdom
                   </address>
                 </div>
@@ -103,7 +102,7 @@ const Contact = () => {
                 {/* Registration */}
                 <div className="pt-8 border-t border-subtle">
                   <p className="text-sm text-slate font-sans">
-                    <span className="text-cool">Company Number:</span> [Insert Number]<br />
+                    <span className="text-cool">Company Number:</span> 16939467<br />
                     <span className="text-cool">Registered in:</span> England and Wales
                   </p>
                 </div>

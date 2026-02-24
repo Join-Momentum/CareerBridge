@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
 import PageTransition from "@/components/PageTransition";
 import AnimatedSection, { StaggerContainer, StaggerItem } from "@/components/AnimatedSection";
+import { PublicSectorAlignmentSection } from "@/components/Partnership/PublicSectorAlignmentSection";
+import { WhyCareerBridgeSection } from "@/components/Partnership/WhyCareerBridgeSection";
+import  WhatOrganisationsReceiveSection  from "@/components/Partnership/WhatOrganisationsReceiveSection";
+import AbstractParallax from "@/components/AbstractParallax";
 
 /* ─── DATA ─────────────────────────────────────────────────────── */
 
@@ -71,7 +75,7 @@ const Partners = () => {
 
             {/* Headline */}
             <h1 className="font-serif text-hero-sm md:text-[3.5rem] lg:text-hero font-semibold text-warm-white leading-[1.1] max-w-4xl mb-8 text-balance">
-              Structured collaboration for responsible workforce activation.
+              Workforce Capability Supply for Digital Transformation
             </h1>
 
             {/* Accent line */}
@@ -84,6 +88,8 @@ const Partners = () => {
           </AnimatedSection>
         </div>
       </section>
+
+      <AbstractParallax />
 
       {/* ── PARTNER TYPES ──────────────────────────────────────────── */}
       <section className="section-spacing bg-warm-white border-t border-subtle">
@@ -114,6 +120,10 @@ const Partners = () => {
           </StaggerContainer>
         </div>
       </section>
+
+      <WhatOrganisationsReceiveSection />
+      <WhyCareerBridgeSection />
+      <PublicSectorAlignmentSection />
 
       {/* ── PARTNERSHIP PRINCIPLES ─────────────────────────────────── */}
       <section className="section-spacing bg-warm-grey border-t border-subtle">

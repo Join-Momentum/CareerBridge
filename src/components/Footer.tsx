@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import {FaInstagram, FaLinkedin, FaFacebook} from "react-icons/fa";
 
 const quickLinks = [
   { label: "Home", path: "/" },
@@ -7,6 +8,12 @@ const quickLinks = [
   { label: "Governance", path: "/governance" },
   { label: "Apply", path: "/apply" },
   { label: "Contact", path: "/contact" },
+];
+
+const socialLinks = [
+  { label: "Instagram", icon: <FaInstagram />, url: "https://www.instagram.com/careerbridgefoundation/" },
+  { label: "LinkedIn", icon: <FaLinkedin />, url: "https://www.linkedin.com/company/careerbridgefoundation/?viewAsMember=true" },
+  { label: "Facebook", icon: <FaFacebook />, url: "https://www.facebook.com/careerbridgefoundation" },
 ];
 
 const policyLinks = [
@@ -27,18 +34,18 @@ const Footer = () => {
             <div className="mb-6">
               <img src="/CBLogoWhite.png" alt="Career Bridge Foundation Logo" className="object-contain h-10" />
             </div>
-            <p className="text-label font-sans uppercase text-cool/60 mb-4">
+            <p className="text-label font-sans font-bold uppercase text-cool/60 mb-4">
               Community Interest Company
             </p>
             <div className="text-sm text-cool/50 font-sans space-y-1">
               <p>Registered in England and Wales</p>
-              <p>Company Number: [Insert Number]</p>
+              <p>Company Number: 16939467</p>
             </div>
           </div>
 
           {/* Navigation */}
           <div>
-            <p className="text-label font-sans uppercase text-cool/60 mb-6">
+            <p className="text-label font-sans font-bold uppercase text-cool/60 mb-6">
               Navigation
             </p>
             <ul className="space-y-3">
@@ -57,7 +64,7 @@ const Footer = () => {
 
           {/* Policies */}
           <div>
-            <p className="text-label font-sans uppercase text-cool/60 mb-6">
+            <p className="text-label font-sans font-bold uppercase text-cool/60 mb-6">
               Policies
             </p>
             <ul className="space-y-3">
@@ -76,7 +83,7 @@ const Footer = () => {
 
           {/* Contact */}
           <div>
-            <p className="text-label font-sans uppercase text-cool/60 mb-6">
+            <p className="text-label font-sans font-bold uppercase text-cool/60 mb-6">
               Contact
             </p>
             <div className="space-y-4">
@@ -92,11 +99,27 @@ const Footer = () => {
               <div>
                 <p className="text-xs text-cool/50 font-sans mb-1">Partnership Enquiries</p>
                 <a
-                  href="mailto:partners@careerbridge.org"
+                  href="mailto:ventures@careerbridgefoundation.com"
                   className="text-sm text-warm-white hover:text-accent-teal transition-colors duration-300 font-sans"
                 >
-                  partners@careerbridge.org
+                  ventures@careerbridgefoundation.com
                 </a>
+              </div>
+              <div>
+                <p className="text-sm text-cool/50 font-sans mb-1">Follow Us</p>
+                <div className="flex mt-3 space-x-4">
+                  {socialLinks.map((link) => (
+                    <a
+                      key={link.label}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-cool text-xl hover:text-warm-white transition-colors duration-300"
+                    >
+                      {link.icon}
+                    </a>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -108,7 +131,7 @@ const Footer = () => {
             © {new Date().getFullYear()} Career Bridge Foundation CIC. All rights reserved.
           </p>
           <p className="text-xs text-cool/40 font-sans">
-            Registered Company Number: [Insert Number]
+            Registered Company Number: 16939467
           </p>
         </div>
       </div>
