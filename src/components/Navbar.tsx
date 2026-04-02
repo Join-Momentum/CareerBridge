@@ -15,8 +15,8 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
-  // Check if we're on a page with a dark hero
-  const isDarkHero = ["/", "/how-it-works", "/partners", "/governance", "/contact", "/apply"].includes(location.pathname);
+  // Check if we're on the homepage with a dark hero
+  const isDarkHero = location.pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,23 +32,23 @@ const Navbar = () => {
     setMobileOpen(false);
   }, [location.pathname]);
 
-  const navClasses = scrolled
-    ? "bg-white border-b border-subtle"
-    : isDarkHero
-      ? "bg-transparent"
-      : "bg-white border-b border-subtle";
+  const navClasses = isDarkHero
+    ? scrolled
+      ? "bg-ink  border-none"
+      : "bg-transparent"
+    : "bg-white border-b border-subtle";
 
-  const textClasses = scrolled
-    ? "text-ink"
-    : isDarkHero
+  const textClasses = isDarkHero
+    ? scrolled
       ? "text-warm-white"
-      : "text-ink";
+      : "text-warm-white"
+    : "text-ink";
 
-  const textMutedClasses = scrolled
-    ? "text-slate"
-    : isDarkHero
+  const textMutedClasses = isDarkHero
+    ? scrolled
       ? "text-warm-white/60"
-      : "text-slate";
+      : "text-warm-white/60"
+    : "text-slate";
 
   return (
     <>
@@ -57,7 +57,7 @@ const Navbar = () => {
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-1">
-              <img src={scrolled ? "/CBLogoBlack.png" : "/CBLogoWhite.png"} alt="Career Bridge Foundation Logo" className="object-contain h-10" />
+              <img src={isDarkHero ? (!scrolled ? "/CBLogoWhite.png" : "/CBLogoWhite.png") : "/CBLogoBlack.png"} alt="Career Bridge Foundation Logo" className="object-contain h-10" />
             </Link>
 
             {/* Desktop nav */}
@@ -68,11 +68,11 @@ const Navbar = () => {
                   to={link.path}
                   className={`relative text-[13px] font-sans font-medium uppercase tracking-[0.1em] transition-colors duration-300 ${
                     location.pathname === link.path
-                      ? scrolled || !isDarkHero
-                        ? "text-accent-teal"
-                        : "text-warm-white"
-                      : textMutedClasses
-                  } hover:${scrolled || !isDarkHero ? "text-ink" : "text-warm-white"}`}
+                      ? "text-accent-teal"
+                      : isDarkHero
+                      ? scrolled ? "text-warm-white/60 hover:text-warm-white" : "text-warm-white/60 hover:text-warm-white"
+                      : "text-slate hover:text-ink"
+                  }`}
                 >
                   {link.label}
                   {location.pathname === link.path && (
@@ -87,9 +87,9 @@ const Navbar = () => {
               <Link
                 to="/apply"
                 className={`ml-2 px-6 py-2.5 text-[12px] font-sans font-medium uppercase tracking-[0.1em] rounded-sm transition-all duration-300 ${
-                  scrolled || !isDarkHero
-                    ? "bg-ink text-warm-white hover:bg-accent-teal"
-                    : "bg-warm-white text-ink hover:bg-accent-teal hover:text-white"
+                  isDarkHero && !scrolled
+                    ? "bg-warm-white text-ink hover:bg-accent-teal hover:text-white"
+                    : "bg-ink text-warm-white hover:bg-accent-teal"
                 }`}
               >
                 Apply
