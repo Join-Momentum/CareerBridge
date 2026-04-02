@@ -17,6 +17,7 @@ import TermsOfUse from "@/pages/TermsOfUse";
 import SafeguardingPolicy from "@/pages/SafeguardingPolicy";
 import DataProtection from "@/pages/DataProtection";
 import ComplaintsProcedure from "@/pages/ComplaintsProcedure";
+import Policies from "./pages/Policies";
 import NotFound from "@/pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -39,6 +40,7 @@ const AnimatedRoutes = () => {
           <Route path="/safeguarding-policy" element={<SafeguardingPolicy />} />
           <Route path="/data-protection" element={<DataProtection />} />
           <Route path="/complaints-procedure" element={<ComplaintsProcedure />} />
+          <Route path="/policies" element={<Policies />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </AnimatePresence>

@@ -22,6 +22,7 @@ const policyLinks = [
   { label: "Safeguarding Policy", path: "/safeguarding-policy" },
   { label: "Data Protection", path: "/data-protection" },
   { label: "Complaints Procedure", path: "/complaints-procedure" },
+  { label: "Other Policies", path: "/policies" },
 ];
 
 const Footer = () => {
