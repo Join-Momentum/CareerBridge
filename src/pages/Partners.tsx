@@ -5,6 +5,7 @@ import { PublicSectorAlignmentSection } from "@/components/Partnership/PublicSec
 import { WhyCareerBridgeSection } from "@/components/Partnership/WhyCareerBridgeSection";
 import  WhatOrganisationsReceiveSection  from "@/components/Partnership/WhatOrganisationsReceiveSection";
 import AbstractParallax from "@/components/AbstractParallax";
+import { Button } from "@/components/ui/button";
 
 /* ─── DATA ─────────────────────────────────────────────────────── */
 
@@ -53,8 +54,6 @@ const principles = [
   { num: "05", text: "Public benefit alignment" },
 ];
 
-/* ─── COMPONENT ─────────────────────────────────────────────────── */
-
 const Partners = () => {
   return (
     <PageTransition>
@@ -85,6 +84,9 @@ const Partners = () => {
             <p className="text-body-lg text-cool leading-relaxed max-w-2xl font-sans">
               Career Bridge works with delivery partners, employers, and institutions to support readiness-assessed talent pathways and responsible workforce engagement.
             </p>
+          </AnimatedSection>
+          <AnimatedSection>
+            <Button></Button>
           </AnimatedSection>
         </div>
       </section>

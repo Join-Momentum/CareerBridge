@@ -91,19 +91,19 @@ const Footer = () => {
               <div>
                 <p className="text-xs text-cool/50 font-sans mb-1">General Enquiries</p>
                 <a
-                  href="mailto:hello@careerbridge.org"
+                  href="mailto:helpdesk.careerbridgefoundation.com"
                   className="text-sm text-warm-white hover:text-accent-teal transition-colors duration-300 font-sans"
                 >
-                  hello@careerbridge.org
+                  helpdesk.careerbridgefoundation.com
                 </a>
               </div>
               <div>
                 <p className="text-xs text-cool/50 font-sans mb-1">Partnership Enquiries</p>
                 <a
-                  href="mailto:ventures@careerbridgefoundation.com"
+                  href="mailto:outreach@careerbridgefoundation.com"
                   className="text-sm text-warm-white hover:text-accent-teal transition-colors duration-300 font-sans"
                 >
-                  ventures@careerbridgefoundation.com
+                  outreach@careerbridgefoundation.com
                 </a>
               </div>
               <div>

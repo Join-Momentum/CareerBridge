@@ -65,10 +65,10 @@ const Contact = () => {
                     General Enquiries
                   </h3>
                   <a
-                    href="mailto:hello@careerbridge.org"
+                    href="mailto:helpdesk.careerbridgefoundation.com"
                     className="font-serif text-2xl text-ink hover:text-accent-teal transition-colors duration-300"
                   >
-                    hello@careerbridge.org
+                    helpdesk.careerbridgefoundation.com
                   </a>
                 </div>
 
@@ -78,10 +78,10 @@ const Contact = () => {
                     Partnership Enquiries
                   </h3>
                   <a
-                    href="mailto:ventures@careerbridgefoundation.com"
+                    href="mailto:outreach@careerbridgefoundation.com"
                     className="font-serif text-2xl text-ink hover:text-accent-teal transition-colors duration-300"
                   >
-                    ventures@careerbridgefoundation.com
+                    outreach@careerbridgefoundation.com
                   </a>
                 </div>
 

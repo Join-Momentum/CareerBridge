@@ -115,7 +115,7 @@ const DataProtection = () => (
           </p>
           <div className="bg-slate/5 p-6 rounded-lg mb-8">
             <p className="text-body text-slate font-sans mb-2">
-              <span className="font-medium">Email:</span> complaints@careerbridgefoundation.org.uk
+              <span className="font-medium">Email:</span> <a href="mailto:outreach@careerbridgefoundation.com">outreach@careerbridgefoundation.com</a>
             </p>
             <p className="text-body text-slate font-sans mb-4">
               <span className="font-medium">Subject Line:</span> Formal Complaint - [Brief Description]

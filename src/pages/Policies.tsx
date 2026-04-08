@@ -3,9 +3,6 @@ import { Link } from "react-router-dom";
 import PageTransition from "@/components/PageTransition";
 import AnimatedSection from "@/components/AnimatedSection";
 
-// ---------------------------------------------------------
-// Reusable UI Helpers (Maintains your exact styling)
-// ---------------------------------------------------------
 const PolicySection = ({ title, children }) => (
   <div className="mt-12 md:mt-16 pb-12 md:pb-16 border-b border-subtle last:border-b-0">
     <div className="mb-6 w-12 h-0.5 bg-gradient-to-r from-accent-teal to-transparent" />
@@ -87,7 +84,7 @@ const policiesData = [
           <P>Concerns should be reported confidentially to:</P>
           <Callout>
             <P className="!mb-2"><span className="font-medium">Primary Contact:</span> Victor Sonde – Director</P>
-            <P className="!mb-2"><span className="font-medium">Email:</span> hello@careerbridgefoundation.com</P>
+            <P className="!mb-2"><span className="font-medium">Email:</span> <a href="mailto:outreach@careerbridgefoundation.com">outreach@careerbridgefoundation.com</a></P>
             <P className="!mb-0"><span className="font-medium">Subject Line:</span> Confidential Whistleblowing Disclosure</P>
           </Callout>
           <P>If the concern relates to a Director, the disclosure may be made directly to an independent advisor or appropriate authority.</P>
@@ -152,7 +149,7 @@ const policiesData = [
         <PolicySection title="4. How to Submit an Appeal">
           <P>Appeals must be submitted within 14 days of the decision.</P>
           <Callout>
-            <P className="!mb-2"><span className="font-medium">Email:</span> hello@careerbridgefoundation.com</P>
+            <P className="!mb-2"><span className="font-medium">Email:</span> <a href="mailto:outreach@careerbridgefoundation.com">outreach@careerbridgefoundation.com</a></P>
             <P className="!mb-4"><span className="font-medium">Subject Line:</span> Formal Appeal</P>
             <P className="!mb-2 font-medium">Please Include:</P>
             <Ul className="!mb-0">
