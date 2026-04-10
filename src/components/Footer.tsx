@@ -91,10 +91,10 @@ const Footer = () => {
               <div>
                 <p className="text-xs text-cool/50 font-sans mb-1">General Enquiries</p>
                 <a
-                  href="mailto:helpdesk.careerbridgefoundation.com"
+                  href="mailto:support@careerbridgefoundation.zohodesk.eu"
                   className="text-sm text-warm-white hover:text-accent-teal transition-colors duration-300 font-sans"
                 >
-                  helpdesk.careerbridgefoundation.com
+                  support@careerbridgefoundation.zohodesk.eu
                 </a>
               </div>
               <div>

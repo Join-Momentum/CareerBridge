@@ -62,7 +62,7 @@ const Partners = () => {
         {/* Grid pattern */}
         <div className="absolute inset-0 grid-pattern pointer-events-none" />
 
-        <div className="page-container relative z-10 pt-32 pb-24 md:pt-40 md:pb-32">
+        <div className="page-container flex flex-col md:flex-row justify-between relative z-10 pt-32 pb-24 md:pt-40 md:pb-32">
           <AnimatedSection>
             {/* Accent line + Label */}
             <div className="flex items-center gap-4 mb-8">
@@ -85,8 +85,8 @@ const Partners = () => {
               Career Bridge works with delivery partners, employers, and institutions to support readiness-assessed talent pathways and responsible workforce engagement.
             </p>
           </AnimatedSection>
-          <AnimatedSection>
-            <Button></Button>
+          <AnimatedSection className="flex justify-center items-end w-[15rem] mt-10 md:mt-0">
+            <Link className="w-full h-[3rem] text-primary bg-white text-center border border-white flex items-center justify-center hover:bg-accent hover:text-white" to={"#"}>Join Us</Link>
           </AnimatedSection>
         </div>
       </section>

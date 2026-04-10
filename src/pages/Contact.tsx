@@ -65,10 +65,10 @@ const Contact = () => {
                     General Enquiries
                   </h3>
                   <a
-                    href="mailto:helpdesk.careerbridgefoundation.com"
-                    className="font-serif text-2xl text-ink hover:text-accent-teal transition-colors duration-300"
+                    href="mailto:support@careerbridgefoundation.zohodesk.eu"
+                    className="font-serif text-lg md:text-2xl text-ink hover:text-accent-teal transition-colors duration-300"
                   >
-                    helpdesk.careerbridgefoundation.com
+                    support@careerbridgefoundation.zohodesk.eu
                   </a>
                 </div>
 
@@ -79,7 +79,7 @@ const Contact = () => {
                   </h3>
                   <a
                     href="mailto:outreach@careerbridgefoundation.com"
-                    className="font-serif text-2xl text-ink hover:text-accent-teal transition-colors duration-300"
+                    className="font-serif text-lg md:text-2xl text-ink hover:text-accent-teal transition-colors duration-300"
                   >
                     outreach@careerbridgefoundation.com
                   </a>
