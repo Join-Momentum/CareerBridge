@@ -39,7 +39,7 @@ const Contact = () => {
 
     try {
       // Replace with your actual deployed backend URL later
-      const response = await fetch("http://localhost:5000/api/tickets", {
+      const response = await fetch("https://careerbridge-backend-1mo7.onrender.com/api/tickets", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
