@@ -12,6 +12,10 @@ const Contact = () => {
     message: "",
   });
 
+  // New state variables for UX
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState({ type: "", message: "" });
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
       ...formData,
@@ -19,10 +23,45 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log("Form submitted:", formData);
+    setIsSubmitting(true);
+    setStatus({ type: "", message: "" }); // Reset status
+
+    // Map frontend state to match backend expectations
+    const payload = {
+      fullName: formData.name,
+      email: formData.email,
+      organization: formData.organisation,
+      enquiryType: formData.enquiryType,
+      message: formData.message
+    };
+
+    try {
+      // Replace with your actual deployed backend URL later
+      const response = await fetch("http://localhost:5000/api/tickets", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setStatus({ type: "success", message: "Your message has been sent successfully!" });
+        // Clear the form
+        setFormData({ name: "", email: "", organisation: "", enquiryType: "", message: "" });
+      } else {
+        setStatus({ type: "error", message: data.error || "Failed to send message. Please try again." });
+      }
+    } catch (error) {
+      console.error("Submission error:", error);
+      setStatus({ type: "error", message: "Network error. Please ensure the server is running." });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -58,7 +97,7 @@ const Contact = () => {
             <div>
               <AnimatedSection>
                 <div className="section-label">Contact Information</div>
-                
+
                 {/* General Enquiries */}
                 <div className="mb-10">
                   <h3 className="text-label font-sans uppercase text-slate mb-3">
@@ -113,7 +152,7 @@ const Contact = () => {
             <div>
               <AnimatedSection delay={0.1}>
                 <div className="section-label">Send a Message</div>
-                
+
                 <form onSubmit={handleSubmit} className="space-y-6">
                   {/* Name */}
                   <div>
@@ -205,10 +244,21 @@ const Contact = () => {
                     />
                   </div>
 
+                  {/* Status Messages */}
+                  {status.message && (
+                    <div className={`p-4 rounded-md font-sans text-sm ${status.type === 'success' ? 'bg-green-50 text-green-800 border border-green-200' : 'bg-red-50 text-red-800 border border-red-200'}`}>
+                      {status.message}
+                    </div>
+                  )}
+
                   {/* Submit */}
                   <div className="pt-4">
-                    <button type="submit" className="btn-primary">
-                      Send Message
+                    <button
+                      type="submit"
+                      className="btn-primary disabled:opacity-70 disabled:cursor-not-allowed"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? "Sending..." : "Send Message"}
                     </button>
                   </div>
 
