@@ -62,7 +62,7 @@ const Partners = () => {
         {/* Grid pattern */}
         <div className="absolute inset-0 grid-pattern pointer-events-none" />
 
-        <div className="page-container flex flex-col justify-between relative z-10 pt-32 pb-24 md:pt-40 md:pb-32">
+        <div className="page-container flex flex-col gap-10 justify-between relative z-10 pt-32 pb-24 md:pt-40 md:pb-32">
           <AnimatedSection>
             {/* Accent line + Label */}
             <div className="flex items-center gap-4 mb-8">
