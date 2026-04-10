@@ -62,7 +62,7 @@ const SafeguardingPolicy = () => (
             Named Safeguarding Lead: Nneka Mba
           </p>
           <p className="text-body text-slate leading-relaxed mb-4 font-sans">
-            Email: <a href="mailto:outreach@careerbridgefoundation.com">outreach@careerbridgefoundation.com</a> 
+            Email: <a href="mailto:support@careerbridgefoundation.zohodesk.eu">support@careerbridgefoundation.zohodesk.eu</a> 
           </p>
           <p className="text-body text-slate leading-relaxed mb-4 font-sans">
             The Safeguarding Lead is responsible for receiving, recording and managing safeguarding concerns.

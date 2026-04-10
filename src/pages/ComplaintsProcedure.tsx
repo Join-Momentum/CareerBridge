@@ -131,7 +131,7 @@ const ComplaintsProcedure = () => (
           </p>
           <div className="bg-slate/5 p-6 rounded-lg mb-8">
             <p className="text-body text-slate font-sans mb-2">
-              <span className="font-medium">Email:</span> <a href="mailto:outreach@careerbridgefoundation.com">outreach@careerbridgefoundation.com</a>
+              <span className="font-medium">Email:</span> <a href="mailto:support@careerbridgefoundation.zohodesk.eu">support@careerbridgefoundation.zohodesk.eu</a>
             </p>
             <p className="text-body text-slate font-sans">
               <span className="font-medium">Subject Line:</span> Formal Complaint
@@ -280,7 +280,7 @@ const ComplaintsProcedure = () => (
               <span className="font-medium">Safeguarding Lead:</span> Nneka Mba
             </p>
             <p className="text-body text-slate font-sans">
-              <span className="font-medium">Email:</span> <a href="mailto:outreach@careerbridgefoundation.com">outreach@careerbridgefoundation.com</a>
+              <span className="font-medium">Email:</span> <a href="mailto:support@careerbridgefoundation.zohodesk.eu">support@careerbridgefoundation.zohodesk.eu</a>
             </p>
           </div>
           <p className="text-body text-slate leading-relaxed font-sans">

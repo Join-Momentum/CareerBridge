@@ -85,8 +85,10 @@ const Partners = () => {
               Career Bridge works with delivery partners, employers, and institutions to support readiness-assessed talent pathways and responsible workforce engagement.
             </p>
           </AnimatedSection>
-          <AnimatedSection className="flex justify-center items-end w-[15rem] mt-10 md:mt-0">
-            <Link className="w-full h-[3rem] text-primary bg-white text-center border border-white flex items-center justify-center hover:bg-accent hover:text-white" to={"#"}>Join Us</Link>
+          <AnimatedSection className="flex justify-center items-end w-[18rem] mt-10 md:mt-0">
+            <Link to="/contact" className="btn-primary-light">
+                Enquire About Partnership
+            </Link>
           </AnimatedSection>
         </div>
       </section>
