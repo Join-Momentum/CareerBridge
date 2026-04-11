@@ -39,7 +39,7 @@ const Contact = () => {
 
     try {
       // Replace with your actual deployed backend URL later
-      const response = await fetch("https://careerbridgebackend-production.up.railway.app/api/tickets", {
+      const response = await fetch("https://careerbridge-backend-1mo7.onrender.com/api/tickets", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
