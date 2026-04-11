@@ -105,7 +105,7 @@ const Contact = () => {
                   </h3>
                   <a
                     href="mailto:support@careerbridgefoundation.zohodesk.eu"
-                    className="font-serif text-lg md:text-2xl text-ink hover:text-accent-teal transition-colors duration-300"
+                    className="font-serif text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-ink hover:text-accent-teal transition-colors duration-300"
                   >
                     support@careerbridgefoundation.zohodesk.eu
                   </a>
@@ -118,7 +118,7 @@ const Contact = () => {
                   </h3>
                   <a
                     href="mailto:outreach@careerbridgefoundation.com"
-                    className="font-serif text-lg md:text-2xl text-ink hover:text-accent-teal transition-colors duration-300"
+                    className="font-serif text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-ink hover:text-accent-teal transition-colors duration-300"
                   >
                     outreach@careerbridgefoundation.com
                   </a>

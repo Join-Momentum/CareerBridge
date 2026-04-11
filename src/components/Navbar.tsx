@@ -84,16 +84,29 @@ const Navbar = () => {
                   )}
                 </Link>
               ))}
-              <Link
-                to="/apply"
-                className={`ml-2 px-6 py-2.5 text-[12px] font-sans font-medium uppercase tracking-[0.1em] rounded-sm transition-all duration-300 ${
-                  isDarkHero && !scrolled
-                    ? "bg-warm-white text-ink hover:bg-accent-teal hover:text-white"
-                    : "bg-ink text-warm-white hover:bg-accent-teal"
-                }`}
-              >
-                Apply
-              </Link>
+              {location.pathname === "/apply" ? (
+                <a
+                  href="http://apply.careerbridgefoundation.com/jobs/Careers/"
+                  className={`ml-2 px-6 py-2.5 text-[12px] font-sans font-medium uppercase tracking-[0.1em] rounded-sm transition-all duration-300 ${
+                    isDarkHero && !scrolled
+                      ? "bg-warm-white text-ink hover:bg-accent-teal hover:text-white"
+                      : "bg-ink text-warm-white hover:bg-accent-teal"
+                  }`}
+                >
+                  Apply
+                </a>
+              ) : (
+                <Link
+                  to="/apply"
+                  className={`ml-2 px-6 py-2.5 text-[12px] font-sans font-medium uppercase tracking-[0.1em] rounded-sm transition-all duration-300 ${
+                    isDarkHero && !scrolled
+                      ? "bg-warm-white text-ink hover:bg-accent-teal hover:text-white"
+                      : "bg-ink text-warm-white hover:bg-accent-teal"
+                  }`}
+                >
+                  Apply
+                </Link>
+              )}
             </div>
 
             {/* Mobile toggle */}
@@ -166,13 +179,22 @@ const Navbar = () => {
                 transition={{ duration: 0.3, delay: navLinks.length * 0.1 }}
                 className="mt-8"
               >
-                <Link
-                  to="/apply"
-                  onClick={() => setMobileOpen(false)}
-                  className="btn-primary-light"
-                >
-                  Apply to the Pathway
-                </Link>
+                {location.pathname === "/apply" ? (
+                  <a
+                    href="http://apply.careerbridgefoundation.com/jobs/Careers/"
+                    className="btn-primary-light"
+                  >
+                    Apply to the Pathway
+                  </a>
+                ) : (
+                  <Link
+                    to="/apply"
+                    onClick={() => setMobileOpen(false)}
+                    className="btn-primary-light"
+                  >
+                    Apply to the Pathway
+                  </Link>
+                )}
               </motion.div>
             </div>
           </motion.div>

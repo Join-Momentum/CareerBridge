@@ -59,6 +59,16 @@ const Apply = () => {
             <p className="text-body-lg text-cool leading-relaxed max-w-2xl font-sans">
               Entry to the Career Bridge pathway is managed through a structured application and assessment process.
             </p>
+
+            {/* CTA */}
+            <div className="mt-12">
+              <a
+                href="http://apply.careerbridgefoundation.com/jobs/Careers/"
+                className="btn-primary-light"
+              >
+                APPLY
+              </a>
+            </div>
           </AnimatedSection>
         </div>
       </section>
@@ -107,7 +117,7 @@ const Apply = () => {
             <div className="max-w-2xl">
               <div className="section-label">Get Started</div>
               <h2 className="font-serif text-display-sm md:text-display font-semibold text-ink mb-6 leading-tight">
-                Request Application Information
+                Application Information
               </h2>
               <p className="text-body text-slate leading-relaxed mb-10 font-sans">
                 Applications are currently managed via email. To receive information about the application process and eligibility requirements, please contact us using the button below.
@@ -115,10 +125,10 @@ const Apply = () => {
               
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
-                  href="mailto:apply@careerbridge.org?subject=Application%20Information%20Request"
+                  href="http://apply.careerbridgefoundation.com/jobs/Careers/"
                   className="btn-primary"
                 >
-                  Request Application Information
+                  Application Information
                 </a>
                 <Link to="/contact" className="btn-secondary">
                   General Enquiries
