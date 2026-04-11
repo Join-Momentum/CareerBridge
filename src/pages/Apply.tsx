@@ -128,7 +128,7 @@ const Apply = () => {
                   href="http://apply.careerbridgefoundation.com/jobs/Careers/"
                   className="btn-primary"
                 >
-                  Application Information
+                  Apply
                 </a>
                 <Link to="/contact" className="btn-secondary">
                   General Enquiries
