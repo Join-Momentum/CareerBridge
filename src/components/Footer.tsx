@@ -93,7 +93,7 @@ const Footer = () => {
                 <p className="text-xs text-cool/50 font-sans mb-1">General Enquiries</p>
                 <a
                   href="mailto:support@careerbridgefoundation.zohodesk.eu"
-                  className="text-sm text-warm-white hover:text-accent-teal transition-colors duration-300 font-sans"
+                  className="text-[11px] md:text-sm text-warm-white hover:text-accent-teal transition-colors duration-300 font-sans break-all"
                 >
                   support@careerbridgefoundation.zohodesk.eu
                 </a>
@@ -102,7 +102,7 @@ const Footer = () => {
                 <p className="text-xs text-cool/50 font-sans mb-1">Partnership Enquiries</p>
                 <a
                   href="mailto:outreach@careerbridgefoundation.com"
-                  className="text-sm text-warm-white hover:text-accent-teal transition-colors duration-300 font-sans"
+                  className="text-[11px] md:text-sm text-warm-white hover:text-accent-teal transition-colors duration-300 font-sans break-all"
                 >
                   outreach@careerbridgefoundation.com
                 </a>

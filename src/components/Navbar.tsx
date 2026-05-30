@@ -3,7 +3,6 @@ import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
-  { label: "Home", path: "/" },
   { label: "How It Works", path: "/how-it-works" },
   { label: "Portfolio Simulations", path: "/portfolio-simulations" },
   { label: "Enterprise Partnerships", path: "/partners" },
@@ -62,7 +61,7 @@ const Navbar = () => {
             </Link>
 
             {/* Desktop nav */}
-            <div className="hidden lg:flex items-center gap-7">
+            <div className="hidden xl:flex items-center gap-7">
               {navLinks.map((link) => (
                 <Link
                   key={link.path}
@@ -113,7 +112,7 @@ const Navbar = () => {
             {/* Mobile toggle */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className={`lg:hidden p-2 transition-colors duration-300 ${textClasses}`}
+              className={`xl:hidden p-2 transition-colors duration-300 ${textClasses}`}
               aria-label="Toggle menu"
             >
               <div className="w-6 h-5 flex flex-col justify-between">
@@ -149,7 +148,7 @@ const Navbar = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 lg:hidden bg-ink"
+            className="fixed inset-0 z-40 xl:hidden bg-ink"
           >
             <div className="flex flex-col items-center justify-center min-h-screen pt-20">
               {navLinks.map((link, i) => (
