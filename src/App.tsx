@@ -18,6 +18,8 @@ import SafeguardingPolicy from "@/pages/SafeguardingPolicy";
 import DataProtection from "@/pages/DataProtection";
 import ComplaintsProcedure from "@/pages/ComplaintsProcedure";
 import Policies from "./pages/Policies";
+import PortfolioSimulations from "@/pages/portfolio-simulations/page";
+import CyberThreatIntelligence from "@/pages/portfolio-simulations/cyber-threat-intelligence/page";
 import NotFound from "@/pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -41,6 +43,8 @@ const AnimatedRoutes = () => {
           <Route path="/data-protection" element={<DataProtection />} />
           <Route path="/complaints-procedure" element={<ComplaintsProcedure />} />
           <Route path="/policies" element={<Policies />} />
+          <Route path="/portfolio-simulations" element={<PortfolioSimulations />} />
+          <Route path="/portfolio-simulations/cyber-threat-intelligence" element={<CyberThreatIntelligence />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </AnimatePresence>

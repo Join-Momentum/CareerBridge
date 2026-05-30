@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const navLinks = [
   { label: "Home", path: "/" },
   { label: "How It Works", path: "/how-it-works" },
+  { label: "Portfolio Simulations", path: "/portfolio-simulations" },
   { label: "Enterprise Partnerships", path: "/partners" },
   { label: "Governance", path: "/governance" },
   { label: "Contact", path: "/contact" },
@@ -61,12 +62,12 @@ const Navbar = () => {
             </Link>
 
             {/* Desktop nav */}
-            <div className="hidden lg:flex items-center gap-10">
+            <div className="hidden lg:flex items-center gap-7">
               {navLinks.map((link) => (
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`relative text-[13px] font-sans font-medium uppercase tracking-[0.1em] transition-colors duration-300 ${
+                  className={`relative text-[12px] font-sans font-medium uppercase tracking-[0.1em] transition-colors duration-300 ${
                     location.pathname === link.path
                       ? "text-accent-teal"
                       : isDarkHero
@@ -179,22 +180,13 @@ const Navbar = () => {
                 transition={{ duration: 0.3, delay: navLinks.length * 0.1 }}
                 className="mt-8"
               >
-                {location.pathname === "/apply" ? (
-                  <a
-                    href="http://apply.careerbridgefoundation.com/jobs/Careers/"
-                    className="btn-primary-light"
-                  >
-                    Apply to the Pathway
-                  </a>
-                ) : (
-                  <Link
-                    to="/apply"
-                    onClick={() => setMobileOpen(false)}
-                    className="btn-primary-light"
-                  >
-                    Apply to the Pathway
-                  </Link>
-                )}
+                <Link
+                  to="/portfolio-simulations"
+                  onClick={() => setMobileOpen(false)}
+                  className="btn-primary-light"
+                >
+                  Portfolio Simulations
+                </Link>
               </motion.div>
             </div>
           </motion.div>

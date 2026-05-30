@@ -204,8 +204,8 @@ const HowItWorks = () => {
                 </h2>
               </div>
               <div className="flex flex-col sm:flex-row gap-4 shrink-0">
-                <Link to="/apply" className="btn-primary">
-                  Apply to the Career Bridge Pathway
+                <Link to="/portfolio-simulations" className="btn-primary">
+                  Portfolio Simulations
                 </Link>
                 <Link to="/partners" className="btn-secondary">
                   Partner with Career Bridge

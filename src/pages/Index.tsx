@@ -92,8 +92,8 @@ const Index = () => {
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link to="/apply" className="btn-primary-light">
-                Apply to the Career Bridge Pathway
+              <Link to="/portfolio-simulations" className="btn-primary-light">
+                Portfolio Simulations
               </Link>
               <Link to="/partners" className="btn-secondary-light">
                 Partner with Career Bridge
@@ -271,8 +271,8 @@ const Index = () => {
                 Begin your pathway.
               </h2>
               <div className="flex flex-col sm:flex-row justify-center gap-4">
-                <Link to="/apply" className="btn-primary-light">
-                  Apply to the Career Bridge Pathway
+                <Link to="/portfolio-simulations" className="btn-primary-light">
+                  Portfolio Simulations
                 </Link>
                 <Link to="/partners" className="btn-secondary-light">
                   Partner with Career Bridge
