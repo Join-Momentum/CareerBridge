@@ -298,7 +298,8 @@ function CtaButton({ className }: { className?: string }) {
       onClick={() => navigate("/auth/signup?redirect=/portfolio-simulations/cyber-threat-intelligence")}
       className={className}
     >
-      Claim a founding cohort place · $299
+      <span className="sm:hidden">Claim your place · $299</span>
+      <span className="hidden sm:inline">Claim a founding cohort place · $299</span>
     </button>
   );
 }
@@ -553,15 +554,15 @@ export default function CtiPage() {
       {/* ════════════════════════════════════════
           MID-PAGE CTA — glass bar
       ════════════════════════════════════════ */}
-      <section className="bg-warm-grey py-16 px-6">
+      <section className="bg-warm-grey py-10 md:py-16 px-4 sm:px-6">
         <Reveal className="max-w-6xl mx-auto">
-          <div className="relative flex flex-col md:flex-row items-start md:items-center justify-between gap-8 p-8 md:p-10 bg-ink border border-subtle overflow-hidden">
+          <div className="relative flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5 sm:gap-8 p-5 sm:p-8 md:p-10 bg-ink border border-subtle overflow-hidden">
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent-teal/60 to-transparent" />
-            <div>
-              <h2 className="text-xl md:text-2xl font-bold text-white mb-1.5">Ready to start?</h2>
-              <p className="text-sm font-light text-white/45">20 founding cohort places at $299. After that, $599.</p>
+            <div className="min-w-0">
+              <h2 className="text-base sm:text-xl md:text-2xl font-bold text-white mb-1">Ready to start?</h2>
+              <p className="text-xs font-light text-white/45 leading-[1.6]">20 founding cohort places at $299. After that, $599.</p>
             </div>
-            <CtaButton className="shrink-0 inline-flex items-center gap-2 text-[11px] font-medium uppercase px-8 py-4 tracking-[0.1em] bg-accent-teal text-white hover:bg-accent-teal/90 transition-colors duration-200 whitespace-nowrap" />
+            <CtaButton className="w-full sm:w-auto shrink-0 flex items-center justify-center gap-2 text-[10px] sm:text-[11px] font-medium uppercase px-5 sm:px-8 py-3 sm:py-4 tracking-[0.1em] bg-accent-teal text-white hover:bg-accent-teal/90 transition-colors duration-200" />
           </div>
         </Reveal>
       </section>
