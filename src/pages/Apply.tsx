@@ -169,7 +169,7 @@ const Apply = () => {
                   <li>• Current circumstances and availability</li>
                   <li>• Background and experience context</li>
                   <li>• Programme suitability and fit</li>
-                  <li>• Capacity for supervised practice</li>
+                  <li>• Capacity to meet delivery expectations</li>
                 </ul>
               </div>
             </div>

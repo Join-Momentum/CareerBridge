@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
   { label: "How It Works", path: "/how-it-works" },
-  { label: "Enterprise Partnerships", path: "/partners" },
+  { label: "For Organisations", path: "/partners" },
   { label: "Governance", path: "/governance" },
   { label: "Contact", path: "/contact" },
 ];
@@ -58,7 +58,7 @@ function PortfolioNavItem({
       <div className="flex items-center gap-1">
         {/* Main link */}
         <Link to="/portfolio-simulations" className={`relative ${linkClass}`}>
-          Portfolio Simulations
+          Work Experience
           {isActive && (
             <motion.div
               layoutId="nav-indicator"
@@ -309,7 +309,7 @@ const Navbar = () => {
                       isPortfolioActive ? "text-accent-teal" : "text-warm-white/70 hover:text-warm-white"
                     }`}
                   >
-                    Portfolio Simulations
+                    Work Experience
                   </Link>
                   <button
                     onClick={() => setMobilePortfolioOpen((o) => !o)}

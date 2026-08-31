@@ -6,7 +6,7 @@ import AbstractParallax from "@/components/AbstractParallax";
 const items = [
   "Access to readiness-assessed talent",
   "Structured pilot engagements",
-  "Supervised contribution environments",
+  "Structured contribution environments",
   "Capability evidence aligned to role requirements",
   "Alignment to Microsoft digital skills frameworks (where applicable)",
 ];

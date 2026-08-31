@@ -8,7 +8,7 @@ const whyCareerBridge = [
   "Evidence-based progression decisions",
   "Public benefit alignment",
   "Safeguarding & governance controls",
-  "Pipeline-based, not ad hoc recruitment",
+  "Structured, not ad hoc recruitment",
 ];
 
 export const WhyCareerBridgeSection = () => {

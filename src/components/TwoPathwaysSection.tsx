@@ -13,9 +13,9 @@ const pathways = [
     num: "01",
   },
   {
-    title: "Enterprise Capability & Partnerships",
+    title: "Organisation Partnerships",
     text: "Career Bridge collaborates with employers, public sector organisations, and ecosystem partners to supply readiness-assessed talent aligned to digital transformation and workforce modernisation priorities.",
-    cta: "Explore Enterprise Partnerships",
+    cta: "Explore Organisation Partnerships",
     href: "/partners",
     tag: "Partnership Track",
     num: "02",

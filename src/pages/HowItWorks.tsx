@@ -13,7 +13,7 @@ const steps = [
   {
     num: "02",
     title: "Structured Engagement & Contribution",
-    text: "Approved participants engage in defined activities aligned to real-world contexts under supervision.",
+    text: "Approved participants take on defined contribution activities within Career Bridge's structured framework, working to the same standards and expectations as a live delivery environment.",
   },
   {
     num: "03",
