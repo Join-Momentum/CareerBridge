@@ -8,12 +8,18 @@ import { Info } from "lucide-react";
 
 export const DisclosureShort = ({ dark = false, className = "" }: { dark?: boolean; className?: string }) => (
   <div
-    className={`flex gap-3 items-start p-5 md:p-6 border rounded-sm max-w-xl ${
+    className={`flex gap-3.5 items-start p-4 md:p-5 border rounded-sm max-w-xl ${
       dark ? "bg-warm-white/5 border-warm-white/15" : "notice-box"
     } ${className}`}
   >
-    <Info size={18} strokeWidth={1.8} className="text-accent-teal shrink-0 mt-0.5" />
-    <p className={`text-sm leading-relaxed font-sans ${dark ? "text-cool" : "text-slate"}`}>
+    <span
+      className={`flex items-center justify-center w-7 h-7 rounded-full shrink-0 ${
+        dark ? "bg-accent-teal/15" : "bg-accent-teal/10"
+      }`}
+    >
+      <Info size={14} strokeWidth={2} className="text-accent-teal" />
+    </span>
+    <p className={`text-sm leading-relaxed font-sans pt-0.5 ${dark ? "text-cool" : "text-slate"}`}>
       <strong className={dark ? "text-warm-white" : "text-ink"}>
         This is work experience delivered through simulation.
       </strong>{" "}
@@ -23,12 +29,17 @@ export const DisclosureShort = ({ dark = false, className = "" }: { dark?: boole
 );
 
 export const DisclosureFull = ({ className = "" }: { className?: string }) => (
-  <div className={`notice-box max-w-3xl ${className}`}>
-    <p className="text-label font-sans font-semibold uppercase text-cool mb-2 flex items-center gap-2">
-      <Info size={16} strokeWidth={1.8} />
-      Programme disclosure — please read before applying
-    </p>
-    <div className="space-y-4">
+  <div className={`notice-box border-l-[3px] border-l-accent-teal max-w-3xl ${className}`}>
+    <div className="flex items-center gap-3 pb-5 mb-5 border-b border-subtle">
+      <span className="flex items-center justify-center w-8 h-8 rounded-full bg-accent-teal/10 shrink-0">
+        <Info size={16} strokeWidth={1.8} className="text-accent-teal" />
+      </span>
+      <p className="text-label font-sans font-semibold uppercase text-cool">
+        Programme disclosure — please read before applying
+      </p>
+    </div>
+
+    <div className="space-y-5">
       <p className="text-body text-ink font-medium leading-relaxed font-sans">
         Career Bridge Foundation uses recruitment technology to administer applications to its Simulation-Based Work
         Experience Programme. Opportunities may therefore appear within systems or channels normally used to
