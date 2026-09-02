@@ -141,6 +141,13 @@ const REPORT_FIGURES = [
   { num: "71", label: "Portfolios generated" },
 ];
 
+const IMPACT_RATES = [
+  { label: "Completion rate", value: "79%", pct: 79, note: "19 of 24 funded participants completed" },
+  { label: "AI evaluations completed", value: "96", pct: 100, note: "One evaluation record per completed simulation" },
+  { label: "Workplace artefacts produced", value: "71", pct: 74, note: "Published to participant portfolios" },
+  { label: "Participant satisfaction", value: "4.4 / 5", pct: 88, note: "End-of-cohort survey, 21 responses" },
+];
+
 const COMPLETION_STEPS = [
   "Onboarded and enrolled in a named discipline pathway within a named cohort.",
   "Completed all required tasks in the minimum number of simulations defined for that pathway. The minimum is published before the cohort opens and is not changed during it.",
@@ -205,12 +212,20 @@ const FAQS = [
     a: "No. Sponsorship does not guarantee hiring, interviews or recruitment access. Practitioner involvement is developmental. Any employer-brand or engagement activity is optional and subject to a separate agreement.",
   },
   {
+    q: "Can we contribute scenarios or co-design simulations?",
+    a: "Yes, at Challenge Partner level. Career Bridge retains editorial control of learning design, assessment criteria and quality, so a partner shapes the scenario rather than the standard.",
+  },
+  {
     q: "Sponsorship is not an investment — what does that mean?",
     a: "Sponsorship is a funding arrangement with Career Bridge Foundation for cohort delivery. It is not an investment and does not confer equity or ownership in any organisation.",
   },
   {
     q: "What are credits?",
     a: "Credits are the operational mechanism by which AI-powered functionality is made available to a participant. Sponsors fund participation and completion; credits are how that funding reaches the participant's simulations and evaluations. Volumes are agreed at design stage.",
+  },
+  {
+    q: "How are participant data and privacy handled?",
+    a: "In line with applicable data-protection law. Sponsors receive aggregated reporting by default. Any sharing of individual participant information requires the participant's consent and a specific agreed arrangement.",
   },
 ];
 
@@ -690,11 +705,23 @@ const SponsorACohort = () => {
                   Illustrative figures
                 </span>
               </div>
-              <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-subtle">
+              <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-subtle border-b border-subtle">
                 {REPORT_FIGURES.map(({ num, label }) => (
                   <div key={label} className="p-6">
                     <p className="text-4xl font-bold text-ink font-mono">{num}</p>
                     <p className="text-sm text-slate mt-2">{label}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-subtle">
+                {IMPACT_RATES.map(({ label, value, pct, note }) => (
+                  <div key={label} className="p-6 flex flex-col">
+                    <p className="text-xs font-bold text-ink leading-snug">{label}</p>
+                    <p className="text-lg font-mono text-accent-teal mt-3">{value}</p>
+                    <div className="h-1 rounded-full bg-subtle mt-3 overflow-hidden">
+                      <div className="h-full bg-accent-teal rounded-full" style={{ width: `${pct}%` }} />
+                    </div>
+                    <p className="text-xs text-slate/80 mt-2.5 leading-relaxed">{note}</p>
                   </div>
                 ))}
               </div>
