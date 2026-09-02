@@ -173,6 +173,13 @@ const Partners = () => {
               <Link to="/contact" className="btn-primary-light">
                 Enquire About Partnership
               </Link>
+              <p className="text-sm text-cool font-sans mt-8">
+                Looking to sponsor a cohort of participants instead?{" "}
+                <Link to="/sponsor-a-cohort" className="text-warm-white underline underline-offset-4 hover:text-accent-teal transition-colors">
+                  See sponsorship options
+                </Link>
+                .
+              </p>
             </div>
           </AnimatedSection>
         </div>

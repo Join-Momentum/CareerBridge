@@ -6,6 +6,7 @@ const quickLinks = [
   { label: "How It Works", path: "/how-it-works" },
   { label: "Work Experience", path: "/simulation-based-work-experience" },
   { label: "Partners", path: "/partners" },
+  { label: "Sponsor a Cohort", path: "/sponsor-a-cohort" },
   { label: "Governance", path: "/governance" },
   { label: "Apply", path: "/apply" },
   { label: "Contact", path: "/contact" },
