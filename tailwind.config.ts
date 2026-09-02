@@ -21,7 +21,7 @@ export default {
       fontFamily: {
         sans: ["Inter", "system-ui", "sans-serif"],
         serif: ["Source Serif 4", "Georgia", "serif"],
-        mono: ["JetBrains Mono", "monospace"],
+        mono: ["IBM Plex Mono", "ui-monospace", "monospace"],
       },
       fontSize: {
         hero: ["4.5rem", { lineHeight: "1.1", letterSpacing: "-0.02em" }],
@@ -33,66 +33,73 @@ export default {
         label: ["0.6875rem", { lineHeight: "1", letterSpacing: "0.15em" }],
       },
       colors: {
-        // Core palette
-        ink: "#0f172a",
-        "ink-light": "#1e293b",
-        slate: "#475569",
-        "slate-muted": "#64748b",
-        cool: "#94a3b8",
-        "warm-white": "#fafaf9",
-        "warm-grey": "#f5f5f4",
-        "accent-teal": "#0d9488",
+        // Core palette — Career Bridge brand tokens (logo palette:
+        // navy #00335A · blue #0060AD · cyan #4DC5D2).
+        // accent-teal (cyan) is dark-grounds only — 2.05:1 on white, fails AA.
+        // Use accent-blue on light grounds instead.
+        ink: "#00335A",
+        "ink-light": "#004274",
+        "ink-deep": "#00223D",
+        slate: "#4A6376",
+        "slate-muted": "#586E80",
+        cool: "#A9C4D8",
+        "warm-white": "#F4F7FA",
+        "warm-grey": "#E9EFF4",
+        "accent-teal": "#4DC5D2",
+        "accent-blue": "#0060AD",
+        "accent-blue-deep": "#004E8C",
         "accent-copper": "#b45309",
-        subtle: "#e5e5e5",
+        subtle: "#DCE5ED",
+        "subtle-strong": "#C2D0DC",
 
         // shadcn/ui-ish semantic tokens
-        border: "#e5e5e5",
-        input: "#e5e5e5",
-        ring: "#0d9488",
-        background: "#fafaf9",
-        foreground: "#0f172a",
+        border: "#DCE5ED",
+        input: "#DCE5ED",
+        ring: "#0060AD",
+        background: "#F4F7FA",
+        foreground: "#00335A",
 
         primary: {
-          DEFAULT: "#18284e",
-          foreground: "#fafaf9",
+          DEFAULT: "#00335A",
+          foreground: "#F4F7FA",
         },
         secondary: {
-          DEFAULT: "#475569",
-          foreground: "#fafaf9",
+          DEFAULT: "#4A6376",
+          foreground: "#F4F7FA",
         },
         destructive: {
           DEFAULT: "#dc2626",
-          foreground: "#fafaf9",
+          foreground: "#F4F7FA",
         },
         warning: {
           DEFAULT: "#d97706",
-          foreground: "#fafaf9",
+          foreground: "#F4F7FA",
         },
         muted: {
-          DEFAULT: "#f5f5f4",
-          foreground: "#64748b",
+          DEFAULT: "#E9EFF4",
+          foreground: "#586E80",
         },
         accent: {
-          DEFAULT: "#0d9488",
+          DEFAULT: "#0060AD",
           foreground: "#ffffff",
         },
         popover: {
           DEFAULT: "#ffffff",
-          foreground: "#0f172a",
+          foreground: "#00335A",
         },
         card: {
           DEFAULT: "#ffffff",
-          foreground: "#0f172a",
+          foreground: "#00335A",
         },
         sidebar: {
-          DEFAULT: "#fafaf9",
-          foreground: "#475569",
-          primary: "#0f172a",
-          "primary-foreground": "#fafaf9",
-          accent: "#f5f5f4",
-          "accent-foreground": "#0f172a",
-          border: "#e5e5e5",
-          ring: "#0d9488",
+          DEFAULT: "#F4F7FA",
+          foreground: "#4A6376",
+          primary: "#00335A",
+          "primary-foreground": "#F4F7FA",
+          accent: "#E9EFF4",
+          "accent-foreground": "#00335A",
+          border: "#DCE5ED",
+          ring: "#0060AD",
         },
       },
       boxShadow: {

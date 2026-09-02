@@ -19,12 +19,7 @@ const portfolioDropdown = [
 
 // ── Portfolio nav item with dropdown ─────────────────────────
 
-function PortfolioNavItem({
-  isDarkHero,
-}: {
-  isDarkHero: boolean;
-  scrolled: boolean;
-}) {
+function PortfolioNavItem() {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const location = useLocation();
@@ -35,11 +30,7 @@ function PortfolioNavItem({
     location.pathname.startsWith("/portfolio-simulations/");
 
   const linkClass = `text-[12px] font-sans font-medium uppercase tracking-[0.1em] transition-colors duration-300 ${
-    isActive
-      ? "text-accent-teal"
-      : isDarkHero
-      ? "text-warm-white/60 hover:text-warm-white"
-      : "text-slate hover:text-ink"
+    isActive ? "text-accent-teal" : "text-warm-white/60 hover:text-warm-white"
   }`;
 
   // Close on outside click
@@ -78,11 +69,7 @@ function PortfolioNavItem({
           onClick={() => setOpen((o) => !o)}
           aria-label="Toggle portfolio submenu"
           className={`p-0.5 transition-colors duration-200 ${
-            isActive
-              ? "text-accent-teal"
-              : isDarkHero
-              ? "text-warm-white/60 hover:text-warm-white"
-              : "text-slate hover:text-ink"
+            isActive ? "text-accent-teal" : "text-warm-white/60 hover:text-warm-white"
           }`}
         >
           <motion.svg
@@ -110,7 +97,7 @@ function PortfolioNavItem({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 6 }}
             transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute top-full left-0 mt-3 min-w-[250px] bg-white border border-subtle shadow-card z-50"
+            className="absolute top-full left-0 mt-3 min-w-[250px] bg-ink-deep border border-white/10 shadow-2xl z-50"
           >
             {/* Top accent line */}
             <div className="h-px bg-accent-teal" />
@@ -120,8 +107,8 @@ function PortfolioNavItem({
                 to={path}
                 className={`flex items-center gap-3 px-5 py-3.5 text-[10px] font-sans font-medium uppercase tracking-[0.1em] transition-colors duration-200 ${
                   location.pathname === path
-                    ? "text-accent-teal bg-warm-grey"
-                    : "text-slate hover:text-ink hover:bg-warm-grey"
+                    ? "text-accent-teal bg-white/[0.04]"
+                    : "text-warm-white/60 hover:text-warm-white hover:bg-white/[0.04]"
                 }`}
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-accent-teal shrink-0" />
@@ -136,6 +123,9 @@ function PortfolioNavItem({
 }
 
 // ── Navbar ────────────────────────────────────────────────────
+// Always-dark, translucent/blurred sticky header — matches the header
+// pattern in the supplied brand HTML (rgba navy + backdrop-filter,
+// opaque once scrolled) rather than switching light/dark per page.
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -143,10 +133,14 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
-  const isDarkHero = location.pathname === "/";
+  const isPortfolioActive =
+    location.pathname === "/simulation-based-work-experience" ||
+    location.pathname.startsWith("/simulation-based-work-experience/") ||
+    location.pathname.startsWith("/portfolio-simulations/");
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
+    const handleScroll = () => setScrolled(window.scrollY > 12);
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -156,29 +150,20 @@ const Navbar = () => {
     setMobilePortfolioOpen(false);
   }, [location.pathname]);
 
-  const navClasses = isDarkHero
-    ? scrolled ? "bg-ink border-none" : "bg-transparent"
-    : "bg-white border-b border-subtle";
-
-  const textClasses = isDarkHero ? "text-warm-white" : "text-ink";
-
-  const isPortfolioActive =
-    location.pathname === "/simulation-based-work-experience" ||
-    location.pathname.startsWith("/simulation-based-work-experience/") ||
-    location.pathname.startsWith("/portfolio-simulations/");
-
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${navClasses}`}>
+      <nav
+        className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300 ${
+          scrolled
+            ? "bg-ink-deep border-white/[0.09] shadow-[0_10px_30px_-18px_rgba(0,0,0,0.9)]"
+            : "bg-ink/[0.88] backdrop-blur-md backdrop-saturate-150 border-white/[0.09]"
+        }`}
+      >
         <div className="page-container">
-          <div className="flex items-center justify-between h-20">
+          <div className="flex items-center justify-between h-[72px]">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-1">
-              <img
-                src={isDarkHero ? "/CBLogoWhite.png" : "/CBLogoBlack.png"}
-                alt="Career Bridge Foundation Logo"
-                className="object-contain h-10"
-              />
+              <img src="/CBLogoWhite.png" alt="Career Bridge Foundation Logo" className="object-contain h-9" />
             </Link>
 
             {/* Desktop nav */}
@@ -188,11 +173,7 @@ const Navbar = () => {
                   key={link.path}
                   to={link.path}
                   className={`relative text-[12px] font-sans font-medium uppercase tracking-[0.1em] transition-colors duration-300 ${
-                    location.pathname === link.path
-                      ? "text-accent-teal"
-                      : isDarkHero
-                      ? "text-warm-white/60 hover:text-warm-white"
-                      : "text-slate hover:text-ink"
+                    location.pathname === link.path ? "text-accent-teal" : "text-warm-white/60 hover:text-warm-white"
                   }`}
                 >
                   {link.label}
@@ -207,28 +188,20 @@ const Navbar = () => {
               ))}
 
               {/* Portfolio Simulations with dropdown */}
-              <PortfolioNavItem isDarkHero={isDarkHero} scrolled={scrolled} />
+              <PortfolioNavItem />
 
               {/* Apply button */}
               {location.pathname === "/apply" ? (
                 <a
                   href="http://apply.careerbridgefoundation.com/jobs/Careers/"
-                  className={`ml-2 px-6 py-2.5 text-[12px] font-sans font-medium uppercase tracking-[0.1em] rounded-sm transition-all duration-300 ${
-                    isDarkHero && !scrolled
-                      ? "bg-warm-white text-ink hover:bg-accent-teal hover:text-white"
-                      : "bg-ink text-warm-white hover:bg-accent-teal"
-                  }`}
+                  className="ml-2 px-6 py-2.5 text-[12px] font-sans font-medium uppercase tracking-[0.1em] rounded-sm bg-accent-teal text-ink hover:bg-accent-teal/90 transition-all duration-300"
                 >
                   Apply
                 </a>
               ) : (
                 <Link
                   to="/apply"
-                  className={`ml-2 px-6 py-2.5 text-[12px] font-sans font-medium uppercase tracking-[0.1em] rounded-sm transition-all duration-300 ${
-                    isDarkHero && !scrolled
-                      ? "bg-warm-white text-ink hover:bg-accent-teal hover:text-white"
-                      : "bg-ink text-warm-white hover:bg-accent-teal"
-                  }`}
+                  className="ml-2 px-6 py-2.5 text-[12px] font-sans font-medium uppercase tracking-[0.1em] rounded-sm bg-accent-teal text-ink hover:bg-accent-teal/90 transition-all duration-300"
                 >
                   Apply
                 </Link>
@@ -238,27 +211,21 @@ const Navbar = () => {
             {/* Mobile toggle */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className={`xl:hidden p-2 transition-colors duration-300 ${textClasses}`}
+              className="xl:hidden p-2 text-warm-white transition-colors duration-300"
               aria-label="Toggle menu"
             >
               <div className="w-6 h-5 flex flex-col justify-between">
                 <motion.span
                   animate={mobileOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
-                  className={`block h-[1.5px] w-full transition-colors duration-300 ${
-                    scrolled || !isDarkHero ? "bg-ink" : "bg-warm-white"
-                  }`}
+                  className="block h-[1.5px] w-full bg-warm-white transition-colors duration-300"
                 />
                 <motion.span
                   animate={mobileOpen ? { opacity: 0 } : { opacity: 1 }}
-                  className={`block h-[1.5px] w-full transition-colors duration-300 ${
-                    scrolled || !isDarkHero ? "bg-ink" : "bg-warm-white"
-                  }`}
+                  className="block h-[1.5px] w-full bg-warm-white transition-colors duration-300"
                 />
                 <motion.span
                   animate={mobileOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
-                  className={`block h-[1.5px] w-full transition-colors duration-300 ${
-                    scrolled || !isDarkHero ? "bg-ink" : "bg-warm-white"
-                  }`}
+                  className="block h-[1.5px] w-full bg-warm-white transition-colors duration-300"
                 />
               </div>
             </button>
@@ -274,7 +241,7 @@ const Navbar = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 xl:hidden bg-ink overflow-y-auto"
+            className="fixed inset-0 z-40 xl:hidden bg-ink-deep overflow-y-auto"
           >
             <div className="flex flex-col items-center justify-center min-h-screen pt-20 pb-10 gap-1">
               {navLinks.map((link, i) => (
