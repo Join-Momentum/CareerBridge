@@ -74,21 +74,21 @@ const pathways = [
     text: "Define the problem, weigh the trade-offs and decide what gets built.",
     accent: "#A34411",
     status: "In development",
-    href: "/simulation-based-work-experience",
+    href: "/simulation-based-work-experience/product-management",
   },
   {
     name: "Project Management",
     text: "Plan delivery, control risk and report honestly when the plan slips.",
     accent: "#0E6E7D",
     status: "In development",
-    href: "/simulation-based-work-experience",
+    href: "/simulation-based-work-experience/project-management",
   },
   {
     name: "Business Analysis",
     text: "Find the real problem, structure the requirements, evaluate the options.",
     accent: "#1F7A3D",
     status: "In development",
-    href: "/simulation-based-work-experience",
+    href: "/simulation-based-work-experience/business-analysis",
   },
   {
     name: "Cyber Threat Intelligence",
@@ -102,7 +102,7 @@ const pathways = [
     text: "Hold the diary, protect the detail and keep decisions moving.",
     accent: "#7A5C0C",
     status: "In development",
-    href: "/simulation-based-work-experience",
+    href: "/simulation-based-work-experience/virtual-administrative-assistant",
   },
 ];
 

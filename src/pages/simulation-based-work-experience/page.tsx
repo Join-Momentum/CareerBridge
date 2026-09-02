@@ -1,137 +1,8 @@
-import { useRef } from "react";
-import type { ReactNode } from "react";
-import { motion, useInView } from "framer-motion";
-import type { Variants } from "framer-motion";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import { AccessLine, AccessPanels } from "@/components/AccessModel";
 import { DisclosureShort, DisclosureFull } from "@/components/NonEmploymentDisclosure";
-
-// ── Animation primitives ──────────────────────────────────────
-
-const ease = [0.22, 1, 0.36, 1] as const;
-
-function Reveal({ children, className, delay = 0 }: { children: ReactNode; className?: string; delay?: number }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px 0px" });
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 36 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.75, ease, delay }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-}
-
-function StaggerGrid({ children, className }: { children: ReactNode; className?: string }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-60px 0px" });
-  return (
-    <motion.div
-      ref={ref}
-      initial="hidden"
-      animate={inView ? "visible" : "hidden"}
-      variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.09 } } }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-}
-
-const cardVariant: Variants = {
-  hidden: { opacity: 0, y: 28 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease } },
-};
-
-const ArrowIcon = () => (
-  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M5 12h14M12 5l7 7-7 7" />
-  </svg>
-);
-
-// ── Media placeholder ─────────────────────────────────────────
-
-function MediaPlaceholder({
-  label,
-  type = "image",
-  aspect = "video",
-  light = false,
-  className = "",
-  src,
-}: {
-  label: string;
-  type?: "image" | "video";
-  aspect?: "video" | "square" | "tall";
-  light?: boolean;
-  className?: string;
-  src?: string;
-}) {
-  const bg = light ? "bg-ink/[0.04] border-ink/[0.07]" : "bg-white/[0.04] border-white/[0.08]";
-  const cb = light ? "border-accent-teal/40" : "border-accent-teal/55";
-  const tc = light ? "text-ink/22" : "text-white/18";
-  const is = light ? "rgba(15,23,42,0.16)" : "rgba(255,255,255,0.13)";
-  const aspectClass = aspect === "video" ? "aspect-video" : aspect === "square" ? "aspect-square" : "aspect-[3/4]";
-
-  const corners = [
-    "top-4 left-4 border-t border-l",
-    "top-4 right-4 border-t border-r",
-    "bottom-4 left-4 border-b border-l",
-    "bottom-4 right-4 border-b border-r",
-  ];
-
-  return (
-    <div className={`relative overflow-hidden border ${bg} ${aspectClass} ${className}`}>
-      {src && type === "image" && (
-        <img src={src} alt={label} className="absolute inset-0 w-full h-full object-cover" />
-      )}
-      {src && type === "video" && (
-        <video src={src} autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover" />
-      )}
-      {!src && (
-        <>
-          <motion.div
-            animate={{ top: ["-2px", "100%"] }}
-            transition={{ duration: 3.5, repeat: Infinity, ease: "linear", repeatDelay: 0.8 }}
-            className={`absolute left-0 right-0 h-px z-10 pointer-events-none ${
-              light
-                ? "bg-gradient-to-r from-transparent via-accent-teal/50 to-transparent"
-                : "bg-gradient-to-r from-transparent via-accent-teal/70 to-transparent"
-            }`}
-          />
-          {corners.map((pos, i) => (
-            <motion.div
-              key={pos}
-              animate={{ opacity: [0.45, 1, 0.45] }}
-              transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut", delay: i * 0.35 }}
-              className={`absolute w-5 h-5 ${pos} ${cb}`}
-            />
-          ))}
-          <div className="absolute inset-0 flex flex-col items-center justify-center gap-3.5 select-none">
-            {type === "video" ? (
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={is} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="10" />
-                <polygon points="10 8 16 12 10 16 10 8" fill={is} stroke="none" />
-              </svg>
-            ) : (
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={is} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="3" y="3" width="18" height="18" rx="2" />
-                <circle cx="8.5" cy="8.5" r="1.5" />
-                <polyline points="21 15 16 10 5 21" />
-              </svg>
-            )}
-            <p className={`text-[9px] font-medium uppercase tracking-[0.22em] ${tc} text-center max-w-[140px] leading-[1.9]`}>
-              {label}
-            </p>
-          </div>
-        </>
-      )}
-    </div>
-  );
-}
+import { Reveal, StaggerGrid, cardVariant, ArrowIcon, MediaPlaceholder, ease } from "@/components/simulation/Motion";
 
 // ── Static data ───────────────────────────────────────────────
 
@@ -174,10 +45,10 @@ const CB_ADDS = [
 ];
 
 const PATHWAYS = [
-  { name: "Product Management", body: "Define the problem, weigh the trade-offs and decide what gets built.", status: "In development" },
-  { name: "Project Management", body: "Plan delivery, control risk and report honestly when the plan slips.", status: "In development" },
-  { name: "Business Analysis", body: "Find the real problem, structure the requirements, evaluate the options.", status: "In development" },
-  { name: "Virtual Administrative Assistant", body: "Hold the diary, protect the detail and keep decisions moving.", status: "In development" },
+  { slug: "product-management", name: "Product Management", body: "Define the problem, weigh the trade-offs and decide what gets built.", status: "In development" },
+  { slug: "project-management", name: "Project Management", body: "Plan delivery, control risk and report honestly when the plan slips.", status: "In development" },
+  { slug: "business-analysis", name: "Business Analysis", body: "Find the real problem, structure the requirements, evaluate the options.", status: "In development" },
+  { slug: "virtual-administrative-assistant", name: "Virtual Administrative Assistant", body: "Hold the diary, protect the detail and keep decisions moving.", status: "In development" },
 ];
 
 const COMBOS = [
@@ -548,12 +419,18 @@ export default function SimulationBasedWorkExperiencePage() {
           <Reveal delay={0.2}>
             <p className="text-[10px] font-medium uppercase text-white/25 tracking-[0.25em] mb-5">In development</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/[0.04]">
-              {PATHWAYS.map(({ name, body, status }) => (
-                <div key={name} className="p-6 bg-ink border border-white/[0.06] hover:border-white/[0.12] transition-colors duration-300">
+              {PATHWAYS.map(({ slug, name, body, status }) => (
+                <Link
+                  key={slug}
+                  to={`/simulation-based-work-experience/${slug}`}
+                  className="group p-6 bg-ink border border-white/[0.06] hover:border-white/[0.12] transition-colors duration-300"
+                >
                   <p className="text-[10px] text-white/25 uppercase tracking-[0.15em] mb-3">{status}</p>
-                  <p className="text-sm font-medium text-white/60 mb-2">{name}</p>
+                  <p className="text-sm font-medium text-white/60 group-hover:text-white/85 transition-colors duration-300 mb-2">
+                    {name}
+                  </p>
                   <p className="text-xs text-white/30 leading-[1.6]">{body}</p>
-                </div>
+                </Link>
               ))}
             </div>
           </Reveal>
