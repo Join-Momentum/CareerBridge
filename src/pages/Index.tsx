@@ -74,21 +74,21 @@ const pathways = [
     text: "Define the problem, weigh the trade-offs and decide what gets built.",
     accent: "#A34411",
     status: "In development",
-    href: "/portfolio-simulations",
+    href: "/simulation-based-work-experience",
   },
   {
     name: "Project Management",
     text: "Plan delivery, control risk and report honestly when the plan slips.",
     accent: "#0E6E7D",
     status: "In development",
-    href: "/portfolio-simulations",
+    href: "/simulation-based-work-experience",
   },
   {
     name: "Business Analysis",
     text: "Find the real problem, structure the requirements, evaluate the options.",
     accent: "#1F7A3D",
     status: "In development",
-    href: "/portfolio-simulations",
+    href: "/simulation-based-work-experience",
   },
   {
     name: "Cyber Threat Intelligence",
@@ -102,7 +102,7 @@ const pathways = [
     text: "Hold the diary, protect the detail and keep decisions moving.",
     accent: "#7A5C0C",
     status: "In development",
-    href: "/portfolio-simulations",
+    href: "/simulation-based-work-experience",
   },
 ];
 
@@ -204,7 +204,7 @@ const Index = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-10">
-              <Link to="/portfolio-simulations" className="btn-primary-light">
+              <Link to="/simulation-based-work-experience" className="btn-primary-light">
                 Explore Work Experience
               </Link>
               <Link to="/partners" className="btn-secondary-light">
@@ -344,7 +344,7 @@ const Index = () => {
               </div>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 mt-10">
-              <Link to="/portfolio-simulations" className="btn-primary">
+              <Link to="/simulation-based-work-experience" className="btn-primary">
                 Explore Work Experience Pathways
               </Link>
               <Link to="/apply" className="btn-secondary">
@@ -567,7 +567,7 @@ const Index = () => {
               Foundation programme.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mb-10">
-              <Link to="/portfolio-simulations" className="btn-primary-light">
+              <Link to="/simulation-based-work-experience" className="btn-primary-light">
                 Explore Available Pathways
               </Link>
               <Link to="/apply" className="btn-secondary-light">

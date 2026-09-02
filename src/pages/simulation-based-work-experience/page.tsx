@@ -3,6 +3,8 @@ import type { ReactNode } from "react";
 import { motion, useInView } from "framer-motion";
 import type { Variants } from "framer-motion";
 import { Link } from "react-router-dom";
+import { AccessLine, AccessPanels } from "@/components/AccessModel";
+import { DisclosureShort, DisclosureFull } from "@/components/NonEmploymentDisclosure";
 
 // ── Animation primitives ──────────────────────────────────────
 
@@ -45,9 +47,13 @@ const cardVariant: Variants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease } },
 };
 
+const ArrowIcon = () => (
+  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M5 12h14M12 5l7 7-7 7" />
+  </svg>
+);
+
 // ── Media placeholder ─────────────────────────────────────────
-// One animation only: a teal scan line that sweeps top → bottom on repeat,
-// plus staggered-breathing corner brackets that pulse in sequence.
 
 function MediaPlaceholder({
   label,
@@ -62,7 +68,6 @@ function MediaPlaceholder({
   aspect?: "video" | "square" | "tall";
   light?: boolean;
   className?: string;
-  /** Path to a file in /public, e.g. "/hero.jpg" or "/walkthrough.mp4" */
   src?: string;
 }) {
   const bg = light ? "bg-ink/[0.04] border-ink/[0.07]" : "bg-white/[0.04] border-white/[0.08]";
@@ -80,29 +85,14 @@ function MediaPlaceholder({
 
   return (
     <div className={`relative overflow-hidden border ${bg} ${aspectClass} ${className}`}>
-      {/* ── Real media (when src is supplied) ── */}
       {src && type === "image" && (
-        <img
-          src={src}
-          alt={label}
-          className="absolute inset-0 w-full h-full object-cover"
-        />
+        <img src={src} alt={label} className="absolute inset-0 w-full h-full object-cover" />
       )}
       {src && type === "video" && (
-        <video
-          src={src}
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-        />
+        <video src={src} autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover" />
       )}
-
-      {/* ── Placeholder (shown when no src) ── */}
       {!src && (
         <>
-          {/* Scan line */}
           <motion.div
             animate={{ top: ["-2px", "100%"] }}
             transition={{ duration: 3.5, repeat: Infinity, ease: "linear", repeatDelay: 0.8 }}
@@ -112,8 +102,6 @@ function MediaPlaceholder({
                 : "bg-gradient-to-r from-transparent via-accent-teal/70 to-transparent"
             }`}
           />
-
-          {/* Corner brackets */}
           {corners.map((pos, i) => (
             <motion.div
               key={pos}
@@ -122,8 +110,6 @@ function MediaPlaceholder({
               className={`absolute w-5 h-5 ${pos} ${cb}`}
             />
           ))}
-
-          {/* Icon + label */}
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-3.5 select-none">
             {type === "video" ? (
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={is} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -149,11 +135,18 @@ function MediaPlaceholder({
 
 // ── Static data ───────────────────────────────────────────────
 
+const GAP_LADDER = [
+  { step: "Stage 01", title: "Learning about the work", body: "Courses, qualifications and certificates. Valuable, but they describe the work rather than demonstrate it." },
+  { step: "Stage 02", title: "Claiming capability", body: "A CV bullet point or an interview answer. Assertion, offered without anything an employer can inspect." },
+  { step: "Stage 03", title: "Demonstrating capability", body: "Doing the work in a realistic professional situation, making the decisions and producing the outputs." },
+  { step: "Stage 04", title: "Producing verifiable evidence", body: "Assessed work outputs, competency scoring and developmental feedback, published as a portfolio others can examine.", live: true },
+];
+
 const STEPS = [
   { n: "01", title: "Read the brief", body: "A realistic scenario from the role. Context and constraints — no hand-holding." },
   { n: "02", title: "Do the work", body: "Produce the artefacts the job actually produces. No hints. No lectures." },
-  { n: "03", title: "Get assessed", body: "Rubrics designed by named senior practitioners. Scored against what employers look for." },
-  { n: "04", title: "Own the result", body: "Artefacts, scores, commentary, credential — all yours to keep and share." },
+  { n: "03", title: "Get assessed", body: "Submit your work for AI-powered competency assessment using expert-designed or expert-validated rubrics." },
+  { n: "04", title: "Own the evidence", body: "Artefacts, scores, commentary, credential — all yours to keep and share." },
 ];
 
 const WHY = [
@@ -162,8 +155,8 @@ const WHY = [
     body: "Not exercises. The actual kind of work hiring managers ask to see — produced under realistic conditions.",
   },
   {
-    title: "Expert assessment.",
-    body: "Rubrics designed and validated by named senior practitioners. Not AI alone. The rubric is the product.",
+    title: "Rubric-based assessment.",
+    body: "AI-powered competency assessment using rubrics designed or validated by named senior practitioners.",
   },
   {
     title: "Yours to keep.",
@@ -172,27 +165,52 @@ const WHY = [
 ];
 
 const CB_ADDS = [
-  { title: "Named practitioners on every rubric", body: "Their names appear on your portfolio. They're accountable for the standard." },
-  { title: "National framework alignment", body: "Cyber pathways align to the UK Cyber Security Council's Cyber Career Framework." },
-  { title: "Consultant office hours", body: "Two 60-minute sessions per cohort. Optional — drop in when useful." },
+  { title: "Named practitioners on every rubric", body: "Their names are attached to the standard your work is measured against." },
+  { title: "Multidisciplinary evidence", body: "Build assessed work across more than one professional pathway over time." },
+  { title: "Consultant office hours", body: "Sessions per cohort where offered. Optional — drop in when useful." },
   { title: "Verified portfolio bundle", body: "Artefacts, scores, commentary, validation, credential — assembled for you." },
   { title: "Cohort community", body: "Candidates and coach-partners alongside you through every sprint." },
-  { title: "Social enterprise mission", body: "Every portfolio sold funds future free pathways for candidates who can't pay." },
+  { title: "Social enterprise mission", body: "Career Bridge operates as a Community Interest Company for public benefit." },
 ];
 
-const COMING = [
-  { name: "Incident Response", when: "Month 5 · 2026" },
-  { name: "Cyber Security Management", when: "Later 2026" },
-  { name: "Cyber Governance & Risk", when: "Later 2026" },
+const PATHWAYS = [
+  { name: "Product Management", body: "Define the problem, weigh the trade-offs and decide what gets built.", status: "In development" },
+  { name: "Project Management", body: "Plan delivery, control risk and report honestly when the plan slips.", status: "In development" },
+  { name: "Business Analysis", body: "Find the real problem, structure the requirements, evaluate the options.", status: "In development" },
+  { name: "Virtual Administrative Assistant", body: "Hold the diary, protect the detail and keep decisions moving.", status: "In development" },
+];
+
+const COMBOS = [
+  { from: "Business Analysis", to: "Product Management", note: "Add outcome ownership and prioritisation to analytical depth." },
+  { from: "Cyber Threat Intelligence", to: "Cyber Governance and Risk", note: "Extend analytical intelligence work into governance and risk." },
+];
+
+const FAQS = [
+  {
+    q: "Is the programme free?",
+    a: "Programme access is free. AI usage requires credits. There is no application fee and no programme-access fee. Credits are required when you begin using AI-powered simulation, evaluation and portfolio-generation features.",
+  },
+  {
+    q: "Is this a job or an internship?",
+    a: "No. This is work experience delivered through simulation. It is not employment, a paid role, an internship, an apprenticeship or a job placement.",
+  },
+  {
+    q: "Is this aligned to an external professional framework?",
+    a: "No formal alignment to an external standards body or framework is currently claimed for any pathway. Assessment uses rubrics that are expert-designed or expert-validated for the discipline.",
+  },
+  {
+    q: "Does participation guarantee employment?",
+    a: "No. Participation does not guarantee employment, interviews, recruitment outcomes or earnings. The programme enables participants to practise professional work, demonstrate applied capability and build credible evidence of what they can do.",
+  },
 ];
 
 // ── Page ─────────────────────────────────────────────────────
 
-export default function PortfolioSimulationsPage() {
+export default function SimulationBasedWorkExperiencePage() {
   return (
     <>
       {/* ════════════════════════════════════════
-          HERO — split: copy left · image placeholder right
+          HERO
       ════════════════════════════════════════ */}
       <section className="relative min-h-screen flex flex-col justify-center bg-ink overflow-hidden">
         <div className="absolute inset-0 dot-pattern opacity-[0.18] pointer-events-none" />
@@ -201,8 +219,6 @@ export default function PortfolioSimulationsPage() {
 
         <div className="relative page-container pt-44 pb-28">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-16 items-center">
-
-            {/* Copy */}
             <motion.div
               initial="hidden"
               animate="visible"
@@ -228,7 +244,7 @@ export default function PortfolioSimulationsPage() {
                   variants={{ hidden: { opacity: 0, y: 80 }, visible: { opacity: 1, y: 0, transition: { duration: 0.9, ease } } }}
                   className="text-[clamp(3.5rem,7.5vw,6.5rem)] font-bold text-white leading-[0.9] tracking-[-0.03em]"
                 >
-                  Portfolio
+                  Work Experience.
                 </motion.h1>
               </div>
               <div className="overflow-hidden mb-10">
@@ -236,7 +252,7 @@ export default function PortfolioSimulationsPage() {
                   variants={{ hidden: { opacity: 0, y: 80 }, visible: { opacity: 1, y: 0, transition: { duration: 0.9, ease } } }}
                   className="text-[clamp(3.5rem,7.5vw,6.5rem)] font-bold text-accent-teal leading-[0.9] tracking-[-0.03em]"
                 >
-                  Simulations.
+                  Through Simulation.
                 </motion.h1>
               </div>
 
@@ -244,50 +260,68 @@ export default function PortfolioSimulationsPage() {
                 variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease } } }}
                 className="text-xl md:text-2xl font-light text-white/50 leading-[1.5] max-w-xl mb-5"
               >
-                The work, not a course about the work.
+                Build experience. Prove your skills. Progress your career.
               </motion.p>
 
               <motion.p
                 variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease } } }}
-                className="text-sm text-white/25 leading-[1.9] max-w-md"
+                className="text-sm text-white/25 leading-[1.9] max-w-md mb-10"
               >
-                A realistic version of the job. Real artefacts. Expert-validated rubrics.
-                A verified portfolio you own and share.
+                Complete realistic workplace simulations, receive AI-powered competency assessment and build a
+                verifiable digital career portfolio that demonstrates what you can do.
               </motion.p>
+
+              <motion.div
+                variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease } } }}
+                className="flex flex-col gap-5 max-w-md"
+              >
+                <DisclosureShort dark />
+                <AccessLine dark />
+              </motion.div>
             </motion.div>
 
-            {/* ── IMAGE PLACEHOLDER — hero visual ── */}
             <Reveal delay={0.7} className="hidden lg:block">
-              <MediaPlaceholder
-                label="Campaign imagery"
-                type="image"
-                aspect="tall"
-                light={false}
-                src="/image2.png"
-              />
+              <MediaPlaceholder label="Campaign imagery" type="image" aspect="tall" light={false} src="/image2.png" />
             </Reveal>
           </div>
         </div>
+      </section>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2, duration: 1 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3"
-        >
-          <span className="text-[9px] text-white/20 uppercase tracking-[0.4em]">Scroll</span>
-          <motion.div
-            animate={{ opacity: [0.3, 0.08, 0.3], scaleY: [1, 0.5, 1] }}
-            transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
-            className="w-px h-14 bg-gradient-to-b from-white/25 to-transparent origin-top"
-          />
-        </motion.div>
+      {/* ════════════════════════════════════════
+          THE EVIDENCE GAP
+      ════════════════════════════════════════ */}
+      <section className="bg-white py-28 px-6">
+        <div className="max-w-6xl mx-auto">
+          <Reveal className="mb-16">
+            <div className="flex items-center gap-3 mb-5">
+              <div className="w-8 h-px bg-accent-teal" />
+              <span className="text-[11px] font-medium uppercase text-accent-teal tracking-[0.2em]">The evidence gap</span>
+            </div>
+            <h2 className="text-4xl md:text-[3.5rem] font-bold text-ink leading-[0.95] tracking-[-0.025em] max-w-2xl">
+              Talent is not always missing. Sometimes, the evidence is.
+            </h2>
+          </Reveal>
+
+          <StaggerGrid className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-subtle border border-subtle">
+            {GAP_LADDER.map(({ step, title, body, live }) => (
+              <motion.div key={step} variants={cardVariant}>
+                <div className={`h-full p-8 flex flex-col gap-4 ${live ? "bg-warm-grey" : "bg-white"}`}>
+                  <span className="text-[10px] font-medium uppercase tracking-[0.15em] text-slate">{step}</span>
+                  <h3 className={`text-base font-bold leading-snug ${live ? "text-accent-teal" : "text-ink"}`}>
+                    {title}
+                  </h3>
+                  <p className="text-sm text-slate leading-[1.7]">{body}</p>
+                </div>
+              </motion.div>
+            ))}
+          </StaggerGrid>
+        </div>
       </section>
 
       {/* ════════════════════════════════════════
           HOW IT WORKS — 4 steps
       ════════════════════════════════════════ */}
-      <section className="bg-white py-28 px-6">
+      <section className="bg-warm-grey py-28 px-6">
         <div className="max-w-6xl mx-auto">
           <Reveal className="mb-16">
             <div className="flex items-center gap-3 mb-5">
@@ -313,22 +347,11 @@ export default function PortfolioSimulationsPage() {
               </motion.div>
             ))}
           </StaggerGrid>
-
-          {/* ── VIDEO PLACEHOLDER — process walkthrough ── */}
-          {/* <Reveal delay={0.1} className="mt-6">
-            <MediaPlaceholder
-              label="Video — See how a simulation works"
-              type="video"
-              aspect="video"
-              light={true}
-              src="1.mp4"
-            />
-          </Reveal> */}
         </div>
       </section>
 
       {/* ════════════════════════════════════════
-          WHY IT WORKS — glass cards on dark
+          WHY IT WORKS
       ════════════════════════════════════════ */}
       <section className="relative bg-ink py-28 px-6 overflow-hidden">
         <div className="absolute inset-0 dot-pattern opacity-[0.12] pointer-events-none" />
@@ -341,7 +364,7 @@ export default function PortfolioSimulationsPage() {
               <span className="text-[11px] font-medium uppercase text-accent-teal tracking-[0.2em]">Why it matters</span>
             </div>
             <h2 className="text-4xl md:text-[3.5rem] font-bold text-white leading-[0.95] tracking-[-0.025em]">
-              Why portfolio<br />simulations work.
+              Why work experience<br />through simulation works.
             </h2>
           </Reveal>
 
@@ -361,9 +384,9 @@ export default function PortfolioSimulationsPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          WHAT IT ISN'T — bold editorial rows
+          WHAT IT ISN'T
       ════════════════════════════════════════ */}
-      <section className="bg-warm-grey py-28 px-6">
+      <section className="bg-white py-28 px-6">
         <div className="max-w-6xl mx-auto">
           <Reveal className="mb-16">
             <div className="flex items-center gap-3 mb-5">
@@ -377,8 +400,8 @@ export default function PortfolioSimulationsPage() {
 
           <StaggerGrid className="flex flex-col gap-px">
             {[
+              { label: "Not a job", body: "It is not employment, a paid role, internship, apprenticeship or job placement." },
               { label: "Not a course", body: "No curriculum, no instructor delivering content, no lectures." },
-              { label: "Not a test", body: "Open-ended and realistic — there's no single right answer to tick." },
               { label: "Not a guaranteed pass", body: "If you don't meet the bar, you keep the feedback. That's what makes it credible." },
             ].map(({ label, body }) => (
               <motion.div key={label} variants={cardVariant}>
@@ -396,9 +419,9 @@ export default function PortfolioSimulationsPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          WHAT CB ADDS — 6-item grid
+          WHAT CAREER BRIDGE ADDS
       ════════════════════════════════════════ */}
-      <section className="bg-white py-28 px-6">
+      <section className="bg-warm-grey py-28 px-6">
         <div className="max-w-6xl mx-auto">
           <Reveal className="mb-16">
             <div className="flex items-center gap-3 mb-5">
@@ -427,7 +450,40 @@ export default function PortfolioSimulationsPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          PATHWAYS — featured + coming soon
+          ACCESS AND CREDITS
+      ════════════════════════════════════════ */}
+      <section className="bg-white py-28 px-6">
+        <div className="max-w-6xl mx-auto">
+          <Reveal className="mb-14">
+            <div className="flex items-center gap-3 mb-5">
+              <div className="w-8 h-px bg-accent-teal" />
+              <span className="text-[11px] font-medium uppercase text-accent-teal tracking-[0.2em]">Access and credits</span>
+            </div>
+            <h2 className="text-4xl md:text-[3.5rem] font-bold text-ink leading-[0.95] tracking-[-0.025em] max-w-2xl mb-6">
+              What is free, and what uses credits.
+            </h2>
+            <p className="text-base text-slate leading-[1.75] max-w-2xl">
+              <strong className="text-ink">Programme access is free. AI usage requires credits.</strong> You can
+              apply, create your account and access the programme at no cost. Credits are required when you use
+              AI-powered simulation, evaluation and portfolio-generation features.
+            </p>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <AccessPanels />
+          </Reveal>
+
+          <Reveal delay={0.2}>
+            <Link to="/how-it-works" className="link-animated inline-flex items-center gap-2 mt-12 text-sm font-medium">
+              See the full access model
+              <ArrowIcon />
+            </Link>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════
+          PATHWAYS
       ════════════════════════════════════════ */}
       <section className="relative bg-ink py-28 px-6 overflow-hidden">
         <div className="absolute inset-0 dot-pattern opacity-[0.12] pointer-events-none" />
@@ -444,13 +500,12 @@ export default function PortfolioSimulationsPage() {
             </h2>
           </Reveal>
 
-          {/* Featured pathway card — image placeholder + copy side by side */}
+          {/* Featured pathway card */}
           <Reveal delay={0.1} className="mb-10">
             <div className="relative border border-accent-teal/25 bg-white/[0.03] shadow-[0_0_80px_rgba(13,148,136,0.08)] hover:shadow-[0_0_130px_rgba(13,148,136,0.16)] transition-shadow duration-700 group overflow-hidden">
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent-teal/80 to-transparent" />
 
               <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr]">
-                {/* ── IMAGE PLACEHOLDER — CTI pathway visual ── */}
                 <MediaPlaceholder
                   label="Pathway imagery"
                   type="image"
@@ -460,79 +515,134 @@ export default function PortfolioSimulationsPage() {
                   src="CT1.jpg"
                 />
 
-                {/* Copy */}
                 <div className="p-8 md:p-12 flex flex-col justify-between gap-8">
                   <div>
                     <div className="flex items-center gap-3 mb-5">
                       <span className="w-2 h-2 rounded-full bg-accent-teal" />
                       <span className="text-[11px] font-medium uppercase text-accent-teal tracking-[0.2em]">
-                        Open now · Founding cohort · $299
+                        Open now · Founding cohort
                       </span>
                     </div>
                     <h3 className="text-2xl md:text-3xl font-bold text-white tracking-[-0.02em] mb-4">
                       Cyber Threat Intelligence
                     </h3>
                     <p className="text-sm text-white/40 leading-[1.8] max-w-lg">
-                      Two-week simulation. Expert-validated rubrics. Named-consultant assessment.
-                      Digital credential. Aligned to the UK Cyber Security Council&apos;s Cyber Career Framework.
+                      Turn uncertain information into assessed intelligence someone can act on. Realistic scenario,
+                      expert-designed rubrics, digital credential.
                     </p>
+                    <p className="text-[10px] text-white/20 uppercase tracking-[0.2em] mt-6">Powered by Evidentize</p>
                   </div>
                   <Link
                     to="/portfolio-simulations/cyber-threat-intelligence"
                     className="self-start inline-flex items-center gap-2.5 text-[11px] font-medium uppercase px-8 py-4 tracking-[0.12em] bg-accent-teal text-white hover:bg-accent-teal/90 transition-colors duration-200 whitespace-nowrap"
                   >
                     Explore the pathway
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg>
+                    <ArrowIcon />
                   </Link>
                 </div>
               </div>
             </div>
           </Reveal>
 
-          {/* Coming soon */}
+          {/* In development */}
           <Reveal delay={0.2}>
-            <p className="text-[10px] font-medium uppercase text-white/25 tracking-[0.25em] mb-5">Opening through 2026</p>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-white/[0.04]">
-              {COMING.map(({ name, when }) => (
+            <p className="text-[10px] font-medium uppercase text-white/25 tracking-[0.25em] mb-5">In development</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/[0.04]">
+              {PATHWAYS.map(({ name, body, status }) => (
                 <div key={name} className="p-6 bg-ink border border-white/[0.06] hover:border-white/[0.12] transition-colors duration-300">
-                  <p className="text-[10px] text-white/25 uppercase tracking-[0.15em] mb-2">{when}</p>
-                  <p className="text-sm font-medium text-white/50">{name}</p>
+                  <p className="text-[10px] text-white/25 uppercase tracking-[0.15em] mb-3">{status}</p>
+                  <p className="text-sm font-medium text-white/60 mb-2">{name}</p>
+                  <p className="text-xs text-white/30 leading-[1.6]">{body}</p>
                 </div>
               ))}
             </div>
           </Reveal>
+
+          {/* Combine pathways */}
+          <Reveal delay={0.3} className="mt-14">
+            <p className="text-[10px] font-medium uppercase text-white/25 tracking-[0.25em] mb-5">
+              Build your own experience pathway
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {COMBOS.map(({ from, to, note }) => (
+                <div key={from + to} className="p-6 bg-white/[0.03] border border-white/[0.08]">
+                  <div className="flex items-center flex-wrap gap-3 mb-3">
+                    <span className="text-sm font-medium text-white/70">{from}</span>
+                    <ArrowIcon />
+                    <span className="text-sm font-medium text-white/70">{to}</span>
+                  </div>
+                  <p className="text-xs text-white/30 leading-[1.7]">{note}</p>
+                </div>
+              ))}
+            </div>
+            <p className="text-xs text-white/25 leading-[1.7] mt-5 max-w-xl">
+              Available pathways depend on the simulations currently offered. Participants are not permanently
+              restricted to one discipline.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════
+          FAQ
+      ════════════════════════════════════════ */}
+      <section className="bg-white py-28 px-6">
+        <div className="max-w-4xl mx-auto">
+          <Reveal className="mb-14">
+            <div className="flex items-center gap-3 mb-5">
+              <div className="w-8 h-px bg-accent-teal" />
+              <span className="text-[11px] font-medium uppercase text-accent-teal tracking-[0.2em]">Questions</span>
+            </div>
+            <h2 className="text-4xl md:text-[3rem] font-bold text-ink leading-[0.95] tracking-[-0.025em]">
+              Questions, answered plainly.
+            </h2>
+          </Reveal>
+
+          <StaggerGrid className="flex flex-col divide-y divide-subtle border-t border-b border-subtle">
+            {FAQS.map(({ q, a }) => (
+              <motion.div key={q} variants={cardVariant}>
+                <div className="py-8">
+                  <h3 className="text-lg font-bold text-ink mb-3 leading-snug">{q}</h3>
+                  <p className="text-sm text-slate leading-[1.75] max-w-2xl">{a}</p>
+                </div>
+              </motion.div>
+            ))}
+          </StaggerGrid>
         </div>
       </section>
 
       {/* ════════════════════════════════════════
           CTA
       ════════════════════════════════════════ */}
-      <section className="relative bg-ink py-40 px-6 text-center overflow-hidden">
+      <section className="relative bg-ink py-28 px-6 overflow-hidden">
         <div className="absolute inset-0 dot-pattern opacity-[0.12] pointer-events-none" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] rounded-full bg-accent-teal/[0.07] blur-[130px] pointer-events-none" />
 
-        <Reveal className="relative max-w-3xl mx-auto flex flex-col items-center gap-8">
+        <Reveal className="relative max-w-2xl mx-auto mb-14">
+          <DisclosureFull />
+        </Reveal>
+
+        <Reveal className="relative max-w-3xl mx-auto flex flex-col items-center gap-8 text-center">
           <h2 className="text-4xl md:text-6xl font-bold text-white leading-[0.95] tracking-[-0.025em]">
-            Ready to prove<br />
-            <span className="text-accent-teal">what you can do?</span>
+            Stop telling employers<br />
+            <span className="text-accent-teal">what you can do.</span>
           </h2>
-          <p className="text-base text-white/35 leading-[1.8] max-w-sm">
-            The Cyber Threat Intelligence pathway is open now, with founding cohort places at $299.
-          </p>
-          <Link
-            to="/portfolio-simulations/cyber-threat-intelligence"
-            className="inline-flex items-center gap-3 text-[11px] font-medium uppercase px-10 py-4 tracking-[0.12em] bg-accent-teal text-white hover:bg-accent-teal/90 transition-colors duration-200"
-          >
-            Explore the pathway
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
-          </Link>
-          <p className="text-[10px] text-white/20 uppercase tracking-[0.2em]">
-            Powered by Evidentize · UK Cyber Security Council Cyber Career Framework
-          </p>
+          <AccessLine dark className="text-center mx-auto" />
+          <div className="flex flex-col sm:flex-row gap-4">
+            <Link
+              to="/portfolio-simulations/cyber-threat-intelligence"
+              className="inline-flex items-center justify-center gap-3 text-[11px] font-medium uppercase px-10 py-4 tracking-[0.12em] bg-accent-teal text-white hover:bg-accent-teal/90 transition-colors duration-200"
+            >
+              Explore Work Experience Pathways
+              <ArrowIcon />
+            </Link>
+            <Link
+              to="/apply"
+              className="inline-flex items-center justify-center gap-3 text-[11px] font-medium uppercase px-10 py-4 tracking-[0.12em] border border-white/25 text-white hover:border-white/50 transition-colors duration-200"
+            >
+              Apply Free
+            </Link>
+          </div>
         </Reveal>
       </section>
     </>

@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import ScrollToTop from "@/components/ScrollToTop";
 import { AnimatePresence } from "framer-motion";
 import Layout from "@/components/Layout";
@@ -18,7 +18,7 @@ import SafeguardingPolicy from "@/pages/SafeguardingPolicy";
 import DataProtection from "@/pages/DataProtection";
 import ComplaintsProcedure from "@/pages/ComplaintsProcedure";
 import Policies from "./pages/Policies";
-import PortfolioSimulations from "@/pages/portfolio-simulations/page";
+import SimulationBasedWorkExperience from "@/pages/simulation-based-work-experience/page";
 import CyberThreatIntelligence from "@/pages/portfolio-simulations/cyber-threat-intelligence/page";
 import NotFound from "@/pages/NotFound";
 
@@ -43,7 +43,8 @@ const AnimatedRoutes = () => {
           <Route path="/data-protection" element={<DataProtection />} />
           <Route path="/complaints-procedure" element={<ComplaintsProcedure />} />
           <Route path="/policies" element={<Policies />} />
-          <Route path="/portfolio-simulations" element={<PortfolioSimulations />} />
+          <Route path="/simulation-based-work-experience" element={<SimulationBasedWorkExperience />} />
+          <Route path="/portfolio-simulations" element={<Navigate to="/simulation-based-work-experience" replace />} />
           <Route path="/portfolio-simulations/cyber-threat-intelligence" element={<CyberThreatIntelligence />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

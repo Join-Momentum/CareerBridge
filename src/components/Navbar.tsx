@@ -26,7 +26,8 @@ function PortfolioNavItem({
   const location = useLocation();
 
   const isActive =
-    location.pathname === "/portfolio-simulations" ||
+    location.pathname === "/simulation-based-work-experience" ||
+    location.pathname.startsWith("/simulation-based-work-experience/") ||
     location.pathname.startsWith("/portfolio-simulations/");
 
   const linkClass = `text-[12px] font-sans font-medium uppercase tracking-[0.1em] transition-colors duration-300 ${
@@ -57,7 +58,7 @@ function PortfolioNavItem({
     <div ref={ref} className="relative">
       <div className="flex items-center gap-1">
         {/* Main link */}
-        <Link to="/portfolio-simulations" className={`relative ${linkClass}`}>
+        <Link to="/simulation-based-work-experience" className={`relative ${linkClass}`}>
           Work Experience
           {isActive && (
             <motion.div
@@ -158,7 +159,8 @@ const Navbar = () => {
   const textClasses = isDarkHero ? "text-warm-white" : "text-ink";
 
   const isPortfolioActive =
-    location.pathname === "/portfolio-simulations" ||
+    location.pathname === "/simulation-based-work-experience" ||
+    location.pathname.startsWith("/simulation-based-work-experience/") ||
     location.pathname.startsWith("/portfolio-simulations/");
 
   return (
@@ -303,7 +305,7 @@ const Navbar = () => {
               >
                 <div className="flex items-center gap-2">
                   <Link
-                    to="/portfolio-simulations"
+                    to="/simulation-based-work-experience"
                     onClick={() => setMobileOpen(false)}
                     className={`block py-3 text-2xl font-serif font-medium transition-colors ${
                       isPortfolioActive ? "text-accent-teal" : "text-warm-white/70 hover:text-warm-white"

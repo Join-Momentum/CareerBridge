@@ -4,7 +4,7 @@ import {FaInstagram, FaLinkedin, FaFacebook} from "react-icons/fa";
 const quickLinks = [
   { label: "Home", path: "/" },
   { label: "How It Works", path: "/how-it-works" },
-  { label: "Work Experience", path: "/portfolio-simulations" },
+  { label: "Work Experience", path: "/simulation-based-work-experience" },
   { label: "Partners", path: "/partners" },
   { label: "Governance", path: "/governance" },
   { label: "Apply", path: "/apply" },

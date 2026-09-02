@@ -140,7 +140,7 @@ const HowItWorks = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-10">
-              <Link to="/portfolio-simulations" className="btn-primary-light">
+              <Link to="/simulation-based-work-experience" className="btn-primary-light">
                 Explore Pathways
               </Link>
               <a href="#access" className="btn-secondary-light">
@@ -287,7 +287,7 @@ const HowItWorks = () => {
                 </h2>
               </div>
               <div className="flex flex-col sm:flex-row gap-4 shrink-0">
-                <Link to="/portfolio-simulations" className="btn-primary">
+                <Link to="/simulation-based-work-experience" className="btn-primary">
                   Explore Work Experience
                 </Link>
                 <Link to="/apply" className="btn-secondary">
