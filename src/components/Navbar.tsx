@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
   { label: "How It Works", path: "/how-it-works" },
-  { label: "For Organisations", path: "/partners" },
+  { label: "Sponsor a Cohort", path: "/sponsor-a-cohort" },
   { label: "Governance", path: "/governance" },
   { label: "Contact", path: "/contact" },
 ];
@@ -53,8 +53,8 @@ function PortfolioNavItem() {
     <div ref={ref} className="relative">
       <div className="flex items-center gap-1">
         {/* Main link */}
-        <Link to="/simulation-based-work-experience" className={`relative ${linkClass}`}>
-          Work Experience
+        <Link to="/simulation-based-work-experience" className={`relative whitespace-nowrap ${linkClass}`}>
+          Simulation-Based Work Experience
           {isActive && (
             <motion.div
               layoutId="nav-indicator"
@@ -278,11 +278,11 @@ const Navbar = () => {
                   <Link
                     to="/simulation-based-work-experience"
                     onClick={() => setMobileOpen(false)}
-                    className={`block py-3 text-2xl font-serif font-medium transition-colors ${
+                    className={`block py-3 text-2xl font-serif font-medium transition-colors text-center max-w-[280px] ${
                       isPortfolioActive ? "text-accent-teal" : "text-warm-white/70 hover:text-warm-white"
                     }`}
                   >
-                    Work Experience
+                    Simulation-Based Work Experience
                   </Link>
                   <button
                     onClick={() => setMobilePortfolioOpen((o) => !o)}
