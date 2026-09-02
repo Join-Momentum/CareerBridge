@@ -13,6 +13,22 @@ const GAP_LADDER = [
   { step: "Stage 04", title: "Producing verifiable evidence", body: "Assessed work outputs, competency scoring and developmental feedback, published as a portfolio others can examine.", live: true },
 ];
 
+const WHAT_IT_MEANS = [
+  { lead: null, body: "Each simulation places you inside a workplace scenario with a professional brief and a set of defined Jobs to Be Done. You analyse the information available, weigh incomplete or competing evidence, make professional decisions, and produce the work outputs a practitioner would actually be expected to deliver." },
+  { lead: null, body: "Your submitted work is then assessed against defined competency rubrics, scored at competency level and returned with developmental feedback. What you produced becomes an editable artefact in a digital career portfolio you own and can share." },
+  { lead: "This is not passive theoretical training.", body: "Participants develop practical experience and produce evidence demonstrating what they can do, how they approached the work and how they performed." },
+];
+
+const JOURNEY = [
+  { n: "01", phase: "Join", mode: "Free", title: "Apply", body: "Explore the pathways, submit a free application and choose a primary discipline." },
+  { n: "02", phase: "Join", mode: "Free", title: "Qualify", body: "Your application is reviewed and validated. There is no charge to be considered." },
+  { n: "03", phase: "Join", mode: "Free", title: "Onboard", body: "Create your account, complete programme paperwork and access the platform at no cost." },
+  { n: "04", phase: "Prove", mode: "Uses credits", title: "Simulate", body: "Begin AI-powered workplace simulations. This is the point at which credits become necessary." },
+  { n: "05", phase: "Prove", mode: "Uses credits", title: "Evaluate", body: "Submitted work is processed and evaluated by AI-powered competency assessment using expert-designed or expert-validated rubrics." },
+  { n: "06", phase: "Progress", mode: "Uses credits", title: "Build evidence", body: "AI-powered portfolio generation turns your assessed work into editable artefacts and published evidence." },
+  { n: "07", phase: "Progress", mode: "Free", title: "Progress", body: "Share your digital career portfolio with employers, recruiters and professional networks." },
+];
+
 const STEPS = [
   { n: "01", title: "Read the brief", body: "A realistic scenario from the role. Context and constraints — no hand-holding." },
   { n: "02", title: "Do the work", body: "Produce the artefacts the job actually produces. No hints. No lectures." },
@@ -44,6 +60,53 @@ const CB_ADDS = [
   { title: "Social enterprise mission", body: "Career Bridge operates as a Community Interest Company for public benefit." },
 ];
 
+const IS_LIST = [
+  "Applied work experience through simulation",
+  "Practical and evidence-focused",
+  "Based on realistic professional scenarios",
+  "Assessed using defined competency rubrics",
+  "Designed to produce portfolio evidence",
+];
+
+const IS_NOT_LIST = [
+  "Employment",
+  "A paid role",
+  "An internship",
+  "An apprenticeship",
+  "A placement",
+  "A guaranteed job",
+  "Passive theoretical training",
+  "A guaranteed pass",
+];
+
+const RECEIVES = [
+  { name: "Workplace scenario brief", note: "The full situation, context and stakeholders you are working within." },
+  { name: "Defined Jobs to Be Done", note: "Explicit professional responsibilities, not open-ended exercises." },
+  { name: "Structured task set", note: "A sequenced set of tasks with simulation guidance and assistance." },
+  { name: "AI Simulation Assistant", note: "Support while you work, without doing the thinking for you." },
+  { name: "Competency assessment", note: "AI-powered assessment using expert-designed or expert-validated rubrics." },
+  { name: "Competency-level scoring", note: "Results broken down by individual competency, not a single grade." },
+  { name: "Developmental feedback", note: "Detailed written feedback on how you approached and performed the work." },
+  { name: "Readiness Score", note: "An indicator of demonstrated readiness against the simulation's competencies." },
+  { name: "AI Voice Debrief", note: "A spoken debrief of your performance, as a practitioner would receive." },
+  { name: "Editable portfolio artefact", note: "Partner-agnostic and yours to refine — the work output stays with you." },
+  { name: "Evidence publication", note: "Publish completed work into your digital career portfolio." },
+  { name: "Digital credential", note: "A credential issued on completion of an assessed simulation." },
+  { name: "CV evidence support", note: "Help turning assessed work into specific, defensible CV content." },
+  { name: "LinkedIn evidence support", note: "Help presenting your evidence on professional networks." },
+  { name: "Office hours, support and community", note: "Programme support and a participant community, where offered." },
+];
+
+const WHO_FOR = [
+  "Aspiring professionals",
+  "Graduates",
+  "Career changers",
+  "Career returners",
+  "Developing professionals",
+  "Professionals seeking evidence of capability in a new discipline",
+  "People who hold qualifications but lack credible evidence of applied experience",
+];
+
 const PATHWAYS = [
   { slug: "product-management", name: "Product Management", body: "Define the problem, weigh the trade-offs and decide what gets built.", status: "In development" },
   { slug: "project-management", name: "Project Management", body: "Plan delivery, control risk and report honestly when the plan slips.", status: "In development" },
@@ -52,8 +115,10 @@ const PATHWAYS = [
 ];
 
 const COMBOS = [
-  { from: "Business Analysis", to: "Product Management", note: "Add outcome ownership and prioritisation to analytical depth." },
-  { from: "Cyber Threat Intelligence", to: "Cyber Governance and Risk", note: "Extend analytical intelligence work into governance and risk." },
+  { nodes: ["Project Management", "Business Analysis", "Product Management"], note: "Delivery to definition to direction." },
+  { nodes: ["Virtual Administrative Assistant", "Project Coordination", "Project Management"], note: "Operational support into delivery ownership." },
+  { nodes: ["Business Analysis", "Product Management"], note: "From requirements to outcomes and prioritisation." },
+  { nodes: ["Cyber Threat Intelligence", "Cyber Governance and Risk"], note: "From analysis to organisational risk decisions." },
 ];
 
 const FAQS = [
@@ -72,6 +137,26 @@ const FAQS = [
   {
     q: "Does participation guarantee employment?",
     a: "No. Participation does not guarantee employment, interviews, recruitment outcomes or earnings. The programme enables participants to practise professional work, demonstrate applied capability and build credible evidence of what they can do.",
+  },
+  {
+    q: "What happens after I am accepted?",
+    a: "You complete onboarding and programme paperwork and get access to the platform, all at no cost. You then decide whether you want to begin AI-powered workplace simulations, which is the point at which credits are required. If you choose not to continue, nothing is owed.",
+  },
+  {
+    q: "Do I have to buy credits to be accepted?",
+    a: "No. Applying or being accepted does not create an obligation to purchase credits. Acceptance and programme access are free; credits become relevant only when you choose to begin AI-powered simulation and evaluation.",
+  },
+  {
+    q: "What if I never buy credits?",
+    a: "You keep your free programme access. You can explore the platform and the available pathways; you simply will not have run any AI-powered simulations, so there will be no assessed work or portfolio evidence to show.",
+  },
+  {
+    q: "Can I complete simulations in more than one discipline?",
+    a: "Yes. Participants are not permanently restricted to one discipline. Subject to the simulations available at the time, you may complete assessed workplace simulations across multiple pathways and progressively build multidisciplinary evidence.",
+  },
+  {
+    q: "What support is available?",
+    a: "Participants receive simulation guidance and the AI Simulation Assistant while working, plus access to office hours, programme support and the participant community, where offered.",
   },
 ];
 
@@ -190,9 +275,76 @@ export default function SimulationBasedWorkExperiencePage() {
       </section>
 
       {/* ════════════════════════════════════════
-          HOW IT WORKS — 4 steps
+          WHAT IT MEANS
       ════════════════════════════════════════ */}
       <section className="bg-warm-grey py-28 px-6">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+          <Reveal>
+            <div className="flex items-center gap-3 mb-5">
+              <div className="w-8 h-px bg-accent-teal" />
+              <span className="text-[11px] font-medium uppercase text-accent-teal tracking-[0.2em]">What it means</span>
+            </div>
+            <h2 className="text-4xl md:text-[3rem] font-bold text-ink leading-[1.02] tracking-[-0.025em] max-w-md">
+              The work, not just a course about the work.
+            </h2>
+          </Reveal>
+          <Reveal delay={0.1} className="flex flex-col gap-5">
+            {WHAT_IT_MEANS.map(({ lead, body }, i) => (
+              <p key={i} className="text-base text-slate leading-[1.75]">
+                {lead && <strong className="text-ink">{lead} </strong>}
+                {body}
+              </p>
+            ))}
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════
+          JOIN · PROVE · PROGRESS — the seven-stage journey
+      ════════════════════════════════════════ */}
+      <section className="relative bg-ink py-28 px-6 overflow-hidden">
+        <div className="absolute inset-0 dot-pattern opacity-[0.12] pointer-events-none" />
+        <div className="relative max-w-6xl mx-auto">
+          <Reveal className="mb-16">
+            <div className="flex items-center gap-3 mb-5">
+              <div className="w-8 h-px bg-accent-teal" />
+              <span className="text-[11px] font-medium uppercase text-accent-teal tracking-[0.2em]">The programme journey</span>
+            </div>
+            <h2 className="text-4xl md:text-[3.5rem] font-bold text-white leading-[0.95] tracking-[-0.025em] mb-5">
+              Join. Prove. Progress.
+            </h2>
+            <p className="text-base text-white/40 leading-[1.7] max-w-2xl">
+              Seven stages, grouped into the three that matter. Apply, qualify and onboard at no cost; credits are
+              required from the point you begin using AI-powered functionality.
+            </p>
+          </Reveal>
+
+          <StaggerGrid className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {JOURNEY.map(({ n, phase, mode, title, body }) => (
+              <motion.div key={n} variants={cardVariant}>
+                <div className="p-6 bg-white/[0.03] border border-white/[0.08] h-full flex flex-col">
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-xs font-mono text-white/30">{n}</span>
+                    <span className="text-[10px] font-medium uppercase tracking-[0.12em] text-white/40 border border-white/[0.12] rounded-sm px-2 py-1">
+                      {phase}
+                    </span>
+                  </div>
+                  <h3 className="text-base font-bold text-white mb-2">{title}</h3>
+                  <p className="text-sm text-white/40 leading-[1.65] mb-5">{body}</p>
+                  <p className={`mt-auto text-[10px] font-medium uppercase tracking-[0.12em] ${mode === "Free" ? "text-accent-teal" : "text-white/50"}`}>
+                    {mode}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </StaggerGrid>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════
+          HOW IT WORKS — 4 steps
+      ════════════════════════════════════════ */}
+      <section className="bg-white py-28 px-6">
         <div className="max-w-6xl mx-auto">
           <Reveal className="mb-16">
             <div className="flex items-center gap-3 mb-5">
@@ -255,7 +407,7 @@ export default function SimulationBasedWorkExperiencePage() {
       </section>
 
       {/* ════════════════════════════════════════
-          WHAT IT ISN'T
+          WHAT IT IS / IS NOT
       ════════════════════════════════════════ */}
       <section className="bg-white py-28 px-6">
         <div className="max-w-6xl mx-auto">
@@ -265,27 +417,38 @@ export default function SimulationBasedWorkExperiencePage() {
               <span className="text-[11px] font-medium uppercase text-accent-teal tracking-[0.2em]">Clarity</span>
             </div>
             <h2 className="text-4xl md:text-[3.5rem] font-bold text-ink leading-[0.95] tracking-[-0.025em]">
-              What it isn&apos;t.
+              What the programme is, and is not.
             </h2>
           </Reveal>
 
-          <StaggerGrid className="flex flex-col gap-px">
-            {[
-              { label: "Not a job", body: "It is not employment, a paid role, internship, apprenticeship or job placement." },
-              { label: "Not a course", body: "No curriculum, no instructor delivering content, no lectures." },
-              { label: "Not a guaranteed pass", body: "If you don't meet the bar, you keep the feedback. That's what makes it credible." },
-            ].map(({ label, body }) => (
-              <motion.div key={label} variants={cardVariant}>
-                <div className="bg-white flex flex-col md:flex-row md:items-center gap-4 md:gap-12 p-8 md:p-10 group hover:border-l-2 hover:border-accent-teal hover:pl-[calc(2rem-2px)] md:hover:pl-[calc(2.5rem-2px)] transition-all duration-300">
-                  <span className="text-2xl md:text-3xl font-bold text-ink/[0.1] uppercase tracking-[-0.01em] md:min-w-56 shrink-0 group-hover:text-ink/20 transition-colors duration-300">
-                    {label}.
-                  </span>
-                  <p className="text-sm text-slate leading-[1.75]">{body}</p>
-                  <div className="md:ml-auto shrink-0 w-1.5 h-1.5 rounded-full bg-accent-teal opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
-              </motion.div>
-            ))}
-          </StaggerGrid>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Reveal>
+              <div className="border-2 border-accent-teal p-8 md:p-10 h-full">
+                <p className="text-[11px] font-medium uppercase tracking-[0.15em] text-accent-teal mb-6">It is</p>
+                <ul className="space-y-4">
+                  {IS_LIST.map((item) => (
+                    <li key={item} className="flex items-start gap-3 text-base text-ink leading-relaxed border-t border-subtle pt-4 first:border-0 first:pt-0">
+                      <span className="mt-1 text-accent-teal font-bold shrink-0">✓</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <div className="border border-subtle bg-warm-grey p-8 md:p-10 h-full">
+                <p className="text-[11px] font-medium uppercase tracking-[0.15em] text-slate mb-6">It is not</p>
+                <ul className="space-y-4">
+                  {IS_NOT_LIST.map((item) => (
+                    <li key={item} className="flex items-start gap-3 text-base text-slate leading-relaxed border-t border-subtle pt-4 first:border-0 first:pt-0">
+                      <span className="mt-1 text-slate/60 font-bold shrink-0">✕</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
+          </div>
         </div>
       </section>
 
@@ -317,6 +480,68 @@ export default function SimulationBasedWorkExperiencePage() {
               </motion.div>
             ))}
           </StaggerGrid>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════
+          WHAT PARTICIPANTS RECEIVE
+      ════════════════════════════════════════ */}
+      <section className="bg-white py-28 px-6">
+        <div className="max-w-6xl mx-auto">
+          <Reveal className="mb-16">
+            <div className="flex items-center gap-3 mb-5">
+              <div className="w-8 h-px bg-accent-teal" />
+              <span className="text-[11px] font-medium uppercase text-accent-teal tracking-[0.2em]">What participants receive</span>
+            </div>
+            <h2 className="text-4xl md:text-[3.5rem] font-bold text-ink leading-[0.95] tracking-[-0.025em] max-w-2xl mb-6">
+              Everything included in an activated simulation.
+            </h2>
+            <p className="text-base text-slate leading-[1.75] max-w-2xl">
+              One credit activates one complete workplace simulation. Each includes all of the following.
+            </p>
+          </Reveal>
+
+          <StaggerGrid className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-subtle border border-subtle">
+            {RECEIVES.map(({ name, note }) => (
+              <motion.div key={name} variants={cardVariant}>
+                <div className="bg-white p-7 h-full">
+                  <h3 className="text-sm font-bold text-ink mb-2 leading-snug">{name}</h3>
+                  <p className="text-xs text-slate leading-[1.6]">{note}</p>
+                </div>
+              </motion.div>
+            ))}
+          </StaggerGrid>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════
+          WHO IT'S FOR
+      ════════════════════════════════════════ */}
+      <section className="relative bg-ink py-28 px-6 overflow-hidden">
+        <div className="absolute inset-0 dot-pattern opacity-[0.1] pointer-events-none" />
+        <div className="relative max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+          <Reveal>
+            <div className="flex items-center gap-3 mb-5">
+              <div className="w-8 h-px bg-accent-teal" />
+              <span className="text-[11px] font-medium uppercase text-accent-teal tracking-[0.2em]">Who this is for</span>
+            </div>
+            <h2 className="text-3xl md:text-[2.75rem] font-bold text-white leading-[1.05] tracking-[-0.02em] mb-5">
+              Designed for people who need to show, not tell.
+            </h2>
+            <p className="text-base text-white/40 leading-[1.7] max-w-md">
+              If you have the capability but nothing an employer can inspect, the programme is built for you.
+            </p>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8">
+              {WHO_FOR.map((item) => (
+                <li key={item} className="flex items-start gap-3 py-3 border-t border-white/10 text-sm text-white/60 leading-relaxed">
+                  <span className="text-accent-teal shrink-0 mt-0.5">✓</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </Reveal>
         </div>
       </section>
 
@@ -441,12 +666,15 @@ export default function SimulationBasedWorkExperiencePage() {
               Build your own experience pathway
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {COMBOS.map(({ from, to, note }) => (
-                <div key={from + to} className="p-6 bg-white/[0.03] border border-white/[0.08]">
+              {COMBOS.map(({ nodes, note }) => (
+                <div key={nodes.join("→")} className="p-6 bg-white/[0.03] border border-white/[0.08]">
                   <div className="flex items-center flex-wrap gap-3 mb-3">
-                    <span className="text-sm font-medium text-white/70">{from}</span>
-                    <ArrowIcon />
-                    <span className="text-sm font-medium text-white/70">{to}</span>
+                    {nodes.map((node, i) => (
+                      <span key={node} className="flex items-center gap-3">
+                        <span className="text-sm font-medium text-white/70">{node}</span>
+                        {i < nodes.length - 1 && <ArrowIcon />}
+                      </span>
+                    ))}
                   </div>
                   <p className="text-xs text-white/30 leading-[1.7]">{note}</p>
                 </div>
