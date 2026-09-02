@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import PageTransition from "@/components/PageTransition";
 import AnimatedSection, { StaggerContainer, StaggerItem } from "@/components/AnimatedSection";
 
@@ -139,6 +140,18 @@ const Governance = () => {
               </StaggerItem>
             ))}
           </StaggerContainer>
+
+          <AnimatedSection delay={0.15}>
+            <p className="text-body text-slate leading-relaxed max-w-content mt-12 font-sans">
+              Governance documentation, our conflict-of-interest policy, and the commercial basis between Career
+              Bridge Foundation and its technology and delivery partners are available to prospective partners and
+              sponsors as part of due diligence.{" "}
+              <Link to="/contact" className="text-ink font-medium border-b border-accent-teal hover:text-accent-teal transition-colors duration-300">
+                Contact us
+              </Link>{" "}
+              to request them.
+            </p>
+          </AnimatedSection>
         </div>
       </section>
 
