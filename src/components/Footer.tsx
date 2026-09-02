@@ -130,11 +130,16 @@ const Footer = () => {
 
         {/* Legal bar */}
         <div className="border-t border-cool/10 pt-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-          <p className="text-xs text-cool/40 font-sans">
-            © {new Date().getFullYear()} Career Bridge Foundation CIC. All rights reserved.
-          </p>
-          <p className="text-xs text-cool/40 font-sans">
-            Registered Company Number: 16939467
+          <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4">
+            <p className="text-xs text-cool/40 font-sans">
+              © {new Date().getFullYear()} Career Bridge Foundation CIC. All rights reserved.
+            </p>
+            <p className="text-xs text-cool/40 font-sans">
+              Registered Company Number: 16939467
+            </p>
+          </div>
+          <p className="font-mono text-xs tracking-wide text-cool/40">
+            Powered by <strong className="text-cool font-medium">Evidentize</strong>
           </p>
         </div>
       </div>
