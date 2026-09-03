@@ -19,8 +19,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
-        serif: ["Source Serif 4", "Georgia", "serif"],
+        sans: ["Public Sans", "system-ui", "sans-serif"],
+        serif: ["Newsreader", "Georgia", "serif"],
         mono: ["IBM Plex Mono", "ui-monospace", "monospace"],
       },
       fontSize: {
