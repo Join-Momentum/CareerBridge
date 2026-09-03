@@ -129,17 +129,21 @@ const Footer = () => {
         </div>
 
         {/* Legal bar */}
-        <div className="border-t border-cool/10 pt-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-          <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4">
-            <p className="text-xs text-cool/40 font-sans">
-              © {new Date().getFullYear()} Career Bridge Foundation CIC. All rights reserved.
-            </p>
-            <p className="text-xs text-cool/40 font-sans">
-              Registered Company Number: 16939467
-            </p>
-          </div>
-          <p className="font-mono text-xs tracking-wide text-cool/40">
-            Powered by <strong className="text-cool font-medium">Evidentize</strong>
+        <div className="border-t border-cool/10 pt-8 space-y-4">
+          <p className="text-xs text-cool/50 font-sans leading-relaxed max-w-3xl">
+            Career Bridge Foundation delivers work experience through simulation. It is not employment, a paid
+            role, an internship, an apprenticeship or a job placement, and participation does not guarantee
+            employment or recruitment outcomes.
+          </p>
+          <p className="text-xs text-cool/40 font-sans">
+            Career Bridge Foundation is the public-facing name of Career Bridge CIC · Community Interest Company
+            registered in England and Wales · Company Number 16939467 ·{" "}
+            <Link
+              to="/contact"
+              className="text-cool/40 hover:text-warm-white underline underline-offset-2 transition-colors duration-300"
+            >
+              Contact us
+            </Link>
           </p>
         </div>
       </div>
