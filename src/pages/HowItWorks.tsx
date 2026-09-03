@@ -59,6 +59,13 @@ const journey = [
   },
 ];
 
+const creditSteps = [
+  { n: "01", title: "Read the brief", body: "A realistic scenario from the role. Context and constraints — no hand-holding." },
+  { n: "02", title: "Do the work", body: "Produce the artefacts the job actually produces. No hints. No lectures." },
+  { n: "03", title: "Get assessed", body: "Submit your work for AI-powered competency assessment using expert-designed or expert-validated rubrics." },
+  { n: "04", title: "Own the evidence", body: "Artefacts, scores, commentary, credential — all yours to keep and share." },
+];
+
 const pillars = [
   {
     icon: (
@@ -212,6 +219,83 @@ const HowItWorks = () => {
 
           <AnimatedSection delay={0.1}>
             <AccessPanels />
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* ── WHAT CREDITS ENABLE ──────────────────────────────────────── */}
+      <section className="relative bg-ink overflow-hidden">
+        <div className="absolute inset-0 grid-pattern pointer-events-none" />
+        <div className="page-container relative z-10 section-spacing">
+          <AnimatedSection>
+            <div className="flex items-center gap-4 mb-8">
+              <div className="w-10 h-0.5 bg-accent-teal" />
+              <p className="text-label font-sans uppercase text-accent-teal">What Credits Enable</p>
+            </div>
+            <h2 className="font-serif text-display-sm md:text-display font-semibold text-warm-white mb-6 max-w-2xl leading-tight">
+              The infrastructure your evidence runs on
+            </h2>
+            <p className="text-body text-cool leading-relaxed max-w-content mb-14 font-sans">
+              Credits give you access to the AI-powered simulation, evaluation and evidence infrastructure provided
+              by Evidentize, the technology platform behind the programme.
+            </p>
+          </AnimatedSection>
+
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {creditSteps.map((step) => (
+              <StaggerItem key={step.n}>
+                <div className="bg-ink-light border border-white/10 p-8 h-full flex flex-col">
+                  <span className="font-mono text-xs uppercase tracking-[0.15em] text-accent-teal mb-4 block">
+                    Step {step.n}
+                  </span>
+                  <h3 className="font-serif text-lg font-semibold text-warm-white mb-3 leading-snug">{step.title}</h3>
+                  <p className="text-sm text-cool leading-relaxed font-sans">{step.body}</p>
+                </div>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+        </div>
+      </section>
+
+      {/* ── ACCESS MODEL AT A GLANCE ─────────────────────────────────── */}
+      <section className="section-spacing bg-warm-white border-t border-subtle">
+        <div className="page-container">
+          <AnimatedSection>
+            <div className="max-w-2xl mx-auto border border-subtle bg-white">
+              <div className="flex items-center justify-between px-6 md:px-8 py-4 bg-warm-grey border-b border-subtle">
+                <span className="text-[10px] font-sans font-semibold uppercase tracking-[0.15em] text-slate">
+                  Access Model
+                </span>
+                <span className="text-[10px] font-sans font-semibold uppercase tracking-[0.15em] text-slate">
+                  At A Glance
+                </span>
+              </div>
+              <div className="px-6 md:px-8 pt-8 pb-4">
+                <h3 className="font-serif text-2xl md:text-3xl font-semibold text-ink leading-snug mb-3">
+                  Programme access is free.
+                  <br />
+                  AI usage requires credits.
+                </h3>
+                <p className="text-sm text-slate font-sans">No surprises · no hidden commercial mechanics</p>
+              </div>
+              <ul className="px-6 md:px-8 pb-6">
+                {journey.map((stage) => (
+                  <li
+                    key={stage.num}
+                    className="flex items-center justify-between py-3 border-t border-subtle first:border-0"
+                  >
+                    <span className="text-sm font-sans text-ink">{stage.title}</span>
+                    <span
+                      className={`text-xs font-sans font-semibold uppercase tracking-[0.1em] ${
+                        stage.mode === "Free" ? "text-accent-blue" : "text-slate"
+                      }`}
+                    >
+                      {stage.mode === "Free" ? "Free" : "Credits"}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </AnimatedSection>
         </div>
       </section>

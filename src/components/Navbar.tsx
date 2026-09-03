@@ -127,7 +127,7 @@ function PortfolioNavItem() {
 // pattern in the supplied brand HTML (rgba navy + backdrop-filter,
 // opaque once scrolled) rather than switching light/dark per page.
 
-const Navbar = () => {
+const Navbar = ({ offsetTop = 0 }: { offsetTop?: number }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobilePortfolioOpen, setMobilePortfolioOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -153,7 +153,8 @@ const Navbar = () => {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300 ${
+        style={{ top: offsetTop }}
+        className={`fixed left-0 right-0 z-50 border-b transition-[top,background-color,box-shadow] duration-300 ${
           scrolled
             ? "bg-ink-deep border-white/[0.09] shadow-[0_10px_30px_-18px_rgba(0,0,0,0.9)]"
             : "bg-ink/[0.88] backdrop-blur-md backdrop-saturate-150 border-white/[0.09]"
