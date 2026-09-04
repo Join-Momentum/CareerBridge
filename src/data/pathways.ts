@@ -14,6 +14,69 @@
  * treated as final copy.
  */
 
+export interface PathwaySituation {
+  ref: string;
+  title: string;
+  body: string;
+}
+
+export interface PathwayArtefactItem {
+  ref: string;
+  name: string;
+}
+
+export interface PathwayAssessCriterion {
+  n: string;
+  title: string;
+  body: string;
+}
+
+export interface PathwayJourneyStage {
+  phase: "Join" | "Prove" | "Progress";
+  ordinal: string;
+  title: string;
+  body: string;
+  items: string[];
+}
+
+export interface PathwayFAQItem {
+  q: string;
+  a: string;
+}
+
+export interface PathwayAudience {
+  title: string;
+  body: string;
+}
+
+/**
+ * Full per-pathway page content, sourced from the real reference page for
+ * that discipline. Only populated once a discipline's own reference page
+ * has been supplied — until then PathwayPage falls back to the shorter
+ * generic fields above rather than inventing this level of detail.
+ */
+export interface PathwayRich {
+  badge: string;
+  heroHeadline: string;
+  heroLede: string;
+  who: PathwayAudience[];
+  experienceLede: string[];
+  processHeading: string;
+  process: { n: string; title: string; body: string }[];
+  situationsIntro: string;
+  situationsRich: PathwaySituation[];
+  jtbd: string[];
+  artefactsRich: PathwayArtefactItem[];
+  competenciesLede: string;
+  assessmentLede: string;
+  assessment: PathwayAssessCriterion[];
+  assessmentClosing: string;
+  journey: PathwayJourneyStage[];
+  costSubLede: string;
+  faqRich: PathwayFAQItem[];
+  ctaLede: string;
+}
+
 export interface PathwayContent {
   slug: string;
   name: string;
@@ -24,6 +87,7 @@ export interface PathwayContent {
   artefacts: string[];
   competencies: string[];
   status: "Open now" | "In development";
+  rich?: PathwayRich;
 }
 
 export const pathways: Record<string, PathwayContent> = {
@@ -41,8 +105,122 @@ export const pathways: Record<string, PathwayContent> = {
       "Write a product decision record justifying a call made under uncertainty",
     ],
     artefacts: ["Opportunity assessment", "Product strategy", "Prioritisation rationale", "Product decision record"],
-    competencies: ["Problem framing", "Prioritisation", "Stakeholder communication", "Decision-making under uncertainty"],
+    competencies: [
+      "Discovery",
+      "Strategic thinking",
+      "User focus",
+      "Prioritisation",
+      "Evidence-based decision-making",
+      "Stakeholder management",
+      "Commercial awareness",
+      "Communication",
+    ],
     status: "In development",
+    rich: {
+      badge: "Founding Cohort 2026 · Applications open",
+      heroHeadline: "Prove Your Product Management Capability Through Workplace Simulations",
+      heroLede:
+        "Product roles are won on judgement, not vocabulary. Complete assessed workplace simulations where you define the problem, weigh the trade-offs, choose what gets built and defend the decision — then publish the evidence.",
+      who: [
+        { title: "Aspiring product managers", body: "You understand the frameworks but have never had to apply them to a live problem with real constraints." },
+        { title: "Business analysts and delivery professionals", body: "You want to demonstrate outcome ownership and prioritisation judgement, not only requirements and delivery." },
+        { title: "Founders, marketers and designers moving into product", body: "You have adjacent experience and need evidence that translates into product language." },
+        { title: "Practising product managers", body: "You want assessed evidence of discovery, strategy and trade-off decisions beyond what your current role puts in writing." },
+      ],
+      experienceLede: [
+        "Each simulation opens with a workplace scenario: an organisation, a product, a set of stakeholders with competing interests and a situation that needs a decision. The organisations, products and people are fictional or representative. The professional problem is not.",
+        "You are given a brief and a defined set of Jobs to Be Done. You work through the evidence available to you, decide what matters, produce the work outputs a product manager would actually produce, and submit them for competency-based assessment.",
+        "There is rarely one correct answer. The assessment looks at the quality of your reasoning, the fit between your evidence and your conclusion, and how clearly you communicate a decision somebody else has to act on.",
+      ],
+      processHeading: "How each simulation runs",
+      process: [
+        { n: "01", title: "Read the brief", body: "You receive a workplace scenario, the product management context, the stakeholders and a defined set of Jobs to Be Done." },
+        { n: "02", title: "Do the work", body: "You analyse the information, make professional decisions and produce the work outputs the role actually produces. The AI Simulation Assistant is available throughout." },
+        { n: "03", title: "Get assessed", body: "You submit your work for AI and rubric-based competency assessment, and receive competency-level scoring, developmental feedback, a Readiness Score and an AI Voice Debrief." },
+        { n: "04", title: "Own the evidence", body: "Your artefact is editable, partner-agnostic and yours to publish, edit and share — without a time limit." },
+      ],
+      situationsIntro:
+        "Representative examples of the professional situations covered in this pathway. Organisations, stakeholders and data within simulations may be fictional, synthetic or representative of real professional environments.",
+      situationsRich: [
+        { ref: "Situation PM-01", title: "The feature nobody uses", body: "A feature launched last quarter has poor adoption and a vocal minority of supporters. You have usage data, support tickets and two conflicting internal opinions. Decide whether to invest, iterate or retire — and make the case." },
+        { ref: "Situation PM-02", title: "Two stakeholders, one quarter", body: "Sales has committed to an enterprise capability. Support wants work that would reduce ticket volume. Engineering capacity covers roughly one of them. Prioritise, justify the trade-off and communicate the decision to the party who did not get their way." },
+        { ref: "Situation PM-03", title: "A vague executive ambition", body: "An executive sponsor wants the product to “do something with AI”. Convert an ambition into a defined user and business problem, an opportunity assessment, a testable hypothesis and a recommendation on whether to proceed." },
+        { ref: "Situation PM-04", title: "Discovery in an unfamiliar segment", body: "The organisation is considering an adjacent customer segment it does not understand. Plan the discovery, structure stakeholder and user interviews, synthesise what you learn and define the outcome you would commit to." },
+      ],
+      jtbd: [
+        "Define the user problem and the business problem separately, then connect them",
+        "Plan and structure stakeholder and user interviews",
+        "Assess an opportunity and size it against available evidence",
+        "Set a product vision and a strategy that follows from it",
+        "Define the outcome and the measures that will show it has been achieved",
+        "Prioritise competing work and record the reasoning",
+        "Make and communicate a roadmap decision under constraint",
+        "Shape and order a product backlog",
+        "Write hypotheses and design an experiment to test them",
+        "Analyse product performance and decide what it implies",
+        "Communicate a recommendation to stakeholders who disagree",
+        "Make an explicit product trade-off and own it in writing",
+      ],
+      artefactsRich: [
+        { ref: "PM-01", name: "Product vision" },
+        { ref: "PM-02", name: "Problem statement" },
+        { ref: "PM-03", name: "Opportunity assessment" },
+        { ref: "PM-04", name: "Product strategy" },
+        { ref: "PM-05", name: "Prioritisation rationale" },
+        { ref: "PM-06", name: "Product roadmap" },
+        { ref: "PM-07", name: "User story map" },
+        { ref: "PM-08", name: "Product backlog" },
+        { ref: "PM-09", name: "Experiment plan" },
+        { ref: "PM-10", name: "Success metrics" },
+        { ref: "PM-11", name: "Stakeholder recommendation" },
+        { ref: "PM-12", name: "Product decision record" },
+      ],
+      competenciesLede:
+        "Competencies are scored at competency level against defined rubrics, so your portfolio shows where you are strong and where you are still developing.",
+      assessmentLede:
+        "AI-powered competency assessment using expert-designed or expert-validated rubrics. Assessment is applied consistently against defined criteria, and completing a simulation does not guarantee a pass.",
+      assessment: [
+        { n: "Criterion 01", title: "Is the problem actually defined?", body: "Rubrics look for a problem statement grounded in the evidence in the brief, with the user problem and the business problem distinguished rather than merged." },
+        { n: "Criterion 02", title: "Does the decision follow from the evidence?", body: "Prioritisation and trade-off outputs are assessed on whether the reasoning is traceable — not on whether you reached the option the scenario author preferred." },
+        { n: "Criterion 03", title: "Could a stakeholder act on this?", body: "Communication outputs are assessed for clarity, structure and whether a reader who was not in your head could act on the recommendation." },
+      ],
+      assessmentClosing:
+        "You receive competency-level scoring, detailed developmental feedback, a Readiness Score and an AI Voice Debrief for every completed simulation.",
+      journey: [
+        {
+          phase: "Join",
+          ordinal: "Stage 1 of 3",
+          title: "Apply free for this pathway",
+          body: "Submit a free application and select Product Management as your primary discipline. Programme access is free and carries no obligation to purchase credits.",
+          items: ["Free application", "Founding Cohort 2026", "No obligation to purchase credits"],
+        },
+        {
+          phase: "Prove",
+          ordinal: "Stage 2 of 3",
+          title: "Complete assessed product management simulations",
+          body: "Work through realistic professional briefs, produce the work outputs the discipline is judged on and submit them for competency-based assessment.",
+          items: ["Realistic workplace scenarios", "Defined Jobs to Be Done", "Competency scoring and developmental feedback"],
+        },
+        {
+          phase: "Progress",
+          ordinal: "Stage 3 of 3",
+          title: "Publish the evidence",
+          body: "Your assessed product management artefacts become part of a digital career portfolio you own, edit and share.",
+          items: ["Portfolio artefacts", "Digital credentials", "CV and LinkedIn evidence support"],
+        },
+      ],
+      costSubLede:
+        "You can apply to the Product Management pathway, create your account and access the programme at no cost. Credits are required when you use AI-powered simulation, evaluation and portfolio-generation features.",
+      faqRich: [
+        { q: "Do I need existing product management experience to apply?", a: "No. The pathway is designed for people building evidence of product capability, including those moving from analysis, delivery, design, marketing or founder roles. You should be comfortable reading a business brief and writing in a professional register." },
+        { q: "Will I work with real product data or a real company?", a: "No. Organisations, products, stakeholders and data within simulations may be fictional, synthetic or representative of real professional environments. The scenarios are built to behave like real product situations, but you are not performing work for an actual employer or client." },
+        { q: "Is there a single correct answer to a product simulation?", a: "Usually not. Product simulations are assessed on the quality of your reasoning and the fit between your evidence and your conclusion. Two participants can reach different recommendations and both score well if each is properly argued." },
+        { q: "Do I need to know a specific framework or tool?", a: "No specific commercial tool is required. Work outputs are produced as professional documents rather than inside a particular product-management platform, so the artefacts stay portable and partner-agnostic." },
+        { q: "Can I combine this with another pathway?", a: "Yes, subject to available simulations. Business Analysis and Project Management are common companions — participants often use them to show they can define a problem, decide what to build and see it delivered." },
+      ],
+      ctaLede:
+        "Applications for the Product Management pathway are open to the 2026 founding cohort. Programme access is free; AI usage requires credits.",
+    },
   },
   "project-management": {
     slug: "project-management",
