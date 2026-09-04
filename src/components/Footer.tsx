@@ -12,7 +12,7 @@ const workExperienceLinks = [
 
 const organisationLinks = [
   { label: "How it works", path: "/how-it-works" },
-  { label: "For organisations", path: "/partners" },
+  { label: "For organisations", path: "/sponsor-a-cohort" },
   // No dedicated "About us" page exists yet — pointed at Governance (the
   // closest existing content: legal status, structure, CIC info) as a
   // stand-in. Redirect this once a real About page exists.

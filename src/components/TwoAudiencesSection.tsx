@@ -65,10 +65,9 @@ const AudiencePanel = ({ pcue, eyebrow, title, groups, outcome, cta, footnote }:
  * spec, not the site's nearest existing tokens. Not wired into any page.
  *
  * Route correction: the organisations panel's CTA in the spec pointed at
- * /for-organisations, which isn't a route in this app -- the actual page
- * is /partners (the nav item was relabelled "For Organisations" earlier,
- * but the route itself was never renamed). Linked to /partners instead so
- * the button isn't broken on arrival.
+ * /for-organisations, which isn't a route in this app. Linked to
+ * /sponsor-a-cohort instead — the /partners route it used to point at has
+ * been retired.
  */
 const TwoAudiencesSection = ({ className = "" }: { className?: string }) => (
   <section id="who" className={`py-16 md:py-[5.5rem] bg-warm-white ${className}`}>
@@ -141,7 +140,7 @@ const TwoAudiencesSection = ({ className = "" }: { className?: string }) => (
               },
             ]}
             outcome="Partnership scope is agreed case by case. We do not operate an open talent pool, and we do not currently offer employers on-demand access to a pipeline of readiness-assessed candidates."
-            cta={{ label: "Explore Partnerships", href: "/partners" }}
+            cta={{ label: "Explore Partnerships", href: "/sponsor-a-cohort" }}
             // Spec's .rnote read as an internal review instruction to the
             // implementer ("Confirm which partnership outcomes are currently
             // deliverable... should be removed from this list before
