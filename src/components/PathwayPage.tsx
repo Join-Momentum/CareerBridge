@@ -7,6 +7,7 @@ import { Reveal, StaggerGrid, cardVariant, ArrowIcon, ease } from "@/components/
 import { PathwayRecord, type PathwaySlug } from "@/components/records";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { CtiCheckoutButton, CtiCheckoutOverlays, CtiPricingCard } from "@/components/work-experience/CtiCheckout";
+import CreditPacks from "@/components/work-experience/CreditPacks";
 
 /**
  * Shared template for every Work Experience discipline pathway page.
@@ -464,6 +465,8 @@ function RichPathwayPage({ data }: { data: PathwayContent }) {
           <Reveal delay={0.1}>
             <AccessModelFull />
           </Reveal>
+
+          <CreditPacks className="mt-16 pt-14 border-t border-subtle" />
         </div>
       </section>
 
@@ -855,6 +858,8 @@ function SimplePathwayPage({ data }: { data: PathwayContent }) {
           <Reveal delay={0.1}>
             <AccessPanels />
           </Reveal>
+
+          <CreditPacks className="mt-16 pt-14 border-t border-subtle" />
         </div>
       </section>
 
