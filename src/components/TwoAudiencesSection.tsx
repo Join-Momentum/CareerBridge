@@ -19,7 +19,7 @@ interface AudiencePanelProps {
 
 const AudiencePanel = ({ pcue, eyebrow, title, groups, outcome, cta, footnote }: AudiencePanelProps) => (
   <div
-    className="flex flex-col bg-white border border-[#CFDCE4] rounded-[3px] p-8 md:p-12"
+    className="h-full flex flex-col bg-white border border-[#CFDCE4] rounded-[3px] p-8 md:p-12"
     style={{ borderTop: `5px solid ${pcue}` }}
   >
     <p className="font-mono text-xs tracking-[0.16em] uppercase mb-4" style={{ color: pcue }}>
@@ -83,8 +83,8 @@ const TwoAudiencesSection = ({ className = "" }: { className?: string }) => (
         </h2>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2 md:gap-8">
-        <Reveal>
+      <div className="grid items-stretch gap-6 md:grid-cols-2 md:gap-8">
+        <Reveal className="h-full">
           <AudiencePanel
             pcue="#0060AD"
             eyebrow="For individuals"
@@ -107,7 +107,7 @@ const TwoAudiencesSection = ({ className = "" }: { className?: string }) => (
           />
         </Reveal>
 
-        <Reveal delay={0.1}>
+        <Reveal delay={0.1} className="h-full">
           <AudiencePanel
             pcue="#0E6E7D"
             eyebrow="For organisations"
