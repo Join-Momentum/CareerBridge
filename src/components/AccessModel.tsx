@@ -148,8 +148,8 @@ export const AccessInfrastructure = ({ className = "" }: { className?: string })
   </div>
 );
 
-export const AccessPanels = () => (
-  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+export const AccessPanels = ({ className = "" }: { className?: string } = {}) => (
+  <div className={`grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 ${className}`}>
     <div className="card border-t-[3px] border-accent-teal">
       <p className="text-label font-sans font-semibold uppercase text-accent-teal mb-4">
         Free access
@@ -183,5 +183,13 @@ export const AccessPanels = () => (
         ))}
       </ul>
     </div>
+  </div>
+);
+
+/** AccessPanels stacked above AccessBreakdown, as one combined light-ground access-model section. */
+export const AccessModelFull = ({ className = "" }: { className?: string } = {}) => (
+  <div className={className}>
+    <AccessPanels />
+    <AccessBreakdown className="mt-12 md:mt-16" />
   </div>
 );
