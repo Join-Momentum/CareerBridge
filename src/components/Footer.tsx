@@ -1,30 +1,44 @@
 import { Link } from "react-router-dom";
-import {FaInstagram, FaLinkedin, FaFacebook} from "react-icons/fa";
+import { FaInstagram, FaLinkedin, FaFacebook } from "react-icons/fa";
 
-const quickLinks = [
-  { label: "Home", path: "/" },
-  { label: "How It Works", path: "/how-it-works" },
-  { label: "Work Experience", path: "/simulation-based-work-experience" },
-  { label: "Partners", path: "/partners" },
-  { label: "Sponsor a Cohort", path: "/sponsor-a-cohort" },
-  { label: "Governance", path: "/governance" },
-  { label: "Apply", path: "/apply" },
-  { label: "Contact", path: "/contact" },
+const workExperienceLinks = [
+  { label: "Programme overview", path: "/simulation-based-work-experience" },
+  { label: "Product Management", path: "/simulation-based-work-experience/product-management" },
+  { label: "Project Management", path: "/simulation-based-work-experience/project-management" },
+  { label: "Business Analysis", path: "/simulation-based-work-experience/business-analysis" },
+  { label: "Cyber Threat Intelligence", path: "/portfolio-simulations/cyber-threat-intelligence" },
+  { label: "Virtual Administrative Assistant", path: "/simulation-based-work-experience/virtual-administrative-assistant" },
 ];
 
-const socialLinks = [
-  { label: "Instagram", icon: <FaInstagram />, url: "https://www.instagram.com/careerbridgefoundation/" },
-  { label: "LinkedIn", icon: <FaLinkedin />, url: "https://www.linkedin.com/company/careerbridgefoundation/?viewAsMember=true" },
-  { label: "Facebook", icon: <FaFacebook />, url: "https://www.facebook.com/careerbridgefoundation" },
+const organisationLinks = [
+  { label: "How it works", path: "/how-it-works" },
+  { label: "For organisations", path: "/partners" },
+  // No dedicated "About us" page exists yet — pointed at Governance (the
+  // closest existing content: legal status, structure, CIC info) as a
+  // stand-in. Redirect this once a real About page exists.
+  { label: "About us", path: "/governance" },
+  { label: "Governance", path: "/governance" },
+  { label: "Contact", path: "/contact" },
+  { label: "Apply free", path: "/apply" },
 ];
 
 const policyLinks = [
-  { label: "Privacy Policy", path: "/privacy-policy" },
-  { label: "Terms of Use", path: "/terms-of-use" },
-  { label: "Safeguarding Policy", path: "/safeguarding-policy" },
-  { label: "Data Protection", path: "/data-protection" },
-  { label: "Complaints Procedure", path: "/complaints-procedure" },
-  { label: "Other Policies", path: "/policies" },
+  { label: "Policies", path: "/policies" },
+  { label: "Safeguarding", path: "/safeguarding-policy" },
+  { label: "Data protection", path: "/data-protection" },
+  { label: "Complaints procedure", path: "/complaints-procedure" },
+  { label: "Terms and conditions", path: "/terms-of-use" },
+  // No dedicated Accessibility page exists yet — pointed at the general
+  // Policies hub as a stand-in. Redirect this once a real page exists.
+  { label: "Accessibility", path: "/policies" },
+];
+
+// Real, confirmed account URLs only — Facebook kept rather than swapped for
+// YouTube, since there's no confirmed YouTube URL for the organisation.
+const socialLinks = [
+  { label: "LinkedIn", icon: <FaLinkedin />, url: "https://www.linkedin.com/company/careerbridgefoundation/?viewAsMember=true" },
+  { label: "Instagram", icon: <FaInstagram />, url: "https://www.instagram.com/careerbridgefoundation/" },
+  { label: "Facebook", icon: <FaFacebook />, url: "https://www.facebook.com/careerbridgefoundation" },
 ];
 
 const Footer = () => {
@@ -37,23 +51,52 @@ const Footer = () => {
             <div className="mb-6">
               <img src="/CBLogoWhite.png" alt="Career Bridge Foundation Logo" className="object-contain h-10" />
             </div>
-            <p className="text-label font-sans font-bold uppercase text-cool/60 mb-4">
-              Community Interest Company
+            <p className="text-sm text-cool/60 font-sans leading-relaxed mb-6 max-w-[220px]">
+              Build experience. Prove your skills. Progress your career.
             </p>
-            <div className="text-sm text-cool/50 font-sans space-y-1">
-              <p>Registered in England and Wales</p>
-              <p>Company Number: 16939467</p>
+            <div className="flex items-center gap-3">
+              {socialLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={link.label}
+                  className="flex items-center justify-center w-9 h-9 text-cool text-lg hover:text-warm-white transition-colors duration-300"
+                >
+                  {link.icon}
+                </a>
+              ))}
             </div>
           </div>
 
-          {/* Navigation */}
+          {/* Work Experience */}
           <div>
             <p className="text-label font-sans font-bold uppercase text-cool/60 mb-6">
-              Navigation
+              Work Experience
             </p>
             <ul className="space-y-3">
-              {quickLinks.map((link) => (
-                <li key={link.path}>
+              {workExperienceLinks.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    to={link.path}
+                    className="text-sm text-cool hover:text-warm-white transition-colors duration-300 font-sans"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Organisation */}
+          <div>
+            <p className="text-label font-sans font-bold uppercase text-cool/60 mb-6">
+              Organisation
+            </p>
+            <ul className="space-y-3">
+              {organisationLinks.map((link) => (
+                <li key={link.label}>
                   <Link
                     to={link.path}
                     className="text-sm text-cool hover:text-warm-white transition-colors duration-300 font-sans"
@@ -72,7 +115,7 @@ const Footer = () => {
             </p>
             <ul className="space-y-3">
               {policyLinks.map((link) => (
-                <li key={link.path}>
+                <li key={link.label}>
                   <Link
                     to={link.path}
                     className="text-sm text-cool hover:text-warm-white transition-colors duration-300 font-sans"
@@ -82,49 +125,6 @@ const Footer = () => {
                 </li>
               ))}
             </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <p className="text-label font-sans font-bold uppercase text-cool/60 mb-6">
-              Contact
-            </p>
-            <div className="space-y-4">
-              <div>
-                <p className="text-xs text-cool/50 font-sans mb-1">General Enquiries</p>
-                <a
-                  href="mailto:support@careerbridgefoundation.zohodesk.eu"
-                  className="text-[11px] md:text-sm text-warm-white hover:text-accent-teal transition-colors duration-300 font-sans break-all"
-                >
-                  support@careerbridgefoundation.zohodesk.eu
-                </a>
-              </div>
-              <div>
-                <p className="text-xs text-cool/50 font-sans mb-1">Partnership Enquiries</p>
-                <a
-                  href="mailto:outreach@careerbridgefoundation.com"
-                  className="text-[11px] md:text-sm text-warm-white hover:text-accent-teal transition-colors duration-300 font-sans break-all"
-                >
-                  outreach@careerbridgefoundation.com
-                </a>
-              </div>
-              <div>
-                <p className="text-sm text-cool/50 font-sans mb-1">Follow Us</p>
-                <div className="flex mt-3 space-x-4">
-                  {socialLinks.map((link) => (
-                    <a
-                      key={link.label}
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-cool text-xl hover:text-warm-white transition-colors duration-300"
-                    >
-                      {link.icon}
-                    </a>
-                  ))}
-                </div>
-              </div>
-            </div>
           </div>
         </div>
 
