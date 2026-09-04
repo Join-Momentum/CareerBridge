@@ -6,6 +6,9 @@ import { ChevronDown, Check, ArrowRight } from "lucide-react";
 import TwoPathwaysSection from "@/components/TwoPathwaysSection";
 import { AccessLine, AccessPanels } from "@/components/AccessModel";
 import { DisclosureShort, DisclosureFull } from "@/components/NonEmploymentDisclosure";
+import CohortStrip from "@/components/CohortStrip";
+import { PortfolioRecord } from "@/components/records";
+import TwoAudiencesSection from "@/components/TwoAudiencesSection";
 
 /* ─── DATA ─────────────────────────────────────────────────────── */
 
@@ -95,7 +98,7 @@ const pathways = [
     text: "Turn uncertain information into assessed intelligence someone can act on.",
     accent: "#5B3A9E",
     status: "Open now",
-    href: "/portfolio-simulations/cyber-threat-intelligence",
+    href: "/simulation-based-work-experience/cyber-threat-intelligence",
   },
   {
     name: "Virtual Administrative Assistant",
@@ -172,6 +175,13 @@ const missionItems = [
   "Operate with governance, safeguarding and accountability",
 ];
 
+const combos = [
+  { from: "Business Analysis", to: "Product Management", note: "Add outcome ownership and prioritisation to analytical depth." },
+  { from: "Project Management", to: "Business Analysis", note: "Move from delivering the work to defining the problem." },
+  { from: "Virtual Administrative Assistant", to: "Project Coordination", note: "Build from operational support into delivery ownership." },
+  { from: "Cyber Threat Intelligence", to: "Cyber Governance and Risk", note: "Extend analytical intelligence work into governance and risk." },
+];
+
 /* ─── COMPONENT ─────────────────────────────────────────────────── */
 
 const Index = () => {
@@ -184,9 +194,9 @@ const Index = () => {
         <div className="absolute top-0 right-0 w-[400px] h-[400px] border border-warm-white/5 rounded-full translate-x-1/3 -translate-y-1/3 pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-[300px] h-[300px] border border-warm-white/5 rounded-full -translate-x-1/2 translate-y-1/2 pointer-events-none" />
 
-        <div className="page-container relative z-10 pt-32 pb-20 md:pt-40 md:pb-32">
+        <div className="page-container flex  relative z-10 pt-32 pb-20 md:pt-40 md:pb-32">
           <AnimatedSection>
-            <div className="flex items-center gap-4 mb-8">
+            <div className="flex items-center gap-4 mb-4">
               <div className="w-10 h-0.5 bg-accent-teal" />
               <p className="text-label font-sans uppercase text-accent-teal">
                 Evidence-based career development
@@ -213,10 +223,10 @@ const Index = () => {
             </div>
 
             <div className="flex flex-col gap-5 max-w-xl">
-              <DisclosureShort dark />
-              <AccessLine dark />
+              <CohortStrip/>
             </div>
           </AnimatedSection>
+          <PortfolioRecord className="hidden md:block "/>
         </div>
 
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
@@ -294,6 +304,14 @@ const Index = () => {
               </StaggerItem>
             ))}
           </StaggerContainer>
+          <p className="mt-10">
+              <Link to="/how-it-works" className="link-animated inline-flex items-center gap-2 text-sm font-medium">
+                See how it works in detail
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" aria-hidden="true">
+                  <path d="M5 12h13M13 6l6 6-6 6" />
+                </svg>
+              </Link>
+            </p>
         </div>
       </section>
 
@@ -435,7 +453,7 @@ const Index = () => {
       </section>
 
       {/* ── TWO PATHWAYS (who we support) ───────────────────────────── */}
-      <TwoPathwaysSection />
+      <TwoAudiencesSection/>
 
       {/* ── WHY THE MODEL IS DIFFERENT ──────────────────────────────── */}
       <section className="section-spacing bg-warm-white border-t border-subtle">
@@ -485,6 +503,43 @@ const Index = () => {
               </div>
             </AnimatedSection>
           </div>
+        </div>
+      </section>
+
+      {/* ── MULTIDISCIPLINARY EVIDENCE ──────────────────────────────── */}
+      <section className="section-spacing bg-warm-grey border-t border-subtle" id="combine">
+        <div className="page-container">
+          <AnimatedSection>
+            <div className="section-label">Multidisciplinary Evidence</div>
+            <h2 className="font-serif text-display-sm md:text-display font-semibold text-ink mb-6 max-w-2xl leading-tight">
+              Build evidence across disciplines
+            </h2>
+            <p className="text-body text-slate leading-relaxed max-w-content mb-16 font-sans">
+              Participants are not permanently restricted to one discipline. Evidence can be built progressively
+              across related professional areas.
+            </p>
+          </AnimatedSection>
+
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {combos.map((combo) => (
+              <StaggerItem key={combo.from + combo.to}>
+                <div className="card h-full">
+                  <div className="flex flex-wrap items-center gap-3 mb-3">
+                    <span className="text-body font-sans font-semibold text-ink">{combo.from}</span>
+                    <ArrowRight className="w-4 h-4 text-accent-teal shrink-0" />
+                    <span className="text-body font-sans font-semibold text-ink">{combo.to}</span>
+                  </div>
+                  <p className="text-sm text-slate font-sans leading-relaxed">{combo.note}</p>
+                </div>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+
+          <AnimatedSection delay={0.15}>
+            <p className="text-body text-slate leading-relaxed max-w-content mt-8 font-sans">
+              Available pathways depend on the simulations currently offered.
+            </p>
+          </AnimatedSection>
         </div>
       </section>
 

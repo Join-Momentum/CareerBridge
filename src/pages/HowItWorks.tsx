@@ -4,6 +4,7 @@ import AnimatedSection, { StaggerContainer, StaggerItem } from "@/components/Ani
 import { AccessLine, AccessPanels } from "@/components/AccessModel";
 import { DisclosureShort, DisclosureFull } from "@/components/NonEmploymentDisclosure";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { AccessModelRecord } from "@/components/records";
 
 /* ─── DATA ─────────────────────────────────────────────────────── */
 
@@ -128,7 +129,7 @@ const HowItWorks = () => {
       <section className="relative bg-ink overflow-hidden">
         <div className="absolute inset-0 grid-pattern pointer-events-none" />
 
-        <div className="page-container relative z-10 pt-32 pb-24 md:pt-40 md:pb-32">
+        <div className="page-container flex relative z-10 pt-32 pb-24 md:pt-40 md:pb-32">
           <AnimatedSection>
             <div className="flex items-center gap-4 mb-8">
               <div className="w-10 h-0.5 bg-accent-teal" />
@@ -160,6 +161,7 @@ const HowItWorks = () => {
               <AccessLine dark />
             </div>
           </AnimatedSection>
+          <AccessModelRecord className="hidden md:block "/>
         </div>
       </section>
 
@@ -258,7 +260,7 @@ const HowItWorks = () => {
       </section>
 
       {/* ── ACCESS MODEL AT A GLANCE ─────────────────────────────────── */}
-      <section className="section-spacing bg-warm-white border-t border-subtle">
+      {/* <section className="section-spacing bg-warm-white border-t border-subtle">
         <div className="page-container">
           <AnimatedSection>
             <div className="max-w-2xl mx-auto border border-subtle bg-white">
@@ -298,7 +300,7 @@ const HowItWorks = () => {
             </div>
           </AnimatedSection>
         </div>
-      </section>
+      </section> */}
 
       {/* ── GOVERNANCE & SAFEGUARDS ─────────────────────────────────── */}
       <section className="section-spacing bg-warm-white border-t border-subtle">
