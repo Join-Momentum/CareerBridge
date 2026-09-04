@@ -79,6 +79,75 @@ export const AccessBreakdown = ({ className = "" }: { className?: string }) => (
   </div>
 );
 
+const CREDIT_STEPS = [
+  {
+    n: "01",
+    title: "Read the brief",
+    body: "A workplace scenario, a professional brief and a defined set of Jobs to Be Done. The work, not just a course about the work.",
+  },
+  {
+    n: "02",
+    title: "Do the work",
+    body: "Analyse the information, make the decisions, solve the problem and produce professional work outputs, with an AI Simulation Assistant available throughout.",
+  },
+  {
+    n: "03",
+    title: "Get assessed",
+    body: "Submit your work for AI and rubric-based competency assessment. Receive competency-level scoring, developmental feedback, a Readiness Score and an AI Voice Debrief.",
+  },
+  {
+    n: "04",
+    title: "Own the evidence",
+    body: "Keep an editable, partner-agnostic artefact, publish it to your digital career portfolio and receive a credential for the completed simulation.",
+  },
+];
+
+/**
+ * "What credits enable" — dark-ground section: eyebrow, headline, four
+ * numbered steps and a closing Career Bridge / Evidentize attribution line.
+ * Always ink content (no light variant supplied) — wrap in a dark section
+ * when using; text colours resolve via the sitewide accent/cool cascade
+ * once nested under a bg-ink/bg-ink-light/bg-ink-deep ancestor.
+ *
+ * Note: a shorter, differently-worded version of this same section already
+ * exists built directly into HowItWorks.tsx's hero (a prior request). This
+ * export uses the fuller copy as pasted here; reconciling the two into one
+ * source of truth is a separate follow-up, not done automatically.
+ */
+export const AccessInfrastructure = ({ className = "" }: { className?: string }) => (
+  <div className={className}>
+    <div className="flex items-center gap-4 mb-8">
+      <div className="w-10 h-0.5 bg-accent-teal" />
+      <p className="text-label font-sans uppercase text-accent-teal">What Credits Enable</p>
+    </div>
+    <h2 className="font-serif text-display-sm md:text-display font-semibold text-warm-white mb-6 max-w-2xl leading-tight">
+      The infrastructure your evidence runs on
+    </h2>
+    <p className="text-body text-cool leading-relaxed max-w-content mb-14 font-sans">
+      Credits give you access to the AI-powered simulation, evaluation and evidence infrastructure provided by
+      Evidentize, the technology platform behind the programme.
+    </p>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+      {CREDIT_STEPS.map((step) => (
+        <div key={step.n} className="bg-ink-light border border-white/10 p-8 h-full flex flex-col">
+          <span className="font-mono text-xs uppercase tracking-[0.15em] text-accent-teal mb-4 block">
+            Step {step.n}
+          </span>
+          <h3 className="font-serif text-lg font-semibold text-warm-white mb-3 leading-snug">{step.title}</h3>
+          <p className="text-sm text-cool leading-relaxed font-sans">{step.body}</p>
+        </div>
+      ))}
+    </div>
+
+    <p className="text-body text-cool leading-relaxed max-w-content font-sans">
+      Career Bridge Foundation owns the programme and the application experience. Evidentize provides the
+      technology infrastructure that supports simulations, AI-powered evaluation, evidence generation and digital
+      career portfolios.
+    </p>
+  </div>
+);
+
 export const AccessPanels = () => (
   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
     <div className="card border-t-[3px] border-accent-teal">
