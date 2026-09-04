@@ -484,6 +484,145 @@ export const pathways: Record<string, PathwayContent> = {
         "Applications for the Business Analysis pathway are open to the 2026 founding cohort. Programme access is free; AI usage requires credits.",
     },
   },
+  /**
+   * This is the editorial/informational pathway page reachable via the
+   * shared PathwayPage template at /simulation-based-work-experience/:slug
+   * (previously a 404, since no data existed here). It is deliberately
+   * separate from the existing commercial page with a live Stripe
+   * checkout at /portfolio-simulations/cyber-threat-intelligence — every
+   * pathway card and pathnav on the site still links CTI to that
+   * checkout page on purpose (see PathwayPage.tsx and PathwayCards.tsx),
+   * and that routing has not been changed here.
+   */
+  "cyber-threat-intelligence": {
+    slug: "cyber-threat-intelligence",
+    name: "Cyber Threat Intelligence",
+    accent: "#5B3A9E",
+    tagline: "Turn scattered, uncertain information into assessed intelligence a decision maker can act on.",
+    intro:
+      "Work through the kind of uncertainty a threat intelligence analyst is actually handed: conflicting sources, ambiguous indicators and a judgement that has to be made and defended anyway.",
+    situations: [
+      "Convert a vague board concern into defined intelligence requirements",
+      "Profile a threat actor and assess its relevance",
+      "Assess indicators of uncertain value",
+      "Produce an executive threat briefing under time pressure",
+    ],
+    artefacts: ["Intelligence requirements", "Threat actor profile", "Collection plan", "Intelligence assessment", "Executive threat briefing"],
+    competencies: [
+      "Threat research",
+      "Intelligence analysis",
+      "Source evaluation",
+      "Analytical judgement",
+      "Structured reporting",
+      "Risk communication",
+      "Attention to detail",
+      "Ethical and responsible intelligence practice",
+    ],
+    status: "In development",
+    rich: {
+      badge: "Founding Cohort 2026 · Applications open",
+      heroHeadline: "Build Verifiable Evidence of Cyber Threat Intelligence Capability",
+      heroLede:
+        "Threat intelligence is an analytical discipline before it is a technical one. Complete assessed workplace simulations where the sources conflict, the indicators are ambiguous and an executive needs a judgement — with your confidence stated.",
+      who: [
+        { title: "Aspiring threat intelligence analysts", body: "You have studied or certified in cyber security and need assessed analytical work to demonstrate capability." },
+        { title: "SOC analysts and security professionals", body: "You work in detection or response and want evidence of intelligence analysis and reporting." },
+        { title: "Career changers from research-heavy fields", body: "You have research, journalism, policy or investigative experience and need it expressed as intelligence practice." },
+        { title: "Developing analysts", body: "You want structured evidence of analytical judgement and written reporting, which is often the hardest part of the role to show." },
+      ],
+      experienceLede: [
+        "Simulations focus on the intelligence cycle as it is practised: understanding what the organisation needs to know, planning collection, evaluating sources, forming a judgement, and communicating it to people who will act on it.",
+        "This is analytical and reporting work. Simulations do not involve offensive activity, live systems, exploitation or any operational attack technique. Threat actors, campaigns, indicators and organisations within scenarios may be fictional, synthetic or representative.",
+        "Assessment gives significant weight to source evaluation, stated confidence, articulated assumptions and analytical honesty — including saying clearly when the available evidence does not support a firm conclusion.",
+      ],
+      processHeading: "How each simulation runs",
+      process: [
+        { n: "01", title: "Read the brief", body: "You receive a workplace scenario, the cyber threat intelligence context, the stakeholders and a defined set of Jobs to Be Done." },
+        { n: "02", title: "Do the work", body: "You analyse the information, make professional decisions and produce the work outputs the role actually produces. The AI Simulation Assistant is available throughout." },
+        { n: "03", title: "Get assessed", body: "You submit your work for AI and rubric-based competency assessment, and receive competency-level scoring, developmental feedback, a Readiness Score and an AI Voice Debrief." },
+        { n: "04", title: "Own the evidence", body: "Your artefact is editable, partner-agnostic and yours to publish, edit and share — without a time limit." },
+      ],
+      situationsIntro:
+        "Representative examples of the professional situations covered in this pathway. Organisations, stakeholders and data within simulations may be fictional, synthetic or representative of real professional environments.",
+      situationsRich: [
+        { ref: "Situation CTI-01", title: "A vague concern from the board", body: "A director has read a news report and wants to know whether the organisation should be worried. Convert that into defined intelligence requirements, a prioritised collection plan and a scope you can actually deliver." },
+        { ref: "Situation CTI-02", title: "Is this actor relevant to us?", body: "A threat actor is widely reported in the sector press. Profile the actor from open sources, evaluate the reliability of each source, and assess relevance to this organisation's sector, footprint and exposure." },
+        { ref: "Situation CTI-03", title: "Indicators of uncertain value", body: "A shared indicator set arrives from a partner with no context and no confidence rating. Assess what it supports, what it does not, and what should be done with it — including the case for doing very little." },
+        { ref: "Situation CTI-04", title: "Ten minutes with the executive committee", body: "Produce an executive threat briefing: a prioritised picture, clearly separated judgement and fact, stated confidence, and proportionate mitigation recommendations expressed in business risk terms rather than technical detail." },
+      ],
+      jtbd: [
+        "Define and prioritise intelligence requirements",
+        "Plan intelligence collection against those requirements",
+        "Research threat actors using open sources",
+        "Evaluate source reliability and information credibility",
+        "Assess indicators and judge their value and actionability",
+        "Analyse a campaign and what it implies for this organisation",
+        "Assess the threat landscape for a defined sector or footprint",
+        "Apply structured analytical judgement and state confidence",
+        "Separate fact, assessment and assumption in writing",
+        "Write an intelligence assessment for an analytical audience",
+        "Brief executives in business risk language",
+        "Prioritise threats and recommend proportionate mitigation",
+      ],
+      artefactsRich: [
+        { ref: "CTI-01", name: "Intelligence requirements" },
+        { ref: "CTI-02", name: "Threat actor profile" },
+        { ref: "CTI-03", name: "Threat landscape report" },
+        { ref: "CTI-04", name: "Indicator assessment" },
+        { ref: "CTI-05", name: "Campaign analysis" },
+        { ref: "CTI-06", name: "Intelligence collection plan" },
+        { ref: "CTI-07", name: "Source evaluation" },
+        { ref: "CTI-08", name: "Intelligence assessment" },
+        { ref: "CTI-09", name: "Executive threat briefing" },
+        { ref: "CTI-10", name: "Mitigation recommendations" },
+      ],
+      competenciesLede:
+        "Competencies are scored at competency level against defined rubrics, so your portfolio shows where you are strong and where you are still developing.",
+      assessmentLede:
+        "AI-powered competency assessment using expert-designed or expert-validated rubrics. Assessment is applied consistently against defined criteria, and completing a simulation does not guarantee a pass.",
+      assessment: [
+        { n: "Criterion 01", title: "Are sources evaluated, not just cited?", body: "Rubrics look for explicit assessment of source reliability and information credibility, and for appropriate caveating where evidence is thin." },
+        { n: "Criterion 02", title: "Is judgement separated from fact?", body: "Assessments are marked on whether the reader can tell what is established, what is assessed and what is assumed, and whether confidence is stated and justified." },
+        { n: "Criterion 03", title: "Can a non-technical decision maker act on it?", body: "Executive outputs are assessed on prioritisation, proportionality and whether risk is expressed in terms the audience can decide against." },
+      ],
+      assessmentClosing:
+        "You receive competency-level scoring, detailed developmental feedback, a Readiness Score and an AI Voice Debrief for every completed simulation.",
+      journey: [
+        {
+          phase: "Join",
+          ordinal: "Stage 1 of 3",
+          title: "Apply free for this pathway",
+          body: "Submit a free application and select Cyber Threat Intelligence as your primary discipline. Programme access is free and carries no obligation to purchase credits.",
+          items: ["Free application", "Founding Cohort 2026", "No obligation to purchase credits"],
+        },
+        {
+          phase: "Prove",
+          ordinal: "Stage 2 of 3",
+          title: "Complete assessed cyber threat intelligence simulations",
+          body: "Work through realistic professional briefs, produce the work outputs the discipline is judged on and submit them for competency-based assessment.",
+          items: ["Realistic workplace scenarios", "Defined Jobs to Be Done", "Competency scoring and developmental feedback"],
+        },
+        {
+          phase: "Progress",
+          ordinal: "Stage 3 of 3",
+          title: "Publish the evidence",
+          body: "Your assessed cyber threat intelligence artefacts become part of a digital career portfolio you own, edit and share.",
+          items: ["Portfolio artefacts", "Digital credentials", "CV and LinkedIn evidence support"],
+        },
+      ],
+      costSubLede:
+        "You can apply to the Cyber Threat Intelligence pathway, create your account and access the programme at no cost. Credits are required when you use AI-powered simulation, evaluation and portfolio-generation features.",
+      faqRich: [
+        { q: "Is this an offensive or hands-on hacking programme?", a: "No. This pathway covers intelligence analysis and reporting. Simulations do not involve offensive activity, exploitation, live systems or operational attack techniques. The work is research, analysis, judgement and written communication." },
+        { q: "Do I need a cyber security certification or a technical background?", a: "A security background helps but is not required. Participants come from research, analytical and investigative backgrounds as well as from security operations. You should be comfortable reading technical reporting and writing clearly for a non-technical reader." },
+        { q: "Will I need specialist tooling or paid intelligence feeds?", a: "No. Scenarios supply the material you need. Analysis and reporting artefacts are produced as professional documents rather than inside a specific threat intelligence platform." },
+        { q: "Are the threat actors and indicators real?", a: "Threat actors, campaigns, indicators, organisations and source material within simulations may be fictional, synthetic or representative of real professional environments. Scenarios are constructed to behave like real intelligence problems." },
+        { q: "Does this map to a recognised cyber career framework?", a: "Competencies in this pathway reflect widely recognised threat intelligence practice. We do not claim endorsement, accreditation or formal alignment with any professional body unless that is separately stated and evidenced." },
+      ],
+      ctaLede:
+        "Applications for the Cyber Threat Intelligence pathway are open to the 2026 founding cohort. Programme access is free; AI usage requires credits.",
+    },
+  },
   "virtual-administrative-assistant": {
     slug: "virtual-administrative-assistant",
     name: "Virtual Administrative Assistant",
