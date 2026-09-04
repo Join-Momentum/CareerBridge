@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import RecordCard from "./RecordCard";
+import { PATHWAY_GLYPHS } from "../pathwayGlyphs";
 
 export type PathwaySlug =
   | "product-management"
@@ -30,22 +31,6 @@ const PATHWAY_DATA: Record<PathwaySlug, PathwayRecordData> = {
   "virtual-administrative-assistant": { name: "Virtual Administrative Assistant", tabRef: "VA · 2026", cueColor: "#7A5C0C", artefactTypes: 12, competencies: 9 },
 };
 
-// The spec's own example glyph (Product Management's monoline icon, already
-// used on that pathway's card) — the only one supplied. The other four
-// pathways' glyphs are not yet available; pass `glyph` explicitly for those
-// until the real per-pathway icons are supplied, rather than inventing ones.
-const PRODUCT_MANAGEMENT_GLYPH = (
-  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
-    <path d="M12 2 3 7v10l9 5 9-5V7z" />
-    <path d="M3 7l9 5 9-5" />
-    <path d="M12 12v10" />
-  </svg>
-);
-
-const DEFAULT_GLYPHS: Partial<Record<PathwaySlug, ReactNode>> = {
-  "product-management": PRODUCT_MANAGEMENT_GLYPH,
-};
-
 /**
  * Variant D — Pathway record.
  * Used on: all 5 pathway page heroes. Same structure, different data and
@@ -57,12 +42,12 @@ const PathwayRecord = ({
   className = "",
 }: {
   slug: PathwaySlug;
-  /** Overrides the default glyph. Required for every pathway except Product Management until its real icon is supplied. */
+  /** Overrides the default per-pathway glyph. */
   glyph?: ReactNode;
   className?: string;
 }) => {
   const data = PATHWAY_DATA[slug];
-  const resolvedGlyph = glyph ?? DEFAULT_GLYPHS[slug];
+  const resolvedGlyph = glyph ?? PATHWAY_GLYPHS[slug];
 
   return (
     <RecordCard
