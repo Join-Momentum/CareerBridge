@@ -114,6 +114,29 @@ const PathwayCards = ({ className = "" }: { className?: string }) => (
           </motion.div>
         );
       })}
+
+      <motion.div variants={cardVariant}>
+        <a
+          href="#apply-cta"
+          className="group relative h-full flex flex-col bg-white/[0.03] border border-dashed border-white/[0.12] hover:border-white/[0.22] transition-colors duration-300 p-8"
+        >
+          <span className="inline-flex w-fit items-center text-[10px] font-medium uppercase tracking-[0.15em] text-white/30 border border-white/15 rounded-full px-2.5 py-1 mb-4">
+            More pathways
+          </span>
+          <h3 className="text-lg font-bold text-white mb-3 leading-snug">In development</h3>
+          <p className="text-sm text-white/45 leading-[1.7] mb-6">
+            The simulation library expands over time. Further disciplines and more advanced simulations are added
+            as they are built and validated.
+          </p>
+          <p className="text-xs text-white/30 leading-[1.6] mt-auto pt-6 border-t border-white/[0.08]">
+            Participants are not restricted to their first discipline.
+          </p>
+          <span className="mt-6 inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.1em] text-accent-teal">
+            Apply free and register your interest
+            <ArrowIcon />
+          </span>
+        </a>
+      </motion.div>
     </StaggerGrid>
   </div>
 );
@@ -122,14 +145,14 @@ export const PathwayCardsHeader = () => (
   <Reveal className="mb-14">
     <div className="flex items-center gap-3 mb-5">
       <div className="w-8 h-px bg-accent-teal" />
-      <span className="text-[11px] font-medium uppercase text-accent-teal tracking-[0.2em]">Available pathways</span>
+      <span className="text-[11px] font-medium uppercase text-accent-teal tracking-[0.2em]">Available work experience pathways</span>
     </div>
     <h2 className="text-4xl md:text-[3.5rem] font-bold text-white leading-[0.95] tracking-[-0.025em] max-w-2xl mb-6">
       Choose where you want to prove yourself
     </h2>
     <p className="text-base text-white/45 leading-[1.75] max-w-2xl">
-      Five work experience pathways are open to the 2026 founding cohort. Each has its own workplace scenarios,
-      work outputs and competency rubrics.
+      Each pathway offers 25 or more workplace simulations covering different professional situations,
+      responsibilities, competencies and levels of complexity.
     </p>
   </Reveal>
 );

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { AccessLine, AccessModelFull } from "@/components/AccessModel";
 import { DisclosureShort, DisclosureFull } from "@/components/NonEmploymentDisclosure";
-import { PortfolioRecord, SimulationEnvironmentRecord } from "@/components/records";
+import { SimulationEnvironmentRecord } from "@/components/records";
 import JoinProveProgress from "@/components/work-experience/JoinProveProgress";
 import PathwayCards, { PathwayCardsHeader } from "@/components/work-experience/PathwayCards";
 import WorkExperienceFAQ from "@/components/work-experience/WorkExperienceFAQ";
@@ -11,23 +11,52 @@ import { Reveal, StaggerGrid, cardVariant, ArrowIcon } from "@/components/simula
 // ── Static data ───────────────────────────────────────────────
 
 const GAP_LADDER = [
-  { step: "Stage 01", title: "Learning about the work", body: "Courses, qualifications and certificates. Necessary, and widely held." },
-  { step: "Stage 02", title: "Claiming capability", body: "A CV bullet, a profile summary, a line in a cover letter. Unverifiable." },
-  { step: "Stage 03", title: "Demonstrating capability", body: "Doing the work under realistic conditions and being assessed on it." },
-  { step: "Stage 04", title: "Producing verifiable evidence", body: "Assessed work outputs, published as portfolio evidence you can share.", live: true },
+  { step: "Stage 01", title: "Learning about the work", body: "Courses, qualifications and certificates. Valuable, but they describe the work rather than demonstrate it." },
+  { step: "Stage 02", title: "Claiming capability", body: "A CV bullet point or an interview answer. Assertion, offered without anything an employer can inspect." },
+  { step: "Stage 03", title: "Demonstrating capability", body: "Doing the work in a realistic professional situation, making the decisions and producing the outputs." },
+  { step: "Stage 04", title: "Producing verifiable evidence", body: "Assessed work outputs, competency scoring and developmental feedback, published as a portfolio others can examine.", live: true },
 ];
 
 const WHAT_IT_MEANS_BODY = [
-  "You receive workplace scenarios, professional briefs and defined Jobs to Be Done. You analyse information, make decisions, solve problems, produce professional work outputs and submit your work for competency-based assessment.",
-  "This is not passive theoretical training. You develop practical experience and produce evidence demonstrating what you can do, how you approached the work and how you performed.",
+  "Each simulation places you inside a workplace scenario with a professional brief and a set of defined Jobs to Be Done. You analyse the information available, weigh incomplete or competing evidence, make professional decisions, and produce the work outputs a practitioner would actually be expected to deliver.",
+  "Your submitted work is then assessed against defined competency rubrics, scored at competency level and returned with developmental feedback. What you produced becomes an editable artefact in a digital career portfolio you own and can share.",
+  "This is not passive theoretical training. Participants develop practical experience and produce evidence demonstrating what they can do, how they approached the work and how they performed.",
   "Organisations, roles, projects, stakeholders and workplace situations within simulations may be fictional, synthetic or representative of real professional environments. The scenarios are built to behave like professional practice — they are not work performed for an actual employer or client.",
 ];
 
 const STEPS = [
-  { n: "01", title: "Read the brief", body: "A workplace scenario, a professional brief and a defined set of Jobs to Be Done. The work, not just a course about the work." },
-  { n: "02", title: "Do the work", body: "Analyse the information, make the decisions, solve the problem and produce professional work outputs, with an AI Simulation Assistant available throughout." },
-  { n: "03", title: "Get assessed", body: "Submit your work for AI and rubric-based competency assessment. Receive competency-level scoring, developmental feedback, a Readiness Score and an AI Voice Debrief." },
-  { n: "04", title: "Own the evidence", body: "Keep an editable, partner-agnostic artefact, publish it to your digital career portfolio and receive a credential for the completed simulation." },
+  { n: "01", title: "Read the brief", body: "You receive the workplace scenario, the context, the stakeholders and the defined Jobs to Be Done — the same way work arrives in a professional role." },
+  { n: "02", title: "Do the work", body: "Work through the structured task set, using simulation guidance and the AI Simulation Assistant when you need it. Analyse, decide, and produce the outputs." },
+  { n: "03", title: "Get assessed", body: "Submit your work for AI-powered competency assessment using expert-designed or expert-validated rubrics aligned to recognised professional standards. Receive competency-level scoring, developmental feedback, a Readiness Score and an AI Voice Debrief." },
+  { n: "04", title: "Own the evidence", body: "Your work becomes an editable, partner-agnostic portfolio artefact. Publish it, issue your credential, and use the built-in CV and LinkedIn evidence support." },
+];
+
+const RECEIVES = [
+  { name: "Workplace scenario brief", note: "The full situation, context and stakeholders you are working within." },
+  { name: "Defined Jobs to Be Done", note: "Explicit professional responsibilities, not open-ended exercises." },
+  { name: "Structured task set", note: "A sequenced set of tasks with simulation guidance and assistance." },
+  { name: "AI Simulation Assistant", note: "Support while you work, without doing the thinking for you." },
+  { name: "Competency assessment", note: "AI-powered assessment using expert-designed or expert-validated rubrics." },
+  { name: "Competency-level scoring", note: "Results broken down by individual competency, not a single grade." },
+  { name: "Developmental feedback", note: "Detailed written feedback on how you approached and performed the work." },
+  { name: "Readiness Score", note: "An indicator of demonstrated readiness against the simulation's competencies." },
+  { name: "AI Voice Debrief", note: "A spoken debrief of your performance, as a practitioner would receive." },
+  { name: "Editable portfolio artefact", note: "Partner-agnostic and yours to refine — the work output stays with you." },
+  { name: "Evidence publication", note: "Publish completed work into your digital career portfolio." },
+  { name: "Digital credential", note: "A credential issued on completion of an assessed simulation." },
+  { name: "CV evidence support", note: "Help turning assessed work into specific, defensible CV content." },
+  { name: "LinkedIn evidence support", note: "Help presenting your evidence on professional networks." },
+  { name: "Office hours, support and community", note: "Career Bridge office hours, programme support and the Career Bridge community on Circle." },
+];
+
+const WHO_FOR = [
+  "Aspiring professionals",
+  "Graduates",
+  "Career changers",
+  "Career returners",
+  "Developing professionals",
+  "Professionals seeking evidence of capability in a new discipline",
+  "People who hold qualifications but lack credible evidence of applied experience",
 ];
 
 const IS_LIST = [
@@ -49,59 +78,70 @@ const IS_NOT_LIST = [
   "A guaranteed pass",
 ];
 
-const BENEFIT_GROUPS = [
-  {
-    label: "In every activated simulation",
-    items: [
-      "A full workplace scenario brief",
-      "Defined Jobs to Be Done",
-      "A structured task set",
-      "Simulation guidance and assistance",
-      "An AI Simulation Assistant",
-      "Work submission",
-    ],
-  },
-  {
-    label: "Assessment and feedback",
-    items: [
-      "AI and rubric-based competency assessment",
-      "Competency-level scoring",
-      "Detailed developmental feedback",
-      "A Readiness Score",
-      "An AI Voice Debrief",
-    ],
-  },
-  {
-    label: "Evidence and support",
-    items: [
-      "An editable, partner-agnostic portfolio artefact",
-      "Portfolio evidence publication",
-      "Credential issuance",
-      "CV evidence-generation support",
-      "LinkedIn evidence-generation support",
-      "Career Bridge office hours",
-      "Programme support",
-      "Career Bridge community on Circle",
-    ],
-  },
-];
-
-const WHO_FOR = [
-  { title: "Aspiring professionals", body: "Entering a discipline and needing evidence to enter it with." },
-  { title: "Graduates", body: "Qualified, with little applied work to point to." },
-  { title: "Career changers", body: "Capable in one field, unproven in the next." },
-  { title: "Career returners", body: "Experienced, but with a gap that needs recent evidence." },
-  { title: "Developing professionals", body: "In role, and building evidence beyond what the job documents." },
-  { title: "Professionals proving a new discipline", body: "Established in one area, demonstrating capability in another." },
-  { title: "Anyone qualified but unproven", body: "Holding certificates that describe knowledge rather than applied capability." },
-];
-
 const COMBOS = [
-  { nodes: ["Business Analysis", "Product Management"], note: "Add outcome ownership and prioritisation to analytical depth." },
-  { nodes: ["Project Management", "Business Analysis"], note: "Move from delivering the work to defining the problem." },
-  { nodes: ["Virtual Administrative Assistant", "Project Coordination"], note: "Build from operational support into delivery ownership." },
-  { nodes: ["Cyber Threat Intelligence", "Cyber Governance and Risk"], note: "Extend analytical intelligence work into governance and risk." },
+  { nodes: ["Project Management", "Business Analysis", "Product Management"], note: "Delivery to definition to direction." },
+  { nodes: ["Virtual Administrative Assistant", "Project Coordination", "Project Management"], note: "Operational support into delivery ownership." },
+  { nodes: ["Business Analysis", "Product Management"], note: "From requirements to outcomes and prioritisation." },
+  { nodes: ["Cyber Threat Intelligence", "Cyber Governance and Risk"], note: "From analysis to organisational risk decisions." },
 ];
+
+const SPECIMEN_ITEMS = [
+  "Workplace scenario brief and context pack",
+  "Four defined Jobs to Be Done",
+  "Structured task set and guidance",
+  "Work submitted for competency assessment",
+  "Editable portfolio artefact",
+];
+
+const SPECIMEN_SCORES = [
+  { label: "Evidence-based decisions", pct: 72 },
+  { label: "Prioritisation", pct: 58 },
+  { label: "Stakeholder communication", pct: 80 },
+];
+
+/**
+ * Hero visual: a workplace simulation brief rendered as an object rather
+ * than a dashboard mockup. Single-use (hero only), so kept local rather
+ * than promoted to a shared component — reuses the same colour tokens as
+ * records/RecordCard.tsx for visual consistency with the record cards
+ * used elsewhere on this page and on the pathway pages.
+ */
+const SimulationBriefSpecimen = () => (
+  <div
+    role="img"
+    aria-label="Illustration of a workplace simulation brief, showing a reference code, a scenario title, the structure of an assessed simulation, and an example of competency scoring applied to communication, prioritisation and decision-making."
+    className="bg-white text-[#00335A] border border-[#CFDCE4] rounded-[6px] overflow-hidden shadow-[0_18px_40px_-28px_rgba(0,26,48,0.65)]"
+  >
+    <div className="flex items-center justify-between gap-3 bg-[#EAF0F4] border-b border-[#CFDCE4] px-4 py-3 font-mono text-xs tracking-[0.08em] uppercase text-[#3E5D77]">
+      <span>Simulation brief</span>
+      <span>REF · SIM-PM-014</span>
+    </div>
+    <div className="p-6">
+      <p className="font-serif text-[clamp(1.125rem,0.5vw+1rem,1.375rem)] leading-snug text-[#00335A] mb-5">
+        Retention is falling and two teams disagree about why.
+      </p>
+      <ul className="space-y-2.5 mb-6">
+        {SPECIMEN_ITEMS.map((item) => (
+          <li key={item} className="flex items-start gap-2.5 text-sm text-[#3E5D77] leading-snug">
+            <span className="text-[#00518F] shrink-0">▸</span>
+            {item}
+          </li>
+        ))}
+      </ul>
+      <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-[#3E5D77] mb-3">Competency structure</p>
+      <div className="space-y-3">
+        {SPECIMEN_SCORES.map(({ label, pct }) => (
+          <div key={label} className="flex items-center gap-3">
+            <span className="text-xs text-[#3E5D77] w-[9.5rem] shrink-0">{label}</span>
+            <span className="flex-1 h-1.5 bg-[#EAF0F4] rounded-full overflow-hidden">
+              <span className="block h-full bg-[#00518F] rounded-full" style={{ width: `${pct}%` }} />
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+);
 
 // ── Page ─────────────────────────────────────────────────────
 
@@ -126,7 +166,7 @@ export default function SimulationBasedWorkExperiencePage() {
                 </span>
               </div>
               <h1 className="text-[clamp(3rem,6.5vw,5.5rem)] font-bold text-white leading-[0.98] tracking-[-0.03em] mb-8">
-                Build Experience.<br />Prove Your Skills.<br />Progress Your Career.
+                Build experience.<br />Prove your skills.<br />Progress your career.
               </h1>
               <p className="text-lg md:text-xl text-white/50 leading-[1.6] max-w-xl mb-10">
                 Complete realistic workplace simulations, receive AI-powered competency assessment and build a
@@ -154,7 +194,7 @@ export default function SimulationBasedWorkExperiencePage() {
             </Reveal>
 
             <Reveal delay={0.15}>
-              <PortfolioRecord />
+              <SimulationBriefSpecimen />
             </Reveal>
           </div>
         </div>
@@ -172,11 +212,12 @@ export default function SimulationBasedWorkExperiencePage() {
               <span className="text-[11px] font-medium uppercase text-accent-teal tracking-[0.2em]">The evidence gap</span>
             </div>
             <h2 className="text-4xl md:text-[3.5rem] font-bold text-white leading-[0.95] tracking-[-0.025em] max-w-2xl mb-6">
-              Talent is not always missing. Sometimes, the evidence is.
+              Talent is not always missing.<br />Sometimes, the evidence is.
             </h2>
             <p className="text-base text-white/45 leading-[1.75] max-w-2xl">
-              Qualifications, certificates and CV claims describe capability. They do not always prove it. Most
-              people are asked to demonstrate what they can do at the exact moment they have nothing to show for it.
+              Qualifications, certificates and CV claims describe potential. They rarely show how someone framed a
+              problem, what they decided under pressure, or the quality of the work they produced. Most people are
+              asked to prove capability using documents that were never designed to prove anything.
             </p>
           </Reveal>
 
@@ -193,12 +234,6 @@ export default function SimulationBasedWorkExperiencePage() {
               </motion.div>
             ))}
           </StaggerGrid>
-
-          <Reveal delay={0.15}>
-            <p className="text-base text-white/40 leading-[1.7] max-w-xl mt-10">
-              Most career support stops at stage two. This programme starts at stage three.
-            </p>
-          </Reveal>
         </div>
       </section>
 
@@ -217,6 +252,8 @@ export default function SimulationBasedWorkExperiencePage() {
             </h2>
             <p className="text-base text-slate leading-[1.75] max-w-md mb-6">
               Career Bridge Foundation provides applied work experience through realistic professional simulations.
+              You are not watching someone else solve a problem. You are handed the situation and asked what you
+              would do.
             </p>
             <div className="flex flex-col gap-5">
               {WHAT_IT_MEANS_BODY.map((body, i) => (
@@ -233,8 +270,9 @@ export default function SimulationBasedWorkExperiencePage() {
       {/* ════════════════════════════════════════
           JOIN · PROVE · PROGRESS
       ════════════════════════════════════════ */}
-      <section id="journey" className="bg-warm-grey py-28 px-6 border-y border-subtle">
-        <div className="max-w-6xl mx-auto">
+      <section id="journey" className="relative bg-ink py-28 px-6 overflow-hidden">
+        <div className="absolute inset-0 dot-pattern opacity-[0.12] pointer-events-none" />
+        <div className="relative max-w-6xl mx-auto">
           <JoinProveProgress />
         </div>
       </section>
@@ -247,14 +285,14 @@ export default function SimulationBasedWorkExperiencePage() {
           <Reveal className="mb-16">
             <div className="flex items-center gap-3 mb-5">
               <div className="w-8 h-px bg-accent-teal" />
-              <span className="text-[11px] font-medium uppercase text-accent-teal tracking-[0.2em]">Inside a simulation</span>
+              <span className="text-[11px] font-medium uppercase text-accent-teal tracking-[0.2em]">Inside one simulation</span>
             </div>
             <h2 className="text-4xl md:text-[3.5rem] font-bold text-ink leading-[0.95] tracking-[-0.025em] max-w-2xl mb-6">
-              How each assessed workplace simulation works
+              Four steps, every time.
             </h2>
             <p className="text-base text-slate leading-[1.75] max-w-2xl">
-              Programme access is free. Credits are required from the point you begin the AI-powered simulation,
-              evaluation and evidence-generation experience.
+              One credit activates one complete workplace simulation, and the structure does not change between
+              disciplines, so the evidence stays comparable.
             </p>
           </Reveal>
 
@@ -301,9 +339,9 @@ export default function SimulationBasedWorkExperiencePage() {
               Build your own experience pathway
             </h2>
             <p className="text-base text-slate leading-[1.75] max-w-2xl">
-              You are not permanently restricted to one discipline. Subject to available simulations, you can
-              complete assessed workplace simulations across multiple pathways and progressively build
-              multidisciplinary evidence.
+              Participants are not permanently restricted to one discipline. Subject to available simulations, you
+              can complete assessed workplace simulations across multiple professional pathways and progressively
+              build multidisciplinary evidence — the way real careers actually move.
             </p>
           </Reveal>
 
@@ -326,7 +364,8 @@ export default function SimulationBasedWorkExperiencePage() {
           </StaggerGrid>
 
           <p className="text-sm text-slate leading-[1.75] mt-8 max-w-xl">
-            Access to any pathway depends on the simulations available at the time.
+            Access to any pathway depends on the simulations available at the time. Some disciplines shown above
+            are illustrative of how pathways can be combined and may not all be released.
           </p>
         </div>
       </section>
@@ -334,37 +373,27 @@ export default function SimulationBasedWorkExperiencePage() {
       {/* ════════════════════════════════════════
           WHAT PARTICIPANTS RECEIVE
       ════════════════════════════════════════ */}
-      <section id="receive" className="relative bg-ink py-28 px-6 overflow-hidden">
-        <div className="absolute inset-0 dot-pattern opacity-[0.1] pointer-events-none" />
-        <div className="relative max-w-6xl mx-auto">
+      <section id="receive" className="bg-white py-28 px-6">
+        <div className="max-w-6xl mx-auto">
           <Reveal className="mb-16">
             <div className="flex items-center gap-3 mb-5">
               <div className="w-8 h-px bg-accent-teal" />
               <span className="text-[11px] font-medium uppercase text-accent-teal tracking-[0.2em]">What participants receive</span>
             </div>
-            <h2 className="text-4xl md:text-[3.5rem] font-bold text-white leading-[0.95] tracking-[-0.025em] max-w-2xl mb-5">
-              Everything an activated simulation includes
+            <h2 className="text-4xl md:text-[3.5rem] font-bold text-ink leading-[0.95] tracking-[-0.025em] max-w-2xl mb-5">
+              Everything included in an activated simulation
             </h2>
-            <p className="text-base text-white/45 leading-[1.75] max-w-2xl">
-              Assessment is AI-powered, using expert-designed or expert-validated competency rubrics.
+            <p className="text-base text-slate leading-[1.75] max-w-2xl">
+              One credit activates one complete workplace simulation. Each includes all of the following.
             </p>
           </Reveal>
 
-          <StaggerGrid className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/10 border border-white/10">
-            {BENEFIT_GROUPS.map(({ label, items }) => (
-              <motion.div key={label} variants={cardVariant}>
-                <div className="bg-ink p-8 h-full">
-                  <h3 className="text-xs font-bold text-white uppercase tracking-[0.1em] mb-5">{label}</h3>
-                  <ul className="space-y-3">
-                    {items.map((item) => (
-                      <li
-                        key={item}
-                        className="text-sm text-white/50 leading-[1.6] pl-4 relative before:content-[''] before:absolute before:left-0 before:top-[0.6em] before:w-1.5 before:h-1.5 before:rounded-full before:bg-accent-teal"
-                      >
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
+          <StaggerGrid className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-subtle border border-subtle">
+            {RECEIVES.map(({ name, note }) => (
+              <motion.div key={name} variants={cardVariant}>
+                <div className="bg-white p-7 h-full">
+                  <h3 className="text-sm font-bold text-ink mb-2 leading-snug">{name}</h3>
+                  <p className="text-xs text-slate leading-[1.6]">{note}</p>
                 </div>
               </motion.div>
             ))}
@@ -375,28 +404,31 @@ export default function SimulationBasedWorkExperiencePage() {
       {/* ════════════════════════════════════════
           WHO IT'S FOR
       ════════════════════════════════════════ */}
-      <section id="who" className="bg-white py-28 px-6">
-        <div className="max-w-6xl mx-auto">
-          <Reveal className="mb-14">
+      <section id="who" className="relative bg-ink py-28 px-6 overflow-hidden">
+        <div className="absolute inset-0 dot-pattern opacity-[0.1] pointer-events-none" />
+        <div className="relative max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+          <Reveal>
             <div className="flex items-center gap-3 mb-5">
               <div className="w-8 h-px bg-accent-teal" />
-              <span className="text-[11px] font-medium uppercase text-accent-teal tracking-[0.2em]">Who it is for</span>
+              <span className="text-[11px] font-medium uppercase text-accent-teal tracking-[0.2em]">Who this is for</span>
             </div>
-            <h2 className="text-4xl md:text-[3.5rem] font-bold text-ink leading-[0.95] tracking-[-0.025em] max-w-2xl">
-              Designed for people who need evidence, not another certificate
+            <h2 className="text-3xl md:text-[2.75rem] font-bold text-white leading-[1.05] tracking-[-0.02em] mb-5">
+              Designed for people who need to show, not tell.
             </h2>
+            <p className="text-base text-white/40 leading-[1.7] max-w-md">
+              If you have the capability but nothing an employer can inspect, the programme is built for you.
+            </p>
           </Reveal>
-
-          <StaggerGrid className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-subtle border border-subtle">
-            {WHO_FOR.map(({ title, body }) => (
-              <motion.div key={title} variants={cardVariant}>
-                <div className="bg-white p-7 h-full">
-                  <h3 className="text-sm font-bold text-ink mb-2 leading-snug">{title}</h3>
-                  <p className="text-xs text-slate leading-[1.6]">{body}</p>
-                </div>
-              </motion.div>
-            ))}
-          </StaggerGrid>
+          <Reveal delay={0.1}>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8">
+              {WHO_FOR.map((item) => (
+                <li key={item} className="flex items-start gap-3 py-3 border-t border-white/10 text-sm text-white/60 leading-relaxed">
+                  <span className="text-accent-teal shrink-0 mt-0.5">▸</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </Reveal>
         </div>
       </section>
 
@@ -424,6 +456,53 @@ export default function SimulationBasedWorkExperiencePage() {
 
           <Reveal delay={0.1}>
             <AccessModelFull />
+          </Reveal>
+
+          <Reveal delay={0.15} className="mt-16 pt-14 border-t border-subtle">
+            <h3 className="font-serif text-2xl font-semibold text-ink mb-6">Founding Cohort 2026 credit packs</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+              <div className="card border-t-[3px] border-accent-teal">
+                <p className="text-label font-sans font-semibold uppercase text-accent-teal mb-3">3 credits</p>
+                <h4 className="font-serif text-lg font-semibold text-ink mb-3">Builder</h4>
+                <p className="text-sm text-slate leading-relaxed font-sans">
+                  Three complete workplace simulations, each with AI-powered evaluation and portfolio generation.
+                </p>
+              </div>
+              <div className="card border-t-[3px] border-ink">
+                <p className="text-label font-sans font-semibold uppercase text-ink mb-3">10 credits</p>
+                <h4 className="font-serif text-lg font-semibold text-ink mb-3">Professional</h4>
+                <p className="text-sm text-slate leading-relaxed font-sans">
+                  Ten complete workplace simulations, at a lower rate per simulation than Builder.
+                </p>
+              </div>
+            </div>
+            <p className="text-sm text-slate leading-relaxed font-sans max-w-2xl mb-3">
+              <strong className="text-ink">Africa Access.</strong> Reduced founding-cohort credit pricing is
+              available in supported African markets, as part of Career Bridge Foundation&rsquo;s commitment to
+              widening access to AI-powered career development infrastructure. Standard pricing applies elsewhere.
+              Your pricing region is determined by your location at the application stage.
+            </p>
+            <p className="text-sm text-slate leading-relaxed font-sans max-w-2xl mb-3">
+              One credit activates one complete workplace simulation, including its AI-powered evaluation and the
+              generation of your portfolio artefact. Credit packs are not a definition of programme length — you
+              choose how many simulations you complete. These are introductory founding-cohort prices and may
+              change for future cohorts.
+            </p>
+            {/*
+              UNRESOLVED — the reference page's credit-pack pricing table is populated by a
+              region-selector script that isn't included in the supplied markup (js-region,
+              js-total, js-per all render "—" placeholders in the static HTML). No actual
+              dollar amount, per-region rate or Africa Access discount figure has been supplied
+              anywhere, so none is invented here. Supply the real per-region amounts and I will
+              build the interactive region picker + live pricing table; until then this section
+              states pack names, credit counts and the pricing mechanism only, with no numbers.
+            */}
+            <p className="text-sm text-slate leading-relaxed font-sans max-w-2xl">
+              <strong className="text-ink">Career Bridge Foundation and Evidentize.</strong> Career Bridge
+              Foundation runs the Simulation-Based Work Experience Programme and the application experience.
+              Evidentize provides the technology infrastructure behind the simulations, AI-powered evaluation,
+              evidence generation and digital career portfolios. Credits give you access to that infrastructure.
+            </p>
           </Reveal>
         </div>
       </section>
@@ -506,6 +585,14 @@ export default function SimulationBasedWorkExperiencePage() {
           </h2>
           <p className="text-base text-white/45 leading-[1.75] max-w-xl">
             Explore the pathways, choose a discipline and apply. Programme access is free; AI usage requires credits.
+          </p>
+          <p className="text-sm text-white/40 leading-[1.7] max-w-xl -mt-2">
+            Founding Cohort 2026 credit packs start at Builder (3 credits), with reduced Africa Access pricing in
+            supported African markets.{" "}
+            <a href="#cost" className="text-accent-teal hover:text-accent-teal/80 transition-colors duration-200">
+              See credit packs and pricing for your region
+            </a>
+            .
           </p>
           <div className="flex flex-col sm:flex-row gap-4 mt-2">
             <a
