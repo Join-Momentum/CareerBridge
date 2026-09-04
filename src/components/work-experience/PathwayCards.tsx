@@ -60,19 +60,15 @@ const PATHWAY_CARDS: PathwayCardData[] = [
  * and the "work you may complete" / "evidence you may produce" pairing.
  * More detailed than the summary cards currently on the Work Experience
  * hub page (name/body/status only) — this fills the content gap flagged
- * in data/pathways.ts's DRAFT CONTENT NOTICE. Links go to the real routes
- * already registered in App.tsx (all five now exist, including CTI's own
- * dedicated page — not the /simulation-based-work-experience/:slug pattern
- * for that one).
+ * in data/pathways.ts's DRAFT CONTENT NOTICE. All five link through the
+ * shared /simulation-based-work-experience/:slug route, including CTI —
+ * its old dedicated checkout page now redirects there.
  */
 const PathwayCards = ({ className = "" }: { className?: string }) => (
   <div className={className}>
     <StaggerGrid className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {PATHWAY_CARDS.map((pathway) => {
-        const href =
-          pathway.slug === "cyber-threat-intelligence"
-            ? "/portfolio-simulations/cyber-threat-intelligence"
-            : `/simulation-based-work-experience/${pathway.slug}`;
+        const href = `/simulation-based-work-experience/${pathway.slug}`;
 
         return (
           <motion.div key={pathway.slug} variants={cardVariant}>

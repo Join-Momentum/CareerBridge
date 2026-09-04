@@ -6,6 +6,7 @@ import { DisclosureShort, DisclosureFull } from "@/components/NonEmploymentDiscl
 import { Reveal, StaggerGrid, cardVariant, ArrowIcon, ease } from "@/components/simulation/Motion";
 import { PathwayRecord, type PathwaySlug } from "@/components/records";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { CtiCheckoutButton, CtiCheckoutOverlays, CtiPricingCard } from "@/components/work-experience/CtiCheckout";
 
 /**
  * Shared template for every Work Experience discipline pathway page.
@@ -28,10 +29,7 @@ const PATHWAY_NAV: { slug: PathwaySlug; name: string; cue: string }[] = [
   { slug: "virtual-administrative-assistant", name: "Virtual Administrative Assistant", cue: "#7A5C0C" },
 ];
 
-const pathwayHref = (slug: PathwaySlug) =>
-  slug === "cyber-threat-intelligence"
-    ? "/portfolio-simulations/cyber-threat-intelligence"
-    : `/simulation-based-work-experience/${slug}`;
+const pathwayHref = (slug: PathwaySlug) => `/simulation-based-work-experience/${slug}`;
 
 /**
  * Same three benefit groups as the programme hub page
@@ -87,9 +85,12 @@ export default function PathwayPage({ data }: { data: PathwayContent }) {
 function RichPathwayPage({ data }: { data: PathwayContent }) {
   const { slug, name, accent, competencies } = data;
   const rich = data.rich!;
+  const isCti = slug === "cyber-threat-intelligence";
 
   return (
     <>
+      {isCti && <CtiCheckoutOverlays />}
+
       {/* ════════════════════════════════════════
           HERO
       ════════════════════════════════════════ */}
@@ -120,13 +121,17 @@ function RichPathwayPage({ data }: { data: PathwayContent }) {
               </h1>
               <p className="text-lg md:text-xl text-white/50 leading-[1.6] max-w-xl mb-10">{rich.heroLede}</p>
               <div className="flex flex-col sm:flex-row gap-4 mb-10">
-                <Link
-                  to="/apply"
-                  className="inline-flex items-center justify-center gap-3 text-[11px] font-medium uppercase px-8 py-4 tracking-[0.12em] text-white transition-colors duration-200"
-                  style={{ backgroundColor: accent }}
-                >
-                  Apply Free
-                </Link>
+                {isCti ? (
+                  <CtiCheckoutButton className="inline-flex items-center justify-center gap-3 text-[11px] font-medium uppercase px-8 py-4 tracking-[0.12em] bg-accent-teal text-white hover:bg-accent-teal/90 transition-colors duration-200" />
+                ) : (
+                  <Link
+                    to="/apply"
+                    className="inline-flex items-center justify-center gap-3 text-[11px] font-medium uppercase px-8 py-4 tracking-[0.12em] text-white transition-colors duration-200"
+                    style={{ backgroundColor: accent }}
+                  >
+                    Apply Free
+                  </Link>
+                )}
                 <a
                   href="#experience"
                   className="inline-flex items-center justify-center gap-3 text-[11px] font-medium uppercase px-8 py-4 tracking-[0.12em] border border-white/25 text-white hover:border-white/50 transition-colors duration-200"
@@ -462,6 +467,42 @@ function RichPathwayPage({ data }: { data: PathwayContent }) {
         </div>
       </section>
 
+      {isCti && (
+        <section id="pricing" className="relative bg-ink py-28 px-6 overflow-hidden">
+          <div className="absolute inset-0 dot-pattern opacity-[0.12] pointer-events-none" />
+          <div className="absolute right-1/4 top-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-accent-teal/[0.06] blur-[120px] pointer-events-none" />
+
+          <div className="relative max-w-6xl mx-auto">
+            <Reveal className="mb-14">
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-8 h-px bg-accent-teal" />
+                <span className="text-[11px] font-medium uppercase text-accent-teal tracking-[0.2em]">Founding cohort pricing</span>
+              </div>
+              <h2 className="text-3xl md:text-[2.5rem] font-bold text-white leading-[1.05] tracking-[-0.02em] max-w-2xl">
+                A verified work portfolio, priced for the first 20.
+              </h2>
+            </Reveal>
+
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+              <Reveal delay={0.05} className="lg:col-span-1 flex flex-col gap-5">
+                <p className="text-sm text-white/50 leading-[1.85]">
+                  The founding cohort is the first to run on this format. Twenty places at $299. After the founding
+                  cohort, the price for the same portfolio is $599.
+                </p>
+                <p className="text-sm text-white/50 leading-[1.85]">
+                  This sits alongside the free programme access described above — applying, being considered and
+                  onboarding cost nothing. This specific verified portfolio product is the paid, fixed-scope option.
+                </p>
+              </Reveal>
+
+              <Reveal delay={0.1} className="lg:col-span-2">
+                <CtiPricingCard />
+              </Reveal>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* ════════════════════════════════════════
           FAQ
       ════════════════════════════════════════ */}
@@ -522,13 +563,17 @@ function RichPathwayPage({ data }: { data: PathwayContent }) {
           </h2>
           <p className="text-base text-white/45 leading-[1.75] max-w-xl">{rich.ctaLede}</p>
           <div className="flex flex-col sm:flex-row gap-4 mt-2">
-            <Link
-              to="/apply"
-              className="inline-flex items-center justify-center gap-3 text-[11px] font-medium uppercase px-10 py-4 tracking-[0.12em] text-white transition-colors duration-200"
-              style={{ backgroundColor: accent }}
-            >
-              Apply Free
-            </Link>
+            {isCti ? (
+              <CtiCheckoutButton className="inline-flex items-center justify-center gap-3 text-[11px] font-medium uppercase px-10 py-4 tracking-[0.12em] bg-accent-teal text-white hover:bg-accent-teal/90 transition-colors duration-200" />
+            ) : (
+              <Link
+                to="/apply"
+                className="inline-flex items-center justify-center gap-3 text-[11px] font-medium uppercase px-10 py-4 tracking-[0.12em] text-white transition-colors duration-200"
+                style={{ backgroundColor: accent }}
+              >
+                Apply Free
+              </Link>
+            )}
             <Link
               to="/simulation-based-work-experience#pathways"
               className="inline-flex items-center justify-center gap-3 text-[11px] font-medium uppercase px-10 py-4 tracking-[0.12em] border border-white/25 text-white hover:border-white/50 transition-colors duration-200"

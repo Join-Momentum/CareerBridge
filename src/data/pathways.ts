@@ -485,14 +485,12 @@ export const pathways: Record<string, PathwayContent> = {
     },
   },
   /**
-   * This is the editorial/informational pathway page reachable via the
-   * shared PathwayPage template at /simulation-based-work-experience/:slug
-   * (previously a 404, since no data existed here). It is deliberately
-   * separate from the existing commercial page with a live Stripe
-   * checkout at /portfolio-simulations/cyber-threat-intelligence — every
-   * pathway card and pathnav on the site still links CTI to that
-   * checkout page on purpose (see PathwayPage.tsx and PathwayCards.tsx),
-   * and that routing has not been changed here.
+   * The old dedicated commercial page at
+   * /portfolio-simulations/cyber-threat-intelligence (with its live Stripe
+   * checkout for the $299 founding-cohort place) now redirects here. The
+   * checkout itself was ported onto this page — see the isCti branch in
+   * PathwayPage.tsx and src/components/work-experience/CtiCheckout.tsx —
+   * so the purchase flow still works, just at this URL.
    */
   "cyber-threat-intelligence": {
     slug: "cyber-threat-intelligence",

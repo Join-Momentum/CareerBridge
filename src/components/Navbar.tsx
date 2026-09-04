@@ -10,7 +10,7 @@ const navLinks = [
 ];
 
 const portfolioDropdown = [
-  { label: "Cyber Threat Intelligence", path: "/portfolio-simulations/cyber-threat-intelligence" },
+  { label: "Cyber Threat Intelligence", path: "/simulation-based-work-experience/cyber-threat-intelligence" },
   { label: "Product Management", path: "/simulation-based-work-experience/product-management" },
   { label: "Project Management", path: "/simulation-based-work-experience/project-management" },
   { label: "Business Analysis", path: "/simulation-based-work-experience/business-analysis" },

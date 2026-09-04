@@ -21,7 +21,6 @@ import ComplaintsProcedure from "@/pages/ComplaintsProcedure";
 import Policies from "./pages/Policies";
 import SimulationBasedWorkExperience from "@/pages/simulation-based-work-experience/page";
 import PathwaySlugPage from "@/pages/simulation-based-work-experience/PathwaySlugPage";
-import CyberThreatIntelligence from "@/pages/portfolio-simulations/cyber-threat-intelligence/page";
 import NotFound from "@/pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -49,7 +48,10 @@ const AnimatedRoutes = () => {
           <Route path="/simulation-based-work-experience" element={<SimulationBasedWorkExperience />} />
           <Route path="/simulation-based-work-experience/:slug" element={<PathwaySlugPage />} />
           <Route path="/portfolio-simulations" element={<Navigate to="/simulation-based-work-experience" replace />} />
-          <Route path="/portfolio-simulations/cyber-threat-intelligence" element={<CyberThreatIntelligence />} />
+          <Route
+            path="/portfolio-simulations/cyber-threat-intelligence"
+            element={<Navigate to="/simulation-based-work-experience/cyber-threat-intelligence" replace />}
+          />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </AnimatePresence>
