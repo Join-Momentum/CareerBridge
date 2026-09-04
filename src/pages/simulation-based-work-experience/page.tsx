@@ -581,7 +581,7 @@ export default function SimulationBasedWorkExperiencePage() {
       {/* ════════════════════════════════════════
           PATHWAYS
       ════════════════════════════════════════ */}
-      <section className="relative bg-ink py-28 px-6 overflow-hidden">
+      <section id="pathways" className="relative bg-ink py-28 px-6 overflow-hidden scroll-mt-24">
         <div className="absolute inset-0 dot-pattern opacity-[0.12] pointer-events-none" />
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] rounded-full bg-accent-teal/[0.06] blur-[120px] pointer-events-none" />
 
