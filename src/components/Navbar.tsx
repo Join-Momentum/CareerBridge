@@ -195,14 +195,14 @@ const Navbar = ({ offsetTop = 0 }: { offsetTop?: number }) => {
               {location.pathname === "/apply" ? (
                 <a
                   href="http://apply.careerbridgefoundation.com/jobs/Careers/"
-                  className="ml-2 px-6 py-2.5 text-[12px] font-sans font-medium uppercase tracking-[0.1em] rounded-sm bg-accent-teal text-ink hover:bg-accent-teal/90 transition-all duration-300"
+                  className="ml-2 px-6 py-2.5 text-[12px] font-sans font-medium uppercase tracking-[0.1em] rounded-sm bg-accent-copper text-white hover:bg-accent-copper/90 transition-all duration-300"
                 >
                   Apply
                 </a>
               ) : (
                 <Link
                   to="/apply"
-                  className="ml-2 px-6 py-2.5 text-[12px] font-sans font-medium uppercase tracking-[0.1em] rounded-sm bg-accent-teal text-ink hover:bg-accent-teal/90 transition-all duration-300"
+                  className="ml-2 px-6 py-2.5 text-[12px] font-sans font-medium uppercase tracking-[0.1em] rounded-sm bg-accent-copper text-white hover:bg-accent-copper/90 transition-all duration-300"
                 >
                   Apply
                 </Link>
