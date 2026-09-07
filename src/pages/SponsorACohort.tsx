@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/accordion";
 
 /* ─── DATA ─────────────────────────────────────────────────────────
-   Package names (Proof Sponsor / Pathway Partner / Challenge Partner)
+   Package names (Proof Sponsor / Pathway sponsor / Challenge sponsor)
    are the SPONSOR-REDESIGN-DIRECTION doc's own recommendation, but
    OPEN-DECISIONS #1 records this as formally unresolved. Treat as a
    placeholder pending sign-off, not final commercial naming.
@@ -65,7 +65,7 @@ const PACKAGES = [
   },
   {
     tier: "Package 02",
-    name: "Pathway Partner",
+    name: "Pathway sponsor",
     body: "Choose the discipline and the participant group, and bring your practitioners into the cohort.",
     items: [
       "Everything in Proof Sponsor",
@@ -80,10 +80,10 @@ const PACKAGES = [
   },
   {
     tier: "Package 03",
-    name: "Challenge Partner",
+    name: "Challenge sponsor",
     body: "Co-design the work itself, including cross-disciplinary organisational challenges.",
     items: [
-      "Everything in Pathway Partner",
+      "Everything in Pathway sponsor",
       "Co-designed simulation experiences",
       "Cross-disciplinary challenges spanning multiple pathways",
       "Multi-cohort, multi-discipline or multi-region programmes",
@@ -114,7 +114,7 @@ const SHAPE = [
   {
     title: "Co-design",
     body: "Work with Career Bridge and Evidentize to design the workplace scenarios participants encounter.",
-    detail: "Realistic workplace and industry-specific problems, discipline-specific and cross-functional scenarios, community, regional or sector challenges, multi-disciplinary organisational challenges. Career Bridge retains editorial control of learning design, assessment criteria and quality — a partner shapes the scenario, not the standard.",
+    detail: "Realistic workplace and industry-specific problems, discipline-specific and cross-functional scenarios, community, regional or sector challenges, multi-disciplinary organisational challenges. Career Bridge retains editorial control of learning design, assessment criteria and quality — a sponsor shapes the scenario, not the standard.",
   },
 ];
 
@@ -163,18 +163,18 @@ const SCENARIOS = [
     body: "A regional foundation funds participants from a defined community through to completion. Participants choose from the open pathways. The foundation receives completion, artefact and portfolio figures for the group it funded, reported against the objectives it set at design stage.",
   },
   {
-    tier: "Pathway Partner",
-    title: "Product Management Pathway Partner",
+    tier: "Pathway sponsor",
+    title: "Product Management Pathway sponsor",
     body: "A technology employer funds a Product Management cohort and contributes monthly practitioner office hours. Its product managers run clinics and career conversations. Reporting covers completions plus the competencies participants demonstrated. No recruitment access is implied or offered.",
   },
   {
-    tier: "Challenge Partner",
-    title: "Multi-Disciplinary Transformation Partner",
+    tier: "Challenge sponsor",
+    title: "Multi-Disciplinary Transformation sponsor",
     body: "A sector body co-designs a realistic organisational challenge spanning all five disciplines. Participants work different aspects of the same scenario. The body receives cross-disciplinary reporting on how the cohort handled a problem shaped by its sector.",
   },
   {
-    tier: "Challenge Partner",
-    title: "Strategic Workforce Partner",
+    tier: "Challenge sponsor",
+    title: "Strategic Workforce sponsor",
     body: "A public-sector organisation supports multiple cohorts across several disciplines and regions, works with Career Bridge on programme design and practitioner involvement, and agrees a reporting framework and review cycle for the duration.",
   },
 ];
@@ -213,7 +213,7 @@ const FAQS = [
   },
   {
     q: "Can we contribute scenarios or co-design simulations?",
-    a: "Yes, at Challenge Partner level. Career Bridge retains editorial control of learning design, assessment criteria and quality, so a partner shapes the scenario rather than the standard.",
+    a: "Yes, at Challenge sponsor level. Career Bridge retains editorial control of learning design, assessment criteria and quality, so a sponsor shapes the scenario rather than the standard.",
   },
   {
     q: "Sponsorship is not an investment — what does that mean?",
@@ -231,7 +231,7 @@ const FAQS = [
 
 const ORG_TYPES = ["Employer", "Foundation or charity", "University or education provider", "Professional body", "Public-sector organisation", "Training provider", "Other"];
 const INTERESTS = ["Funded participation", "Discipline pathway", "Practitioner office hours", "Pathway enhancement", "Co-designed simulations", "Cross-disciplinary challenge", "Not sure yet"];
-const PACKAGE_OPTIONS = ["Proof Sponsor", "Pathway Partner", "Challenge Partner", "Exploring options"];
+const PACKAGE_OPTIONS = ["Proof Sponsor", "Pathway sponsor", "Challenge sponsor", "Exploring options"];
 
 const inputClass =
   "w-full px-4 py-3 border border-subtle bg-warm-white text-ink font-sans text-body focus:border-accent-teal focus:outline-none transition-colors";
@@ -598,7 +598,7 @@ const SponsorACohort = () => {
               <span className="text-[11px] font-medium uppercase text-accent-teal tracking-[0.2em]">Partnership packages</span>
             </div>
             <h2 className="text-3xl md:text-[2.75rem] font-bold text-ink leading-[1.05] tracking-[-0.02em] mb-6">
-              Three ways to partner.
+              Three ways to sponsor.
             </h2>
             <p className="text-base text-slate leading-[1.75] max-w-2xl">
               The packages differ by what you shape, not only by how many participants you fund. Each includes
@@ -639,7 +639,7 @@ const SponsorACohort = () => {
           <Reveal delay={0.15}>
             <p className="text-sm text-slate leading-relaxed max-w-2xl mt-10 border-l-2 border-accent-teal pl-5">
               Final scope, participant numbers, delivery format, reporting, branding and engagement opportunities are
-              agreed with each partner. No pricing is published; funding is discussed at design stage.
+              agreed with each sponsor. No pricing is published; funding is discussed at design stage.
             </p>
           </Reveal>
         </div>
@@ -659,7 +659,7 @@ const SponsorACohort = () => {
               Beyond funding participants.
             </h2>
             <p className="text-base text-slate leading-[1.75] max-w-2xl">
-              Available at Pathway Partner level and above.
+              Available at Pathway sponsor level and above.
             </p>
           </Reveal>
 
@@ -698,7 +698,7 @@ const SponsorACohort = () => {
           <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-10 lg:gap-16 items-start">
             <Reveal>
               <p className="text-base text-white/45 leading-[1.75] mb-5">
-                At Challenge Partner level, a co-designed organisational challenge can span every discipline at once.
+                At Challenge sponsor level, a co-designed organisational challenge can span every discipline at once.
                 Each participant works the aspect their role would actually own, against the same scenario,
                 constraints and timeline.
               </p>
@@ -710,7 +710,7 @@ const SponsorACohort = () => {
               <div className="border-l-2 border-accent-teal/50 pl-5">
                 <p className="text-sm text-white/40 leading-relaxed">
                   Career Bridge retains editorial control of learning design, assessment criteria and quality. A
-                  partner shapes the scenario, not the standard.
+                  sponsor shapes the scenario, not the standard.
                 </p>
               </div>
             </Reveal>
@@ -873,7 +873,7 @@ const SponsorACohort = () => {
               What sponsorship could look like.
             </h2>
             <p className="text-base text-slate leading-[1.75] max-w-2xl">
-              Four illustrative shapes. Final scope, numbers and funding are agreed with each partner.
+              Four illustrative shapes. Final scope, numbers and funding are agreed with each sponsor.
             </p>
           </Reveal>
 
