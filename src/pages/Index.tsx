@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import PageTransition from "@/components/PageTransition";
 import AnimatedSection, { StaggerContainer, StaggerItem } from "@/components/AnimatedSection";
 import { ChevronDown, Check, ArrowRight } from "lucide-react";
-import TwoPathwaysSection from "@/components/TwoPathwaysSection";
 import { AccessLine, AccessPanels } from "@/components/AccessModel";
 import { DisclosureShort, DisclosureFull } from "@/components/NonEmploymentDisclosure";
 import CohortStrip from "@/components/CohortStrip";
@@ -217,8 +216,8 @@ const Index = () => {
               <Link to="/simulation-based-work-experience" className="btn-primary-light">
                 Explore Work Experience
               </Link>
-              <Link to="/partners" className="btn-secondary-light">
-                Partner With Career Bridge
+              <Link to="/sponsor-a-cohort" className="btn-secondary-light">
+                Sponsor a Cohort
               </Link>
             </div>
 
@@ -646,12 +645,12 @@ const Index = () => {
               Build evidence-led talent pathways with Career Bridge.
             </h2>
             <p className="text-body text-slate leading-relaxed max-w-2xl mb-10 font-sans">
-              Partner with us to deliver simulation-based career development, competency assessment and verifiable
+              Sponsor a cohort to deliver simulation-based career development, competency assessment and verifiable
               portfolio evidence for your workforce, learners or community.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link to="/partners" className="btn-primary">
-                Partner With Career Bridge
+              <Link to="/sponsor-a-cohort" className="btn-primary">
+                Sponsor a Cohort
               </Link>
               <Link to="/contact" className="btn-secondary">
                 Contact The Team

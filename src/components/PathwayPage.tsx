@@ -470,7 +470,7 @@ function RichPathwayPage({ data }: { data: PathwayContent }) {
         </div>
       </section>
 
-      {isCti && (
+      {/* {isCti && (
         <section id="pricing" className="relative bg-ink py-28 px-6 overflow-hidden">
           <div className="absolute inset-0 dot-pattern opacity-[0.12] pointer-events-none" />
           <div className="absolute right-1/4 top-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-accent-teal/[0.06] blur-[120px] pointer-events-none" />
@@ -504,7 +504,7 @@ function RichPathwayPage({ data }: { data: PathwayContent }) {
             </div>
           </div>
         </section>
-      )}
+      )} */}
 
       {/* ════════════════════════════════════════
           FAQ
