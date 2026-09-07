@@ -244,6 +244,89 @@ const selectBg = {
   backgroundRepeat: "no-repeat",
 } as const;
 
+const VISUAL_TASKS = [
+  { text: "Define the target segment and positioning", done: true },
+  { text: "Prioritise launch channels with rationale", done: true },
+  { text: "Task 3 — Build the launch readiness plan", done: false },
+];
+
+/**
+ * Hero product visual — a mocked-up Career Bridge simulation screen with an
+ * overlapping "evidence" card, illustrating a Product Management simulation
+ * in progress and the portfolio artefact it produces. Single-use (hero
+ * only), so kept local rather than promoted to a shared component.
+ */
+const SponsorshipVisual = () => (
+  <div role="img" aria-label="Career Bridge interface showing a Product Management simulation in progress and the portfolio evidence generated from it.">
+    <div className="bg-ink-deep border border-white/[0.13] rounded-2xl shadow-[0_40px_80px_-40px_rgba(0,0,0,0.85)] overflow-hidden">
+      <div className="flex items-center gap-2 px-4 py-3 border-b border-white/10 bg-white/[0.035]">
+        <span className="grid place-items-center w-[30px] h-[30px] shrink-0 bg-white rounded-[7px]">
+          <img src="/CBLogoPry.png" alt="" className="w-5 h-auto" />
+        </span>
+        <span className="font-mono text-[11.5px] tracking-[0.06em] uppercase text-cool ml-0.5">
+          Career Bridge — Simulation
+        </span>
+      </div>
+
+      <div className="px-5 pt-5 pb-[4.9rem]">
+        <p className="font-mono text-[10.5px] tracking-[0.14em] uppercase text-accent-teal mb-2.5">
+          Product Management pathway
+        </p>
+        <p className="font-serif text-[19px] font-semibold text-white tracking-[-0.02em]">Go-to-Market Strategy</p>
+        <p className="text-[13px] text-cool mt-1.5">Simulation context · Video briefing · Transcript · AI evaluation</p>
+
+        <div className="mt-[18px] grid gap-2.5">
+          {VISUAL_TASKS.map((task) => (
+            <div
+              key={task.text}
+              className={`flex items-center gap-2.5 px-3.5 py-3 rounded-[9px] text-sm ${
+                task.done
+                  ? "bg-white/[0.045] border border-white/[0.08] text-cool"
+                  : "bg-accent-teal/[0.09] border border-accent-teal/50 text-white"
+              }`}
+            >
+              {task.done ? (
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="text-accent-teal shrink-0" aria-hidden="true">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg>
+              ) : (
+                <span className="w-[17px] h-[17px] shrink-0 rounded-full border-[1.5px] border-white/30" />
+              )}
+              {task.text}
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-[18px]">
+          <div className="flex justify-between font-mono text-[11px] tracking-[0.05em] text-cool mb-2">
+            <span>Pathway progress</span>
+            <span>Task 3 of 5</span>
+          </div>
+          <div className="h-1.5 rounded-full bg-white/[0.11] overflow-hidden">
+            <div className="h-full rounded-full bg-accent-teal" style={{ width: "62%" }} />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div className="relative -mt-[34px] ml-auto w-[68%] max-w-[272px] mr-[-18px] bg-white text-ink rounded-[13px] p-4 shadow-[0_30px_60px_-26px_rgba(0,0,0,0.7)] border border-white/60">
+      <span className="inline-flex items-center gap-1.5 font-mono text-[10.5px] tracking-[0.1em] uppercase text-accent-blue bg-[#E3F4F7] px-2.5 py-1 rounded-full">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8l-5-5zM14 3v5h5M9 13h6M9 17h4" />
+        </svg>
+        Portfolio evidence
+      </span>
+      <p className="font-serif font-semibold text-[15.5px] mt-2.5 leading-tight">
+        Launch readiness plan with decision rationale
+      </p>
+      <p className="text-[12.5px] text-slate mt-1.5">Evaluated and published to portfolio</p>
+      <div className="h-[5px] rounded-full bg-subtle mt-3 overflow-hidden">
+        <div className="h-full bg-accent-blue" style={{ width: "78%" }} />
+      </div>
+    </div>
+  </div>
+);
+
 /* ─── COMPONENT ─────────────────────────────────────────────────── */
 
 const SponsorACohort = () => {
@@ -337,53 +420,62 @@ const SponsorACohort = () => {
         <div className="absolute top-0 right-0 w-[700px] h-[700px] rounded-full bg-accent-teal/[0.06] blur-[150px] pointer-events-none" />
 
         <div className="relative page-container pt-40 pb-24">
-          <motion.div initial="hidden" animate="visible" variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.15 } } }}>
-            <motion.div
-              variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease } } }}
-              className="flex items-center gap-3 mb-8"
-            >
-              <div className="w-8 h-px bg-accent-teal" />
-              <span className="text-[11px] font-medium uppercase text-accent-teal tracking-[0.2em]">
-                Career Bridge sponsorship and partnership
-              </span>
+          <div className="grid grid-cols-1 lg:grid-cols-[1.03fr_1fr] gap-16 items-center">
+            <motion.div initial="hidden" animate="visible" variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.15 } } }}>
+              <motion.div
+                variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease } } }}
+                className="flex items-center gap-3 mb-8"
+              >
+                <div className="w-8 h-px bg-accent-teal" />
+                <span className="text-[11px] font-medium uppercase text-accent-teal tracking-[0.2em]">
+                  Career Bridge sponsorship and partnership
+                </span>
+              </motion.div>
+
+              <motion.h1
+                variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease } } }}
+                className="text-[clamp(2.5rem,5.5vw,4.25rem)] font-bold text-white leading-[1.04] tracking-[-0.02em] mb-6 max-w-[15ch]"
+              >
+                Fund the proof.
+              </motion.h1>
+
+              <motion.p
+                variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease } } }}
+                className="text-lg md:text-xl text-white/50 leading-[1.6] max-w-2xl mb-10"
+              >
+                Career Bridge programme access is free. Sponsorship funds the AI-powered simulation, evaluation and
+                portfolio generation that lets a participant complete realistic work experience and finish with
+                evidence of what they can actually do.
+              </motion.p>
+
+              <motion.div
+                variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease } } }}
+                className="flex flex-col sm:flex-row gap-4 mb-10"
+              >
+                <a href="#enquiry" className="inline-flex items-center justify-center gap-2 text-[11px] font-medium uppercase px-8 py-4 tracking-[0.12em] bg-accent-teal text-ink hover:bg-accent-teal/90 transition-colors duration-200">
+                  Become a Sponsor
+                </a>
+                <a href="#funds" className="inline-flex items-center justify-center gap-2 text-[11px] font-medium uppercase px-8 py-4 tracking-[0.12em] border border-white/25 text-white hover:border-white/50 transition-colors duration-200">
+                  See What Sponsorship Funds
+                </a>
+              </motion.div>
+
+              <motion.p
+                variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease } } }}
+                className="flex items-start gap-2.5 text-sm text-white/30 leading-relaxed max-w-xl pt-6 border-t border-white/[0.13]"
+              >
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="text-accent-teal shrink-0 mt-0.5" aria-hidden="true">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg>
+                Structured pathways, realistic workplace simulations, AI-powered evaluation, practitioner involvement
+                and verifiable portfolio evidence.
+              </motion.p>
             </motion.div>
 
-            <motion.h1
-              variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease } } }}
-              className="text-[clamp(3rem,7vw,6rem)] font-bold text-white leading-[0.95] tracking-[-0.02em] mb-6"
-            >
-              Fund the proof.
-            </motion.h1>
-
-            <motion.p
-              variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease } } }}
-              className="text-lg md:text-xl text-white/50 leading-[1.6] max-w-2xl mb-10"
-            >
-              Career Bridge programme access is free. Sponsorship funds the AI-powered simulation, evaluation and
-              portfolio generation that lets a participant complete realistic work experience and finish with
-              evidence of what they can actually do.
-            </motion.p>
-
-            <motion.div
-              variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease } } }}
-              className="flex flex-col sm:flex-row gap-4 mb-10"
-            >
-              <a href="#enquiry" className="inline-flex items-center justify-center gap-2 text-[11px] font-medium uppercase px-8 py-4 tracking-[0.12em] bg-accent-teal text-ink hover:bg-accent-teal/90 transition-colors duration-200">
-                Become a Sponsor
-              </a>
-              <a href="#funds" className="inline-flex items-center justify-center gap-2 text-[11px] font-medium uppercase px-8 py-4 tracking-[0.12em] border border-white/25 text-white hover:border-white/50 transition-colors duration-200">
-                See What Sponsorship Funds
-              </a>
-            </motion.div>
-
-            <motion.p
-              variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease } } }}
-              className="text-sm text-white/30 leading-relaxed max-w-xl"
-            >
-              Structured pathways, realistic workplace simulations, AI-powered evaluation, practitioner involvement
-              and verifiable portfolio evidence.
-            </motion.p>
-          </motion.div>
+            <Reveal delay={0.15} className="relative hidden lg:block">
+              <SponsorshipVisual />
+            </Reveal>
+          </div>
         </div>
       </section>
 
