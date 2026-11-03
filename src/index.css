@@ -2,6 +2,69 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ============================================================
+   Accent split — accent-teal (cyan #4DC5D2) is a dark-grounds-only
+   colour: 2.05:1 on white, fails WCAG AA. accent-blue (#0060AD) is
+   the light-grounds equivalent (6.41:1 on white). Rather than hand-
+   edit every accent-teal usage across the app for light/dark
+   context, every accent-teal utility below resolves to accent-blue
+   by default and is restored to true cyan only inside a dark
+   surface (bg-ink / bg-ink-light / bg-ink-deep). Written unlayered
+   (outside @layer) so it wins over Tailwind's generated utilities
+   regardless of source order, matching the light/dark accent split
+   documented in the supplied token files.
+   ============================================================ */
+.text-accent-teal { color: #0060AD; }
+.bg-accent-teal { background-color: #0060AD; }
+.border-accent-teal { border-color: #0060AD; }
+.ring-accent-teal { --tw-ring-color: #0060AD; }
+.from-accent-teal { --tw-gradient-from: #0060AD; }
+.via-accent-teal { --tw-gradient-via: #0060AD; }
+.to-accent-teal { --tw-gradient-to: #0060AD; }
+.fill-accent-teal { fill: #0060AD; }
+.stroke-accent-teal { stroke: #0060AD; }
+
+.bg-ink .text-accent-teal, .bg-ink.text-accent-teal,
+.bg-ink-light .text-accent-teal, .bg-ink-light.text-accent-teal,
+.bg-ink-deep .text-accent-teal, .bg-ink-deep.text-accent-teal {
+  color: #4DC5D2;
+}
+.bg-ink .bg-accent-teal, .bg-ink.bg-accent-teal,
+.bg-ink-light .bg-accent-teal, .bg-ink-light.bg-accent-teal,
+.bg-ink-deep .bg-accent-teal, .bg-ink-deep.bg-accent-teal {
+  background-color: #4DC5D2;
+}
+.bg-ink .border-accent-teal, .bg-ink.border-accent-teal,
+.bg-ink-light .border-accent-teal, .bg-ink-light.border-accent-teal,
+.bg-ink-deep .border-accent-teal, .bg-ink-deep.border-accent-teal {
+  border-color: #4DC5D2;
+}
+.bg-ink .fill-accent-teal, .bg-ink.fill-accent-teal,
+.bg-ink-light .fill-accent-teal, .bg-ink-light.fill-accent-teal,
+.bg-ink-deep .fill-accent-teal, .bg-ink-deep.fill-accent-teal {
+  fill: #4DC5D2;
+}
+.bg-ink .stroke-accent-teal, .bg-ink.stroke-accent-teal,
+.bg-ink-light .stroke-accent-teal, .bg-ink-light.stroke-accent-teal,
+.bg-ink-deep .stroke-accent-teal, .bg-ink-deep.stroke-accent-teal {
+  stroke: #4DC5D2;
+}
+
+/* Opacity-suffixed variants used across the app (e.g. text-accent-teal/90) */
+.bg-ink .text-accent-teal\/90, .bg-ink.text-accent-teal\/90,
+.bg-ink-light .text-accent-teal\/90, .bg-ink-light.text-accent-teal\/90 { color: rgb(77 197 210 / 0.9); }
+.bg-ink .bg-accent-teal\/90, .bg-ink.bg-accent-teal\/90,
+.bg-ink-light .bg-accent-teal\/90, .bg-ink-light.bg-accent-teal\/90 { background-color: rgb(77 197 210 / 0.9); }
+
+/* cool (on-dark-muted #A9C4D8) is likewise dark-grounds only — resolves
+   to slate (#4A6376, AA on light) by default, restored on dark grounds. */
+.text-cool { color: #4A6376; }
+.bg-ink .text-cool, .bg-ink.text-cool,
+.bg-ink-light .text-cool, .bg-ink-light.text-cool,
+.bg-ink-deep .text-cool, .bg-ink-deep.text-cool {
+  color: #A9C4D8;
+}
+
 @layer base {
   * {
     @apply border-border;
@@ -71,21 +134,21 @@
 
   /* Section label */
   .section-label {
-    @apply text-label font-sans font-semibold uppercase text-cool mb-4 flex items-center gap-3;
+    @apply text-label font-sans font-semibold uppercase text-slate mb-4 flex items-center gap-3;
   }
 
   .section-label::before {
     content: "";
-    @apply w-10 h-0.5 bg-accent-teal;
+    @apply w-10 h-0.5 bg-accent-blue;
   }
 
   .section-label-center {
-    @apply text-label font-sans font-semibold uppercase text-cool mb-4 text-center;
+    @apply text-label font-sans font-semibold uppercase text-slate mb-4 text-center;
   }
 
   .section-label-center::before {
     content: "";
-    @apply block w-10 h-0.5 bg-accent-teal mx-auto mb-4;
+    @apply block w-10 h-0.5 bg-accent-blue mx-auto mb-4;
   }
 
   /* Premium buttons */
