@@ -6,7 +6,7 @@ import { DisclosureShort, DisclosureFull } from "@/components/NonEmploymentDiscl
 import { Reveal, StaggerGrid, cardVariant, ArrowIcon, ease } from "@/components/simulation/Motion";
 import { PathwayRecord, type PathwaySlug } from "@/components/records";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { CtiCheckoutButton, CtiCheckoutOverlays, CtiPricingCard } from "@/components/work-experience/CtiCheckout";
+import { CtiCheckoutOverlays, CtiPricingCard } from "@/components/work-experience/CtiCheckout";
 import CreditPacks from "@/components/work-experience/CreditPacks";
 
 /**
@@ -122,17 +122,13 @@ function RichPathwayPage({ data }: { data: PathwayContent }) {
               </h1>
               <p className="text-lg md:text-xl text-white/50 leading-[1.6] max-w-xl mb-10">{rich.heroLede}</p>
               <div className="flex flex-col sm:flex-row gap-4 mb-10">
-                {isCti ? (
-                  <CtiCheckoutButton className="inline-flex items-center justify-center gap-3 text-[11px] font-medium uppercase px-8 py-4 tracking-[0.12em] bg-accent-teal text-white hover:bg-accent-teal/90 transition-colors duration-200" />
-                ) : (
-                  <Link
-                    to="/apply"
-                    className="inline-flex items-center justify-center gap-3 text-[11px] font-medium uppercase px-8 py-4 tracking-[0.12em] text-white transition-colors duration-200"
-                    style={{ backgroundColor: accent }}
-                  >
-                    Apply Free
-                  </Link>
-                )}
+                <Link
+                  to="/apply"
+                  className="inline-flex items-center justify-center gap-3 text-[11px] font-medium uppercase px-8 py-4 tracking-[0.12em] text-white transition-colors duration-200"
+                  style={{ backgroundColor: accent }}
+                >
+                  Apply Free
+                </Link>
                 <a
                   href="#experience"
                   className="inline-flex items-center justify-center gap-3 text-[11px] font-medium uppercase px-8 py-4 tracking-[0.12em] border border-white/25 text-white hover:border-white/50 transition-colors duration-200"
@@ -566,17 +562,13 @@ function RichPathwayPage({ data }: { data: PathwayContent }) {
           </h2>
           <p className="text-base text-white/45 leading-[1.75] max-w-xl">{rich.ctaLede}</p>
           <div className="flex flex-col sm:flex-row gap-4 mt-2">
-            {isCti ? (
-              <CtiCheckoutButton className="inline-flex items-center justify-center gap-3 text-[11px] font-medium uppercase px-10 py-4 tracking-[0.12em] bg-accent-teal text-white hover:bg-accent-teal/90 transition-colors duration-200" />
-            ) : (
-              <Link
-                to="/apply"
-                className="inline-flex items-center justify-center gap-3 text-[11px] font-medium uppercase px-10 py-4 tracking-[0.12em] text-white transition-colors duration-200"
-                style={{ backgroundColor: accent }}
-              >
-                Apply Free
-              </Link>
-            )}
+            <Link
+              to="/apply"
+              className="inline-flex items-center justify-center gap-3 text-[11px] font-medium uppercase px-10 py-4 tracking-[0.12em] text-white transition-colors duration-200"
+              style={{ backgroundColor: accent }}
+            >
+              Apply Free
+            </Link>
             <Link
               to="/simulation-based-work-experience#pathways"
               className="inline-flex items-center justify-center gap-3 text-[11px] font-medium uppercase px-10 py-4 tracking-[0.12em] border border-white/25 text-white hover:border-white/50 transition-colors duration-200"

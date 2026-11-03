@@ -400,11 +400,11 @@ const SponsorACohort = () => {
           consent: false,
         });
       } else {
-        setStatus({ type: "error", message: data.error || "Your enquiry could not be sent. Please try again, or email outreach@careerbridgefoundation.com." });
+        setStatus({ type: "error", message: data.error || "Your enquiry could not be sent. Please try again, or email ventures@careerbridgefoundation.com." });
       }
     } catch (error) {
       console.error("Sponsorship enquiry submission error:", error);
-      setStatus({ type: "error", message: "Network error. Please try again, or email outreach@careerbridgefoundation.com." });
+      setStatus({ type: "error", message: "Network error. Please try again, or email ventures@careerbridgefoundation.com." });
     } finally {
       setIsSubmitting(false);
     }
@@ -1043,8 +1043,8 @@ const SponsorACohort = () => {
             <div className="space-y-5 text-sm text-slate leading-relaxed">
               <p>
                 Prefer email? Write to{" "}
-                <a href="mailto:outreach@careerbridgefoundation.com" className="text-ink font-medium hover:text-accent-teal transition-colors">
-                  outreach@careerbridgefoundation.com
+                <a href="mailto:ventures@careerbridgefoundation.com" className="text-ink font-medium hover:text-accent-teal transition-colors">
+                  ventures@careerbridgefoundation.com
                 </a>
               </p>
               <p>
